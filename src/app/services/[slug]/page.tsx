@@ -81,7 +81,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
         "postalCode": "695002",
         "addressCountry": "IN"
       },
-      "telephone": "+917306243424"
+      "telephone": "7306243424"
     },
     "description": service.metaDesc,
     "areaServed": {
@@ -294,11 +294,11 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                     </Link>
                     
                     <a
-                      href="tel:+917306243424"
+                      href="tel:7306243424"
                       className="w-full py-3.5 bg-white/5 hover:bg-white/10 text-white border border-white/10 text-center font-bold rounded-xl transition-all duration-300 flex items-center justify-center space-x-2"
                     >
                       <Phone className="w-4 h-4" />
-                      <span>Call +91 73062 43424</span>
+                      <span>Call 7306243424</span>
                     </a>
                     
                     <a

@@ -350,7 +350,7 @@ export default function ContactForm() {
               <div className="space-y-4">
                 {/* Phone Call Button */}
                 <a
-                  href="tel:+917306243424"
+                  href="tel:7306243424"
                   className="flex items-center space-x-4 p-4 bg-white/5 hover:bg-white/10 rounded-2xl border border-white/5 transition-all"
                 >
                   <div className="w-10 h-10 bg-accent/20 rounded-xl flex items-center justify-center text-accent">
@@ -358,7 +358,7 @@ export default function ContactForm() {
                   </div>
                   <div>
                     <p className="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Direct Hotline</p>
-                    <p className="font-space text-base font-bold">+91 73062 43424</p>
+                    <p className="font-space text-base font-bold">7306243424</p>
                   </div>
                 </a>
 

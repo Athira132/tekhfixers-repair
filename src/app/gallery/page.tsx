@@ -300,7 +300,7 @@ export default function GalleryPage() {
               <div className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-6 w-full">
                 {/* Phone Call Card */}
                 <a
-                  href="tel:+917306243424"
+                  href="tel:7306243424"
                   className="p-6 bg-white/5 hover:bg-white/10 rounded-2xl border border-white/10 transition-all duration-300 hover:-translate-y-1 hover:border-accent group flex flex-col justify-between"
                 >
                   <div className="flex items-center justify-between mb-4">
@@ -312,7 +312,7 @@ export default function GalleryPage() {
                   <div>
                     <h4 className="font-space text-base font-bold text-white">Call Support</h4>
                     <p className="text-[11px] text-gray-400 mt-1">Speak to our calibration lab directly</p>
-                    <p className="text-sm font-bold text-accent font-space mt-3">+91 73062 43424</p>
+                    <p className="text-sm font-bold text-accent font-space mt-3">7306243424</p>
                   </div>
                 </a>
 

@@ -46,21 +46,23 @@ export default function Hero() {
       id="home"
       className="relative min-h-screen pt-32 pb-20 md:pb-28 flex items-center justify-center overflow-hidden gradient-bg-dark"
     >
-      {/* Blurred Workshop Background (15% Opacity with low opacity blend) */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center mix-blend-luminosity opacity-15 pointer-events-none filter blur-[2px]"
-        style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1601524909162-be87252be298?auto=format&fit=crop&q=80&w=1920')`,
-        }}
-      />
-
-      {/* Premium SVG Grid Overlay */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff02_1px,transparent_1px),linear-gradient(to_bottom,#ffffff02_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_75%,transparent_100%)] pointer-events-none z-0" />
-
-      {/* Layered Floating Mesh Gradients */}
-      <div className="absolute top-1/4 left-1/10 w-[450px] h-[450px] bg-[#00b8ff]/8 rounded-full blur-[100px] animate-blob pointer-events-none z-0" />
-      <div className="absolute bottom-1/4 right-1/10 w-[500px] h-[500px] bg-[#19F0B5]/8 rounded-full blur-[120px] animate-blob pointer-events-none [animation-delay:2s] z-0" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-600/5 rounded-full blur-[140px] animate-blob pointer-events-none [animation-delay:4s] z-0" />
+      {/* Cinematic YouTube Video Background (Autoplay, Loop, Muted, No controls, Scaled 1.5x to hide branding) */}
+      <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
+        <iframe
+          src="https://www.youtube.com/embed/spiDMgLnYLY?autoplay=1&mute=1&loop=1&playlist=spiDMgLnYLY&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&playsinline=1&enablejsapi=1"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none scale-150"
+          style={{
+            width: "100vw",
+            height: "56.25vw",
+            minHeight: "100vh",
+            minWidth: "177.77vh",
+          }}
+          allow="autoplay; encrypted-media; picture-in-picture"
+          title="iPhonix Cinematic Background"
+        />
+        {/* Premium Dark Blue/Black Gradient Overlay (65% opacity) + subtle blur */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0B192C]/65 via-[#0B192C]/75 to-[#0B192C] backdrop-blur-[2px] z-10" />
+      </div>
 
       {/* Floating subtle geometric items */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-10">
@@ -102,13 +104,23 @@ export default function Hero() {
             </span>
           </div>
 
-          <h1 className="font-space text-4xl sm:text-5xl md:text-[4.5rem] leading-[1.05] font-extrabold text-white tracking-tight">
-            Professional Mobile <br />
-            <span className="gradient-text-accent">Repair Services</span>
-          </h1>
+          <div className="space-y-2">
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+              className="font-space text-5xl sm:text-7xl md:text-[5.5rem] lg:text-[6.5rem] leading-[1] font-extrabold text-white tracking-tight"
+            >
+              iPhonix
+            </motion.h1>
+            
+            <p className="text-accent text-lg sm:text-xl md:text-2xl font-bold font-space tracking-wide uppercase pt-2">
+              Professional Doorstep Mobile Repair Services
+            </p>
+          </div>
 
-          <p className="text-gray-300 text-base sm:text-lg md:text-xl max-w-xl font-normal leading-relaxed">
-            Door-to-door smartphone repair with professional technicians, genuine spare parts, quick turnaround, and support for all major smartphone brands.
+          <p className="text-gray-300 text-sm sm:text-base md:text-lg max-w-xl font-normal leading-relaxed">
+            Support for Apple, Samsung, OnePlus, Google Pixel, Nothing, Motorola, Vivo, Oppo, Redmi, Realme, Nokia, and more.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 pt-4">
@@ -121,11 +133,11 @@ export default function Hero() {
               <span>Book a Repair</span>
             </a>
             <a
-              href="tel:+917306243424"
+              href="tel:7306243424"
               className="px-8 py-4 border border-white/20 hover:border-accent hover:text-accent text-white font-bold rounded-xl text-center transition-all duration-300 flex items-center justify-center space-x-2 bg-white/5 hover:bg-white/10"
             >
               <Phone className="w-5 h-5" />
-              <span>Call Now</span>
+              <span>7306243424</span>
             </a>
           </div>
 
