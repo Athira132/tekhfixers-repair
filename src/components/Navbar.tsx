@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
@@ -26,7 +26,10 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMobileDropdownOpen, setIsMobileDropdownOpen] = useState(false);
+  
   const pathname = usePathname();
+  const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,7 +41,12 @@ export default function Navbar() {
     };
 
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (dropdownTimeoutRef.current) {
+        clearTimeout(dropdownTimeoutRef.current);
+      }
+    };
   }, []);
 
   // Close menus on page transitions
@@ -51,6 +59,32 @@ export default function Navbar() {
 
   const isActive = (href: string) => pathname === href;
 
+  // Desktop Hover Debounce Logic
+  const handleMouseEnter = () => {
+    if (dropdownTimeoutRef.current) {
+      clearTimeout(dropdownTimeoutRef.current);
+      dropdownTimeoutRef.current = null;
+    }
+    setIsDropdownOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    if (dropdownTimeoutRef.current) {
+      clearTimeout(dropdownTimeoutRef.current);
+    }
+    dropdownTimeoutRef.current = setTimeout(() => {
+      setIsDropdownOpen(false);
+    }, 200); // 200ms delay to bridge layout gap
+  };
+
+  // Keyboard navigation & accessibility handlers
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Escape") {
+      setIsDropdownOpen(false);
+      triggerRef.current?.focus();
+    }
+  };
+
   return (
     <>
       <header
@@ -61,7 +95,7 @@ export default function Navbar() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-          {/* Logo Container - Fix cropping using object-contain & equal padding */}
+          {/* Logo Container - Fix cropping using object-contain & scale */}
           <Link
             href="/"
             className="flex items-center space-x-3 text-white font-space text-2xl font-bold tracking-tight group"
@@ -105,14 +139,20 @@ export default function Navbar() {
                 </Link>
               </li>
               
-              {/* Dropdown Menu for Services */}
+              {/* Dropdown Menu for Services (Debounced Hover + Accessibility) */}
               <li
-                className="relative"
-                onMouseEnter={() => setIsDropdownOpen(true)}
-                onMouseLeave={() => setIsDropdownOpen(false)}
+                className="relative py-2"
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+                onKeyDown={handleKeyDown}
               >
                 <button
+                  ref={triggerRef}
                   onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                  aria-haspopup="menu"
+                  aria-expanded={isDropdownOpen}
+                  aria-controls="services-dropdown"
+                  id="services-trigger"
                   className={`flex items-center space-x-1 font-medium text-sm transition-colors duration-200 focus:outline-none ${
                     pathname.startsWith("/services") ? "text-accent" : "text-gray-300 hover:text-accent"
                   }`}
@@ -129,13 +169,19 @@ export default function Navbar() {
                       exit={{ opacity: 0, y: 10 }}
                       transition={{ duration: 0.2 }}
                       className="absolute left-0 top-full w-64 pt-2 z-50"
+                      id="services-dropdown"
+                      role="menu"
+                      aria-labelledby="services-trigger"
+                      onMouseEnter={handleMouseEnter}
+                      onMouseLeave={handleMouseLeave}
                     >
                       <div className="rounded-2xl bg-navy/95 border border-white/10 backdrop-blur-xl p-3 shadow-xl shadow-black/30">
                         <ul className="space-y-1">
                           {servicesList.map((svc) => (
-                            <li key={svc.name}>
+                            <li key={svc.name} role="none">
                               <Link
                                 href={svc.href}
+                                role="menuitem"
                                 className={`block px-4 py-2 text-xs font-semibold rounded-xl transition-all duration-200 ${
                                   isActive(svc.href)
                                     ? "bg-accent text-navy"
@@ -225,7 +271,7 @@ export default function Navbar() {
                 </Link>
               </li>
               
-              {/* Mobile Services Accordion */}
+              {/* Mobile Services Accordion (Click/Tap Toggle + Height Animation) */}
               <li>
                 <button
                   onClick={() => setIsMobileDropdownOpen(!isMobileDropdownOpen)}
@@ -236,13 +282,14 @@ export default function Navbar() {
                   <span>Services</span>
                   <ChevronDown className={`w-5 h-5 transition-transform duration-200 ${isMobileDropdownOpen ? "rotate-180" : ""}`} />
                 </button>
-                <AnimatePresence>
+                <AnimatePresence initial={false}>
                   {isMobileDropdownOpen && (
                     <motion.ul
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: "auto" }}
                       exit={{ opacity: 0, height: 0 }}
-                      className="pl-4 mt-2 space-y-2 border-l border-white/10"
+                      transition={{ duration: 0.25, ease: "easeInOut" }}
+                      className="pl-4 mt-2 space-y-2 border-l border-white/10 overflow-hidden"
                     >
                       {servicesList.map((svc) => (
                         <li key={svc.name}>
