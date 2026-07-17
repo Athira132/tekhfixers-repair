@@ -10,6 +10,8 @@ import {
   Star,
   Users,
   Calendar,
+  Smartphone,
+  Tag,
 } from "lucide-react";
 
 // CountUp Component for premium stat counting animation
@@ -74,28 +76,52 @@ const stats = [
 
 const values = [
   {
-    icon: Clock,
-    title: "Same Day Repair",
-    desc: "Most screen and battery replacements are completed in under 30 minutes while you wait.",
+    icon: Truck,
+    title: "Doorstep Service",
+    desc: "Our technicians come directly to your doorstep in Trivandrum to repair your smartphone.",
     glowColor: "group-hover:border-blue-500/30 group-hover:shadow-blue-500/10",
   },
   {
-    icon: ShieldCheck,
-    title: "Lifetime Warranty",
-    desc: "We stand behind our work. All repairs are backed by our industry-leading lifetime warranty.",
+    icon: Clock,
+    title: "Same Day Repair",
+    desc: "Most screen, battery, and charging port repairs are completed on the same day.",
     glowColor: "group-hover:border-emerald-500/30 group-hover:shadow-emerald-500/10",
   },
   {
-    icon: Truck,
-    title: "Pickup & Delivery",
-    desc: "Can't make it to us? We'll pick up your device, repair it, and return it to your doorstep.",
+    icon: ShieldCheck,
+    title: "Genuine Spare Parts",
+    desc: "We use only premium, original manufacturer-grade replacement parts for repairs.",
     glowColor: "group-hover:border-purple-500/30 group-hover:shadow-purple-500/10",
   },
   {
     icon: Award,
-    title: "Certified Technicians",
-    desc: "Our technicians undergo rigorous training and certifications to repair the latest devices.",
+    title: "Warranty Support",
+    desc: "Every repair is backed by our comprehensive warranty program for absolute peace of mind.",
     glowColor: "group-hover:border-rose-500/30 group-hover:shadow-rose-500/10",
+  },
+  {
+    icon: Users,
+    title: "Certified Technicians",
+    desc: "Our experienced hardware engineers hold industry certifications for all major platforms.",
+    glowColor: "group-hover:border-amber-500/30 group-hover:shadow-amber-500/10",
+  },
+  {
+    icon: Smartphone,
+    title: "Multi-Brand Support",
+    desc: "We repair Apple, Samsung, OnePlus, Google Pixel, Nothing, Motorola, Vivo, and more.",
+    glowColor: "group-hover:border-violet-500/30 group-hover:shadow-violet-500/10",
+  },
+  {
+    icon: Tag,
+    title: "Affordable Pricing",
+    desc: "Get upfront quotes with transparent pricing and absolutely no hidden diagnostic fees.",
+    glowColor: "group-hover:border-cyan-500/30 group-hover:shadow-cyan-500/10",
+  },
+  {
+    icon: Star,
+    title: "Professional Service",
+    desc: "Experience a seamless, professional repair process designed entirely around your comfort.",
+    glowColor: "group-hover:border-pink-500/30 group-hover:shadow-pink-500/10",
   },
 ];
 

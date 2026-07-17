@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Smartphone, Send, ShieldCheck } from "lucide-react";
+import { Send, ShieldCheck } from "lucide-react";
+import Image from "next/image";
 
 export default function Footer() {
   const [email, setEmail] = useState("");
@@ -35,17 +36,23 @@ export default function Footer() {
         <div className="lg:col-span-4 space-y-6">
           <a
             href="#home"
-            className="flex items-center space-x-2 text-white font-space text-2xl font-bold tracking-tight"
+            className="flex items-center space-x-3 text-white font-space text-2xl font-bold tracking-tight"
           >
-            <div className="p-2 bg-accent rounded-xl text-navy flex items-center justify-center">
-              <Smartphone className="w-6 h-6 stroke-[2.5]" />
+            <div className="relative w-10 h-10 rounded-xl overflow-hidden border border-white/10 bg-white flex items-center justify-center">
+              <Image
+                src="/logo.jpg"
+                alt="iPhonix Logo"
+                fill
+                sizes="40px"
+                className="object-cover scale-150"
+              />
             </div>
             <span>
-              Tekh<span className="text-accent">Fixers</span>
+              iPhonix
             </span>
           </a>
           <p className="text-gray-400 text-sm leading-relaxed max-w-sm">
-            Award-winning premium mobile device repair services. Certified specialists handling screens, batteries, water damage, and advanced motherboard soldering with genuine parts.
+            Professional Mobile Repair Services. Door-to-Door smartphone repair in Karamana, Trivandrum with certified technicians and genuine spare parts.
           </p>
           {/* Social Icons */}
           <div className="flex space-x-4">
@@ -194,7 +201,7 @@ export default function Footer() {
       {/* Bottom Bar: Copyright, Terms, Payment Mock */}
       <div className="max-w-7xl mx-auto px-6 pt-8 flex flex-col md:flex-row items-center justify-between text-xs space-y-4 md:space-y-0">
         <div>
-          <p>© {new Date().getFullYear()} TekhFixers Repair Labs. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} iPhonix Repair Labs. All rights reserved.</p>
         </div>
         <div className="flex space-x-6">
           <a href="#privacy" className="hover:text-accent transition-colors">Privacy Policy</a>

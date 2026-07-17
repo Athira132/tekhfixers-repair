@@ -1,8 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Menu, X, Smartphone } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 const navItems = [
   { name: "Home", href: "#home" },
@@ -54,13 +55,19 @@ export default function Navbar() {
           {/* Logo */}
           <a
             href="#home"
-            className="flex items-center space-x-2 text-white font-space text-2xl font-bold tracking-tight"
+            className="flex items-center space-x-3 text-white font-space text-2xl font-bold tracking-tight"
           >
-            <div className="p-2 bg-accent rounded-xl text-navy flex items-center justify-center shadow-lg shadow-accent/20">
-              <Smartphone className="w-6 h-6 stroke-[2.5]" />
+            <div className="relative w-10 h-10 rounded-xl overflow-hidden border border-white/10 bg-white flex items-center justify-center">
+              <Image
+                src="/logo.jpg"
+                alt="iPhonix Logo"
+                fill
+                sizes="40px"
+                className="object-cover scale-150"
+              />
             </div>
             <span>
-              Tekh<span className="text-accent">Fixers</span>
+              iPhonix
             </span>
           </a>
 

@@ -2,34 +2,37 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "TekhFixers | Premium Mobile & Smart Device Repair Services",
-  description: "Award-winning premium mobile device repair services. Same-day screen replacement, battery replacement, and motherboard repair for Apple, Samsung, Google Pixel, and more.",
+  title: "iPhonix | Professional Mobile Repair Services | Trivandrum",
+  description: "Professional mobile repair services in Trivandrum with doorstep support for Apple, Samsung, OnePlus, Google Pixel, Nothing, Oppo, Vivo, Redmi, Motorola, Nokia, Realme, and more.",
   keywords: [
-    "mobile repair",
-    "phone screen replacement",
-    "battery replacement",
-    "water damage repair",
-    "iPhone repair",
-    "Samsung repair",
-    "certified technicians",
-    "same day phone repair"
+    "iPhonix",
+    "Mobile Repair Trivandrum",
+    "Doorstep Mobile Repair",
+    "iPhone Repair",
+    "Samsung Repair",
+    "OnePlus Repair",
+    "Google Pixel Repair",
+    "Screen Replacement",
+    "Battery Replacement",
+    "Smartphone Service",
+    "Mobile Service Kerala"
   ],
-  authors: [{ name: "TekhFixers" }],
+  authors: [{ name: "iPhonix" }],
   metadataBase: new URL("https://tekhfixers-repair.vercel.app"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "TekhFixers | Premium Mobile & Smart Device Repair Services",
-    description: "Get your broken devices repaired by certified technicians with original parts, same-day delivery, and lifetime warranty.",
+    title: "iPhonix | Professional Mobile Repair Services | Trivandrum",
+    description: "Door-to-door smartphone repair with professional technicians, genuine spare parts, quick turnaround, and support for all major brands.",
     url: "https://tekhfixers-repair.vercel.app",
-    siteName: "TekhFixers",
+    siteName: "iPhonix",
     images: [
       {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "TekhFixers Mobile Repair Services"
+        url: "/logo.jpg",
+        width: 800,
+        height: 800,
+        alt: "iPhonix Mobile Repair Services"
       }
     ],
     locale: "en_US",
@@ -37,9 +40,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "TekhFixers | Premium Mobile & Smart Device Repair",
-    description: "Award-winning, same-day smartphone & tablet repair. Certified techs, premium components, lifetime warranty.",
-    images: ["/og-image.jpg"],
+    title: "iPhonix | Professional Mobile Repair Services | Trivandrum",
+    description: "Door-to-door smartphone repair in Trivandrum with professional technicians, genuine spare parts, quick turnaround, and support for all major brands.",
+    images: ["/logo.jpg"],
   },
 };
 
@@ -51,7 +54,8 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/logo.jpg" type="image/jpeg" />
+        <link rel="apple-touch-icon" href="/logo.jpg" />
       </head>
       <body className="antialiased min-h-screen bg-white text-[#171717] flex flex-col font-sans">
         {children}

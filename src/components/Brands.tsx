@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 
 const brands = [
   {
-    name: "Apple",
-    description: "iPhone, iPad, Watch, MacBook repairs",
+    name: "Apple iPhone",
+    description: "iPhone 12, 13, 14, 15, 16 Pro Max repairs",
     accent: "group-hover:border-neutral-400 group-hover:shadow-neutral-500/5",
     logo: (
       <svg className="w-12 h-12 text-black fill-current" viewBox="0 0 24 24">
@@ -15,11 +15,22 @@ const brands = [
   },
   {
     name: "Samsung",
-    description: "Galaxy S, Note, A series, Fold repairs",
+    description: "Galaxy S, Note, A, Fold & Flip repairs",
     accent: "group-hover:border-blue-500/30 group-hover:shadow-blue-500/5",
     logo: (
       <div className="bg-[#072A57] text-white font-space font-extrabold px-5 py-2.5 rounded-full text-base tracking-widest border border-white/10 uppercase shadow-md">
         SAMSUNG
+      </div>
+    ),
+  },
+  {
+    name: "OnePlus",
+    description: "OnePlus Nord, Pro & Ace repairs",
+    accent: "group-hover:border-red-600/30 group-hover:shadow-red-600/5",
+    logo: (
+      <div className="flex items-center space-x-1.5 font-space font-extrabold text-red-600 text-3xl tracking-tighter">
+        <span className="border-4 border-red-600 px-1 rounded-sm">1</span>
+        <span className="text-2xl font-bold">+</span>
       </div>
     ),
   },
@@ -37,33 +48,12 @@ const brands = [
     ),
   },
   {
-    name: "OnePlus",
-    description: "OnePlus Nord, Pro, Ace repairs",
-    accent: "group-hover:border-red-600/30 group-hover:shadow-red-600/5",
-    logo: (
-      <div className="flex items-center space-x-1.5 font-space font-extrabold text-red-600 text-3xl tracking-tighter">
-        <span className="border-4 border-red-600 px-1 rounded-sm">1</span>
-        <span className="text-2xl font-bold">+</span>
-      </div>
-    ),
-  },
-  {
     name: "Nothing",
     description: "Phone (1), Phone (2), CMF repairs",
     accent: "group-hover:border-neutral-500/30 group-hover:shadow-neutral-500/5",
     logo: (
       <div className="font-space text-navy text-xs font-black tracking-[0.4em] uppercase border-y border-navy/20 py-2 px-1">
         NOTHING
-      </div>
-    ),
-  },
-  {
-    name: "Xiaomi",
-    description: "Redmi, Mi, Poco, Ultra repairs",
-    accent: "group-hover:border-orange-500/30 group-hover:shadow-orange-500/5",
-    logo: (
-      <div className="w-12 h-12 bg-[#FF6700] rounded-2xl flex items-center justify-center text-white font-space font-black text-xl shadow-md shadow-orange-500/20">
-        mi
       </div>
     ),
   },
@@ -78,12 +68,62 @@ const brands = [
     ),
   },
   {
+    name: "Redmi",
+    description: "Redmi, Redmi Note & K-series repairs",
+    accent: "group-hover:border-orange-500/30 group-hover:shadow-orange-500/5",
+    logo: (
+      <div className="font-space font-black text-[#FF6700] text-2xl tracking-tighter">
+        Redmi
+      </div>
+    ),
+  },
+  {
+    name: "Oppo",
+    description: "Find, Reno, A-series smartphone repairs",
+    accent: "group-hover:border-emerald-500/30 group-hover:shadow-emerald-500/5",
+    logo: (
+      <div className="font-space font-bold text-emerald-600 text-3xl tracking-tight">
+        OPPO
+      </div>
+    ),
+  },
+  {
+    name: "Vivo",
+    description: "X-series, V-series & Y-series repairs",
+    accent: "group-hover:border-blue-500/30 group-hover:shadow-blue-500/5",
+    logo: (
+      <div className="font-space font-black text-blue-600 text-3xl tracking-tight italic">
+        vivo
+      </div>
+    ),
+  },
+  {
     name: "Realme",
     description: "Realme GT, Narzo, C-series repairs",
     accent: "group-hover:border-yellow-500/30 group-hover:shadow-yellow-500/5",
     logo: (
       <div className="font-space font-black text-navy text-xl tracking-tight flex items-center">
         realme<span className="w-2.5 h-2.5 rounded-full bg-yellow-400 ml-1" />
+      </div>
+    ),
+  },
+  {
+    name: "Nokia",
+    description: "Nokia G-series, C-series & classic repairs",
+    accent: "group-hover:border-blue-800/30 group-hover:shadow-blue-800/5",
+    logo: (
+      <div className="font-space font-black text-blue-800 text-2xl tracking-widest uppercase">
+        NOKIA
+      </div>
+    ),
+  },
+  {
+    name: "iQOO",
+    description: "iQOO Neo, Z-series & flagship repairs",
+    accent: "group-hover:border-yellow-600/30 group-hover:shadow-yellow-600/5",
+    logo: (
+      <div className="font-space font-black text-black text-3xl tracking-tight italic bg-yellow-400 px-4 py-1.5 rounded-xl shadow-sm">
+        iQOO
       </div>
     ),
   },

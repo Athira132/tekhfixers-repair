@@ -80,17 +80,17 @@ export default function Hero() {
           <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full glass-card border-accent/20">
             <Sparkles className="w-4 h-4 text-accent animate-pulse" />
             <span className="text-xs md:text-sm font-semibold text-accent uppercase tracking-wider">
-              #1 Device Repair Shop in Town
+              #1 Door-to-Door Repair Service
             </span>
           </div>
 
           <h1 className="font-space text-4xl sm:text-5xl md:text-[4.5rem] leading-[1.05] font-extrabold text-white tracking-tight">
-            Repairing Your <br />
-            <span className="gradient-text-accent">Broken Devices</span>
+            Professional Mobile <br />
+            <span className="gradient-text-accent">Repair Services</span>
           </h1>
 
           <p className="text-gray-300 text-base sm:text-lg md:text-xl max-w-xl font-normal leading-relaxed">
-            Get premium, certified repairs for your smartphones, tablets, and smartwatches. Same-day service with a lifetime warranty.
+            Door-to-door smartphone repair with professional technicians, genuine spare parts, quick turnaround, and support for all major smartphone brands.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 pt-4">
@@ -100,10 +100,10 @@ export default function Hero() {
               className="px-8 py-4 bg-accent hover:bg-accent-hover text-navy font-bold rounded-xl text-center transition-all duration-300 shadow-lg shadow-accent/25 hover:shadow-accent/40 flex items-center justify-center space-x-2 hover:scale-105 active:scale-95"
             >
               <Calendar className="w-5 h-5 stroke-[2.5]" />
-              <span>Book Repair</span>
+              <span>Book a Repair</span>
             </a>
             <a
-              href="tel:+18005550199"
+              href="tel:+917306243424"
               className="px-8 py-4 border border-white/20 hover:border-accent hover:text-accent text-white font-bold rounded-xl text-center transition-all duration-300 flex items-center justify-center space-x-2 bg-white/5 hover:bg-white/10"
             >
               <Phone className="w-5 h-5" />
@@ -218,7 +218,7 @@ export default function Hero() {
                 {/* Secure Brand Seal */}
                 <div className="text-center z-20">
                   <span className="text-[10px] text-gray-400 font-semibold tracking-widest uppercase">
-                    TekhFixers Premium
+                    iPhonix Premium
                   </span>
                 </div>
               </div>

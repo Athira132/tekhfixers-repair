@@ -17,7 +17,7 @@ const testimonials = [
     name: "David Miller",
     device: "Samsung S23 Ultra Board Repair",
     rating: 5,
-    text: "Other shops said my water-damaged phone was dead. TekhFixers performed micro-soldering motherboard repairs and recovered all my critical data. True experts, worth every penny.",
+    text: "Other shops said my water-damaged phone was dead. iPhonix performed micro-soldering motherboard repairs and recovered all my critical data. True experts, worth every penny.",
     img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150",
   },
   {

@@ -51,7 +51,7 @@ export default function ContactForm() {
 
   const handleWhatsAppRedirect = () => {
     if (!formDataSummary) return;
-    const text = `Hi TekhFixers! I'd like to book a repair:
+    const text = `Hi iPhonix! I'd like to book a doorstep repair:
 - Name: ${formDataSummary.name}
 - Device: ${formDataSummary.device} (${formDataSummary.brand})
 - Issue: ${formDataSummary.issue}
@@ -60,7 +60,7 @@ export default function ContactForm() {
 - Notes: ${formDataSummary.message || "None"}`;
 
     const encodedText = encodeURIComponent(text);
-    window.open(`https://wa.me/18005550199?text=${encodedText}`, "_blank");
+    window.open(`https://wa.me/917306243424?text=${encodedText}`, "_blank");
   };
 
   const handleResetForm = () => {
@@ -79,10 +79,10 @@ export default function ContactForm() {
             Book a Service
           </span>
           <h2 className="font-space text-3xl sm:text-4xl md:text-5xl font-extrabold text-navy tracking-tight mt-2">
-            Schedule Your Premium Repair
+            Schedule Your Doorstep Repair
           </h2>
           <p className="text-gray-500 text-sm md:text-base max-w-xl mx-auto">
-            Book an appointment online, request a secure device pickup, or get in touch with our micro-soldering labs directly.
+            iPhonix provides premium doorstep smartphone repair services for Apple, Samsung, OnePlus, Google Pixel, Nothing, Motorola, Vivo, Oppo, Realme, Redmi, Nokia, and other leading brands.
           </p>
         </div>
 
@@ -215,12 +215,18 @@ export default function ContactForm() {
                           }`}
                         >
                           <option value="">Select...</option>
-                          <option value="Apple">Apple</option>
+                          <option value="Apple">Apple iPhone</option>
                           <option value="Samsung">Samsung</option>
-                          <option value="Google">Google Pixel</option>
                           <option value="OnePlus">OnePlus</option>
+                          <option value="Google">Google Pixel</option>
                           <option value="Nothing">Nothing</option>
-                          <option value="Xiaomi">Xiaomi</option>
+                          <option value="Motorola">Motorola</option>
+                          <option value="Redmi">Redmi</option>
+                          <option value="Oppo">Oppo</option>
+                          <option value="Vivo">Vivo</option>
+                          <option value="Realme">Realme</option>
+                          <option value="Nokia">Nokia</option>
+                          <option value="iQOO">iQOO</option>
                           <option value="Other">Other</option>
                         </select>
                         {errors.brand && (
@@ -241,14 +247,20 @@ export default function ContactForm() {
                           }`}
                         >
                           <option value="">Select...</option>
-                          <option value="Cracked Screen">Cracked Screen</option>
-                          <option value="Battery Drain">Battery Issue</option>
-                          <option value="Charging Fault">Charging Fault</option>
-                          <option value="Water Damage">Water Damage</option>
-                          <option value="Camera Failure">Camera Failure</option>
-                          <option value="Motherboard Fault">Motherboard Fault</option>
-                          <option value="Speaker/Mic">Speaker/Mic Fault</option>
-                          <option value="Other">Other Diagnostic</option>
+                          <option value="Screen Replacement">Screen Replacement</option>
+                          <option value="Display Replacement">Display Replacement</option>
+                          <option value="Battery Replacement">Battery Replacement</option>
+                          <option value="Charging Port Repair">Charging Port Repair</option>
+                          <option value="Camera Repair">Camera Repair</option>
+                          <option value="Speaker Repair">Speaker Repair</option>
+                          <option value="Microphone Repair">Microphone Repair</option>
+                          <option value="Motherboard Repair">Motherboard Repair</option>
+                          <option value="Water Damage Repair">Water Damage Repair</option>
+                          <option value="Software Issues">Software Issues</option>
+                          <option value="Face ID Repair">Face ID Repair</option>
+                          <option value="Touch IC Repair">Touch IC Repair</option>
+                          <option value="Data Recovery">Data Recovery</option>
+                          <option value="Complete Device Diagnosis">Complete Device Diagnosis</option>
                         </select>
                         {errors.issue && (
                           <p className="text-red-500 text-[10px] font-bold flex items-center space-x-1">
@@ -298,7 +310,7 @@ export default function ContactForm() {
                     <div className="space-y-2">
                       <h3 className="font-space text-2xl font-bold text-navy">Booking Request Received!</h3>
                       <p className="text-gray-500 text-sm max-w-md font-medium">
-                        Thank you for booking with TekhFixers. A diagnostic ticket has been generated. Our dispatch team will confirm your slot via email within the hour.
+                        Thank you for booking with iPhonix. A doorstep repair ticket has been generated. Our technical team will confirm your slot via call or email within the hour.
                       </p>
                     </div>
 
@@ -338,7 +350,7 @@ export default function ContactForm() {
               <div className="space-y-4">
                 {/* Phone Call Button */}
                 <a
-                  href="tel:+18005550199"
+                  href="tel:+917306243424"
                   className="flex items-center space-x-4 p-4 bg-white/5 hover:bg-white/10 rounded-2xl border border-white/5 transition-all"
                 >
                   <div className="w-10 h-10 bg-accent/20 rounded-xl flex items-center justify-center text-accent">
@@ -346,13 +358,13 @@ export default function ContactForm() {
                   </div>
                   <div>
                     <p className="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Direct Hotline</p>
-                    <p className="font-space text-base font-bold">+1 (800) 555-0199</p>
+                    <p className="font-space text-base font-bold">+91 73062 43424</p>
                   </div>
                 </a>
 
                 {/* Email Button */}
                 <a
-                  href="mailto:support@tekhfixers-repair.com"
+                  href="mailto:support@iphonix.in"
                   className="flex items-center space-x-4 p-4 bg-white/5 hover:bg-white/10 rounded-2xl border border-white/5 transition-all"
                 >
                   <div className="w-10 h-10 bg-accent/20 rounded-xl flex items-center justify-center text-accent">
@@ -360,7 +372,7 @@ export default function ContactForm() {
                   </div>
                   <div>
                     <p className="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Support Mail</p>
-                    <p className="font-space text-base font-bold">support@tekhfixers-repair.com</p>
+                    <p className="font-space text-base font-bold">support@iphonix.in</p>
                   </div>
                 </a>
 
@@ -382,15 +394,15 @@ export default function ContactForm() {
             {/* Google Map Mockup / Iframe */}
             <div className="relative rounded-3xl overflow-hidden border border-gray-100 flex-1 min-h-[250px] shadow-lg shadow-navy/5 group">
               <iframe
-                title="TekhFixers Repair Lab Map"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.83543450578!2d144.9537353153153!3d-37.81627977975171!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d4c2b34f5d9%3A0x5045675218ce6e0!2sMelbourne%20VIC%2C%20Australia!5e0!3m2!1sen!2sau!4v1614064641938!5m2!1sen!2sau"
+                title="iPhonix Repair Lab Map"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3946.0682548817684!2d76.9649563!3d8.4735234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b05b15be62283e7%3A0x446be06511675373!2sKaramana%2C%20Thiruvananthapuram%2C%20Kerala!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
                 className="w-full h-full border-none min-h-[250px] grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
                 allowFullScreen={true}
                 loading="lazy"
               />
               <div className="absolute bottom-4 left-4 p-3 bg-navy/90 text-white rounded-xl border border-white/10 flex items-center space-x-2 text-xs backdrop-blur-sm pointer-events-none">
                 <MapPin className="w-4 h-4 text-accent" />
-                <span className="font-semibold">324 Precision Way, Tech City</span>
+                <span className="font-semibold">Karamana, Trivandrum</span>
               </div>
             </div>
 
