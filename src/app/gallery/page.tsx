@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 import Gallery from "@/components/Gallery";
 import PremiumHeroBackground from "@/components/PremiumHeroBackground";
 import Link from "next/link";
-import Image from "next/image";
+import ImageWithFallback from "@/components/ImageWithFallback";
 import { ArrowRight, Wrench, Shield, CheckCircle, Phone, MessageSquare } from "lucide-react";
 import type { Metadata } from "next";
 
@@ -159,7 +159,7 @@ export default function GalleryPage() {
                   {/* Hover Image Slider Layer */}
                   <div className="relative aspect-[4/3] w-full overflow-hidden group cursor-pointer">
                     {/* Before Image */}
-                    <Image 
+                    <ImageWithFallback 
                       src={item.beforeImg} 
                       alt="Before Repair" 
                       fill 
@@ -168,7 +168,7 @@ export default function GalleryPage() {
                     />
                     
                     {/* After Image (Visible on Hover) */}
-                    <Image 
+                    <ImageWithFallback 
                       src={item.afterImg} 
                       alt="After Repair" 
                       fill 
@@ -227,7 +227,7 @@ export default function GalleryPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {extraWorkshopPhotos.map((img, index) => (
                   <div key={index} className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-md">
-                    <Image 
+                    <ImageWithFallback 
                       src={img.src} 
                       alt={img.title} 
                       fill 
@@ -247,7 +247,7 @@ export default function GalleryPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 order-2 lg:order-1">
                 {customerRepairs.map((img, index) => (
                   <div key={index} className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-md">
-                    <Image 
+                    <ImageWithFallback 
                       src={img.src} 
                       alt={img.title} 
                       fill 

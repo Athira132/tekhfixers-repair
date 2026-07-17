@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Star, ChevronLeft, ChevronRight, Quote } from "lucide-react";
-import Image from "next/image";
+import ImageWithFallback from "@/components/ImageWithFallback";
 
 const testimonials = [
   {
@@ -128,7 +128,7 @@ export default function Testimonials() {
               {/* Customer Photo Column */}
               <div className="flex-shrink-0 text-center sm:text-left">
                 <div className="w-24 h-24 rounded-full p-1 bg-gradient-to-tr from-accent to-blue-500 shadow-xl shadow-accent/10 mx-auto sm:mx-0 overflow-hidden flex items-center justify-center">
-                  <Image
+                  <ImageWithFallback
                     src={testimonials[current].img}
                     alt={testimonials[current].name}
                     width={88}

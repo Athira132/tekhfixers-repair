@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Wrench, Cpu, Smartphone, Settings, Shield, Hammer } from "lucide-react";
-import Image from "next/image";
+import ImageWithFallback from "@/components/ImageWithFallback";
 
 interface PremiumHeroBackgroundProps {
   backgroundImage: string;
@@ -39,7 +39,7 @@ export default function PremiumHeroBackground({
     <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
       {/* Blurred Workshop Background Image */}
       <div className="absolute inset-0 w-full h-full opacity-20 filter blur-[3px] mix-blend-luminosity">
-        <Image
+        <ImageWithFallback
           src={backgroundImage}
           alt="Repair Background"
           fill

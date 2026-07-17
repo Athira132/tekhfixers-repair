@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import Image from "next/image";
+import ImageWithFallback from "@/components/ImageWithFallback";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -137,7 +137,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                 {/* Image & Overview */}
                 <div className="space-y-8">
                   <div className="relative aspect-video rounded-3xl overflow-hidden shadow-lg border border-gray-100 bg-gray-50">
-                    <Image
+                    <ImageWithFallback
                       src={service.image}
                       alt={service.title}
                       fill

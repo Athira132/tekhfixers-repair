@@ -1,23 +1,23 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
+import ImageWithFallback from "@/components/ImageWithFallback";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight, ZoomIn } from "lucide-react";
 
 const galleryImages = [
   {
-    src: "https://i.ibb.co/qYdTpnyy/Chat-GPT-Image-Jul-16-2026-05-37-12-PM.png",
+    src: "https://images.unsplash.com/photo-1601524909162-be87252be298?auto=format&fit=crop&q=80&w=800",
     title: "Diagnostic Equipment & Calibration",
     category: "Diagnostics",
   },
   {
-    src: "https://i.ibb.co/twrp24qK/Chat-GPT-Image-Jul-16-2026-05-45-19-PM.png",
+    src: "https://images.unsplash.com/photo-1581092520455-2c4901cc9624?auto=format&fit=crop&q=80&w=800",
     title: "TrueDepth Face ID Sensor Recovery",
     category: "Face ID",
   },
   {
-    src: "https://i.ibb.co/tpPKNHV3/image.png",
+    src: "https://images.unsplash.com/photo-1605236453806-6ff36851218e?auto=format&fit=crop&q=80&w=800",
     title: "On-site Doorstep Repair Spares",
     category: "Doorstep",
   },
@@ -77,7 +77,7 @@ export default function Gallery() {
               transition={{ duration: 0.3 }}
             >
               {/* Image */}
-              <Image
+              <ImageWithFallback
                 src={img.src}
                 alt={img.title}
                 fill
@@ -144,7 +144,7 @@ export default function Gallery() {
               className="max-w-4xl max-h-[80vh] relative flex flex-col items-center"
             >
               <div className="relative w-[90vw] md:w-[70vw] h-[50vh] md:h-[65vh]">
-                <Image
+                <ImageWithFallback
                   src={galleryImages[activeIdx].src}
                   alt={galleryImages[activeIdx].title}
                   fill
