@@ -27,12 +27,12 @@ const galleryImages = [
     category: "Tools",
   },
   {
-    src: "https://images.unsplash.com/photo-1574756587643-f54856c5476c?auto=format&fit=crop&q=80&w=800",
+    src: "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&q=80&w=800",
     title: "Display Replacement Process",
     category: "Display",
   },
   {
-    src: "https://images.unsplash.com/photo-1601524909162-be87252be298?auto=format&fit=crop&q=80&w=800",
+    src: "https://images.unsplash.com/photo-1581092916357-5896ebc48073?auto=format&fit=crop&q=80&w=800",
     title: "Customer Device Inspection",
     category: "Inspection",
   },
