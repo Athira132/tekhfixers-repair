@@ -66,14 +66,14 @@ export default function Navbar() {
             href="/"
             className="flex items-center space-x-3 text-white font-space text-2xl font-bold tracking-tight group"
           >
-            <div className="relative w-12 h-12 rounded-full overflow-hidden border border-white/10 bg-white flex items-center justify-center p-1 transition-transform group-hover:scale-105">
+            <div className="relative w-12 h-12 rounded-full overflow-hidden border border-white/10 bg-white flex items-center justify-center transition-transform group-hover:scale-105">
               <Image
                 src="/logo.jpg"
                 alt="iPhonix Logo"
                 fill
                 sizes="48px"
                 priority
-                className="object-contain p-1"
+                className="object-contain scale-[1.35]"
               />
             </div>
             <span>
@@ -128,24 +128,26 @@ export default function Navbar() {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 10 }}
                       transition={{ duration: 0.2 }}
-                      className="absolute left-0 mt-2 w-64 rounded-2xl bg-navy/95 border border-white/10 backdrop-blur-xl p-3 shadow-xl shadow-black/30"
+                      className="absolute left-0 top-full w-64 pt-2 z-50"
                     >
-                      <ul className="space-y-1">
-                        {servicesList.map((svc) => (
-                          <li key={svc.name}>
-                            <Link
-                              href={svc.href}
-                              className={`block px-4 py-2 text-xs font-semibold rounded-xl transition-all duration-200 ${
-                                isActive(svc.href)
-                                  ? "bg-accent text-navy"
-                                  : "text-gray-300 hover:bg-white/5 hover:text-white"
-                              }`}
-                            >
-                              {svc.name}
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
+                      <div className="rounded-2xl bg-navy/95 border border-white/10 backdrop-blur-xl p-3 shadow-xl shadow-black/30">
+                        <ul className="space-y-1">
+                          {servicesList.map((svc) => (
+                            <li key={svc.name}>
+                              <Link
+                                href={svc.href}
+                                className={`block px-4 py-2 text-xs font-semibold rounded-xl transition-all duration-200 ${
+                                  isActive(svc.href)
+                                    ? "bg-accent text-navy"
+                                    : "text-gray-300 hover:bg-white/5 hover:text-white"
+                                }`}
+                              >
+                                {svc.name}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     </motion.div>
                   )}
                 </AnimatePresence>

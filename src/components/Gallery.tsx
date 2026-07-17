@@ -3,38 +3,28 @@
 import { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ChevronLeft, ChevronRight, ZoomIn, Play } from "lucide-react";
+import { X, ChevronLeft, ChevronRight, ZoomIn } from "lucide-react";
 
 const galleryImages = [
-  {
-    src: "https://i.ibb.co/rKf19074/Whats-App-Image-2026-07-14-at-4-01-59-PM.jpg",
-    title: "Precision Micro-soldering Workstation",
-    category: "Logic Board",
-    span: "md:col-span-2 md:row-span-2",
-  },
   {
     src: "https://i.ibb.co/qYdTpnyy/Chat-GPT-Image-Jul-16-2026-05-37-12-PM.png",
     title: "Diagnostic Equipment & Calibration",
     category: "Diagnostics",
-    span: "md:col-span-1 md:row-span-1",
   },
   {
     src: "https://i.ibb.co/twrp24qK/Chat-GPT-Image-Jul-16-2026-05-45-19-PM.png",
     title: "TrueDepth Face ID Sensor Recovery",
     category: "Face ID",
-    span: "md:col-span-1 md:row-span-2",
   },
   {
     src: "https://i.ibb.co/tpPKNHV3/image.png",
     title: "On-site Doorstep Repair Spares",
     category: "Doorstep",
-    span: "md:col-span-2 md:row-span-1",
   },
 ];
 
 export default function Gallery() {
   const [activeIdx, setActiveIdx] = useState<number | null>(null);
-  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
 
   const openLightbox = (idx: number) => {
     setActiveIdx(idx);
@@ -72,17 +62,17 @@ export default function Gallery() {
             <span className="gradient-text-navy">Repair Workshop</span>
           </h2>
           <p className="text-gray-500 text-sm md:text-base max-w-xl mx-auto">
-            View our state-of-the-art diagnostic gear, micro-soldering labs, and doorstep repair setups.
+            View our state-of-the-art diagnostic gear, micro-soldering setups, and doorstep spare parts.
           </p>
         </div>
 
-        {/* Masonry Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[240px] mb-24">
+        {/* Reorganized Photo Grid - Filling empty space naturally with 3 balanced columns */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {galleryImages.map((img, index) => (
             <motion.div
               key={index}
               onClick={() => openLightbox(index)}
-              className={`relative group overflow-hidden rounded-3xl cursor-pointer bg-navy/5 shadow-md shadow-gray-100 ${img.span}`}
+              className="relative group overflow-hidden rounded-3xl cursor-pointer bg-navy/5 shadow-md shadow-gray-100 aspect-[4/3]"
               whileHover={{ scale: 1.01 }}
               transition={{ duration: 0.3 }}
             >
@@ -91,7 +81,7 @@ export default function Gallery() {
                 src={img.src}
                 alt={img.title}
                 fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                sizes="(max-width: 768px) 100vw, 33vw"
                 className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
               />
 
@@ -112,57 +102,6 @@ export default function Gallery() {
               </div>
             </motion.div>
           ))}
-        </div>
-
-        {/* Video Section Below Grid */}
-        <div className="max-w-4xl mx-auto space-y-8">
-          <div className="text-center space-y-2">
-            <span className="text-xs font-bold text-darkblue uppercase tracking-widest bg-darkblue/5 px-4 py-1.5 rounded-full">
-              Video Showcase
-            </span>
-            <h3 className="font-space text-2xl md:text-3xl font-extrabold text-navy">
-              Watch Our Technicians in Action
-            </h3>
-            <p className="text-gray-500 text-sm max-w-lg mx-auto">
-              Get an insider look at our motherboard micro-soldering, repair setups, and premium parts inspection.
-            </p>
-          </div>
-
-          {/* Premium Video Card */}
-          <div className="relative aspect-video rounded-3xl overflow-hidden shadow-2xl shadow-navy/10 border border-gray-100 group bg-black">
-            {isVideoPlaying ? (
-              <iframe
-                src="https://www.youtube.com/embed/spiDMgLnYLY?autoplay=1"
-                title="iPhonix Repair Lab Video"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="absolute inset-0 w-full h-full border-none"
-              />
-            ) : (
-              <div className="absolute inset-0 w-full h-full relative cursor-pointer" onClick={() => setIsVideoPlaying(true)}>
-                {/* Unsplash Background to represent the cover */}
-                <Image
-                  src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&q=80&w=1200"
-                  alt="Video Cover"
-                  fill
-                  className="object-cover opacity-80 transition-transform duration-500 group-hover:scale-105"
-                />
-                
-                {/* Gradient overlay */}
-                <div className="absolute inset-0 bg-navy/40 transition-opacity duration-300 group-hover:bg-navy/30" />
-
-                {/* Pulse Play button */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center space-y-4">
-                  <div className="w-20 h-20 bg-accent hover:bg-accent-hover text-navy rounded-full flex items-center justify-center shadow-lg transition-transform duration-300 scale-100 group-hover:scale-110 active:scale-95 z-10">
-                    <Play className="w-8 h-8 fill-navy stroke-none ml-1" />
-                  </div>
-                  <span className="font-space text-white font-bold text-sm tracking-wider uppercase drop-shadow-md">
-                    Click to Play Video
-                  </span>
-                </div>
-              </div>
-            )}
-          </div>
         </div>
 
       </div>

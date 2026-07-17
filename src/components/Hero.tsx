@@ -46,17 +46,35 @@ export default function Hero() {
       id="home"
       className="relative min-h-screen pt-32 pb-20 md:pb-28 flex items-center justify-center overflow-hidden gradient-bg-dark"
     >
-      {/* Blurred Workshop Background (20% Opacity) */}
+      {/* Blurred Workshop Background (15% Opacity with low opacity blend) */}
       <div 
-        className="absolute inset-0 bg-cover bg-center mix-blend-overlay opacity-20 pointer-events-none"
+        className="absolute inset-0 bg-cover bg-center mix-blend-luminosity opacity-15 pointer-events-none filter blur-[2px]"
         style={{
           backgroundImage: `url('https://images.unsplash.com/photo-1601524909162-be87252be298?auto=format&fit=crop&q=80&w=1920')`,
         }}
       />
 
-      {/* Layered SVG Blobs & Shapes */}
-      <div className="absolute top-1/4 left-1/10 w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-blob pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/10 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl animate-blob pointer-events-none [animation-delay:2s]" />
+      {/* Premium SVG Grid Overlay */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff02_1px,transparent_1px),linear-gradient(to_bottom,#ffffff02_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_75%,transparent_100%)] pointer-events-none z-0" />
+
+      {/* Layered Floating Mesh Gradients */}
+      <div className="absolute top-1/4 left-1/10 w-[450px] h-[450px] bg-[#00b8ff]/8 rounded-full blur-[100px] animate-blob pointer-events-none z-0" />
+      <div className="absolute bottom-1/4 right-1/10 w-[500px] h-[500px] bg-[#19F0B5]/8 rounded-full blur-[120px] animate-blob pointer-events-none [animation-delay:2s] z-0" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-600/5 rounded-full blur-[140px] animate-blob pointer-events-none [animation-delay:4s] z-0" />
+
+      {/* Floating subtle geometric items */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-10">
+        <motion.div 
+          animate={{ y: [0, -15, 0], rotate: [0, 5, 0] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-1/3 left-1/12 w-6 h-6 border-2 border-white/5 rounded-lg"
+        />
+        <motion.div 
+          animate={{ y: [0, 20, 0], rotate: [0, -10, 0] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          className="absolute bottom-1/3 right-1/12 w-8 h-8 border border-white/5 rounded-full"
+        />
+      </div>
 
       {/* Premium Curve/Diagonal White Cut at the bottom */}
       <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-10">
@@ -80,7 +98,7 @@ export default function Hero() {
           <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full glass-card border-accent/20">
             <Sparkles className="w-4 h-4 text-accent animate-pulse" />
             <span className="text-xs md:text-sm font-semibold text-accent uppercase tracking-wider">
-              #1 Door-to-Door Repair Service
+              # Door-to-Door Repair Service
             </span>
           </div>
 

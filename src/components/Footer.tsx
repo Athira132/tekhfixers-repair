@@ -47,14 +47,14 @@ export default function Footer() {
             href="/"
             className="flex items-center space-x-3 text-white font-space text-2xl font-bold tracking-tight group"
           >
-            {/* Logo Container - Fix cropping using object-contain & equal padding */}
-            <div className="relative w-12 h-12 rounded-full overflow-hidden border border-white/10 bg-white flex items-center justify-center p-1 transition-transform group-hover:scale-105">
+            {/* Logo Container - Fix cropping using object-contain & scale */}
+            <div className="relative w-12 h-12 rounded-full overflow-hidden border border-white/10 bg-white flex items-center justify-center transition-transform group-hover:scale-105">
               <Image
                 src="/logo.jpg"
                 alt="iPhonix Logo"
                 fill
                 sizes="48px"
-                className="object-contain p-1"
+                className="object-contain scale-[1.35]"
               />
             </div>
             <span>

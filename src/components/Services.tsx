@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import {
   Smartphone,
   Layers,
@@ -21,6 +22,7 @@ import {
 
 const services = [
   {
+    slug: "screen-replacement",
     icon: Layers,
     title: "Screen Replacement",
     desc: "OEM-grade glass replacements to resolve cracked, scratched, or shattered front glass modules.",
@@ -28,6 +30,7 @@ const services = [
     iconColor: "text-blue-500",
   },
   {
+    slug: "display-replacement",
     icon: Smartphone,
     title: "Display Replacement",
     desc: "Cracked or bleeding displays replaced with OEM-grade OLED & LCD panels in under 30 minutes.",
@@ -35,6 +38,7 @@ const services = [
     iconColor: "text-emerald-500",
   },
   {
+    slug: "battery-replacement",
     icon: BatteryCharging,
     title: "Battery Replacement",
     desc: "Restore your device's original battery life with premium, certified lithium-ion replacements.",
@@ -42,6 +46,7 @@ const services = [
     iconColor: "text-amber-500",
   },
   {
+    slug: "charging-port-repair",
     icon: Zap,
     title: "Charging Port Repair",
     desc: "Fix connection issues, slow charging speeds, and loose ports with complete board repairs.",
@@ -49,6 +54,7 @@ const services = [
     iconColor: "text-purple-500",
   },
   {
+    slug: "camera-repair",
     icon: Camera,
     title: "Camera Repair",
     desc: "Replace scratched lenses, broken sensors, and non-functioning focus systems on front and back cameras.",
@@ -56,6 +62,7 @@ const services = [
     iconColor: "text-rose-500",
   },
   {
+    slug: "speaker-repair",
     icon: Volume2,
     title: "Speaker Repair",
     desc: "Fix crackling sounds, quiet speakers, and broken audio modules for clear calls and media.",
@@ -63,6 +70,7 @@ const services = [
     iconColor: "text-yellow-500",
   },
   {
+    slug: "speaker-repair", // Map microphone to speaker repair page
     icon: Mic,
     title: "Microphone Repair",
     desc: "Resolve low caller volume, mic statics, and complete audio recording failures on your device.",
@@ -70,6 +78,7 @@ const services = [
     iconColor: "text-indigo-500",
   },
   {
+    slug: "motherboard-repair",
     icon: Cpu,
     title: "Motherboard Repair",
     desc: "Micro-soldering, chip level repairs, and custom diagnostic logic for complex boards.",
@@ -77,6 +86,7 @@ const services = [
     iconColor: "text-violet-500",
   },
   {
+    slug: "water-damage-repair",
     icon: Droplet,
     title: "Water Damage Repair",
     desc: "Ultrasonic cleaning and moisture extraction to recover water-damaged components and data.",
@@ -84,6 +94,7 @@ const services = [
     iconColor: "text-sky-500",
   },
   {
+    slug: "software-repair",
     icon: Settings,
     title: "Software Issues",
     desc: "Resolve boot loops, system crashes, storage blocks, and perform complete OS recovery.",
@@ -91,6 +102,7 @@ const services = [
     iconColor: "text-cyan-500",
   },
   {
+    slug: "face-id-repair",
     icon: Eye,
     title: "Face ID Repair",
     desc: "Repair biometric sensors, dot projectors, and true-depth camera logic safely.",
@@ -98,6 +110,7 @@ const services = [
     iconColor: "text-emerald-500",
   },
   {
+    slug: "motherboard-repair", // Map touch IC to motherboard repair page
     icon: Fingerprint,
     title: "Touch IC Repair",
     desc: "Precision soldering to restore unresponsive touchscreen controllers and display chips.",
@@ -105,6 +118,7 @@ const services = [
     iconColor: "text-fuchsia-500",
   },
   {
+    slug: "data-recovery",
     icon: Database,
     title: "Data Recovery",
     desc: "Retrieve contacts, precious photos, and critical documents from bricked or broken devices.",
@@ -112,6 +126,7 @@ const services = [
     iconColor: "text-rose-500",
   },
   {
+    slug: "", // Map generic diagnosis to booking form
     icon: Search,
     title: "Complete Device Diagnosis",
     desc: "Thorough multi-point sweep to identify hard-to-detect signal, sensor, or power leakage issues.",
@@ -125,7 +140,7 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1,
+      staggerChildren: 0.05,
     },
   },
 };
@@ -144,11 +159,6 @@ const cardVariants = {
 };
 
 export default function Services() {
-  const handleScrollToContact = (e: React.MouseEvent) => {
-    e.preventDefault();
-    document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
     <section id="services" className="py-24 md:py-32 bg-[#F7F8FB] relative">
       {/* Decorative Background Blob */}
@@ -178,11 +188,12 @@ export default function Services() {
           viewport={{ once: true, margin: "-100px" }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8"
         >
-          {services.map((service) => {
+          {services.map((service, index) => {
             const Icon = service.icon;
+            const targetUrl = service.slug ? `/services/${service.slug}` : "/book";
             return (
               <motion.div
-                key={service.title}
+                key={`${service.title}-${index}`}
                 variants={cardVariants}
                 className="group relative bg-white rounded-3xl p-8 border border-gray-100 shadow-md shadow-gray-200/50 hover:shadow-xl hover:shadow-navy/5 transition-all duration-300 hover:-translate-y-2 glow-card-navy overflow-hidden"
               >
@@ -207,14 +218,13 @@ export default function Services() {
                 </p>
 
                 {/* Link */}
-                <a
-                  href="#contact"
-                  onClick={handleScrollToContact}
+                <Link
+                  href={targetUrl}
                   className="inline-flex items-center text-xs font-bold text-navy group-hover:text-darkblue transition-colors duration-200"
                 >
-                  <span className="mr-2 uppercase tracking-wider">Book Now</span>
+                  <span className="mr-2 uppercase tracking-wider">Learn More</span>
                   <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
-                </a>
+                </Link>
               </motion.div>
             );
           })}
