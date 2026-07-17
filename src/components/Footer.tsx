@@ -3,6 +3,25 @@
 import { useState } from "react";
 import { Send, ShieldCheck } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+
+const quickLinks = [
+  { name: "Home", href: "/" },
+  { name: "About Us", href: "/about" },
+  { name: "Gallery Showcase", href: "/about#gallery" },
+  { name: "Contact Hub", href: "/contact" },
+  { name: "Book doorstep repair", href: "/book" },
+];
+
+const footerServicesList = [
+  { name: "Screen Replacement", href: "/services/screen-replacement" },
+  { name: "Display Replacement", href: "/services/display-replacement" },
+  { name: "Battery Replacement", href: "/services/battery-replacement" },
+  { name: "Charging Port Repair", href: "/services/charging-port-repair" },
+  { name: "Camera Repair", href: "/services/camera-repair" },
+  { name: "Motherboard Repair", href: "/services/motherboard-repair" },
+  { name: "Speaker Repair", href: "/services/speaker-repair" },
+];
 
 export default function Footer() {
   const [email, setEmail] = useState("");
@@ -10,47 +29,38 @@ export default function Footer() {
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
-    if (email.trim() && email.includes("@")) {
-      setIsSubscribed(true);
-      setEmail("");
-      setTimeout(() => setIsSubscribed(false), 3000);
-    }
-  };
-
-  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
-    const target = document.querySelector(href);
-    if (target) {
-      target.scrollIntoView({ behavior: "smooth" });
-    }
+    setIsSubscribed(true);
+    setEmail("");
   };
 
   return (
-    <footer className="bg-[#04152c] text-gray-400 border-t border-white/5 pt-20 pb-8 relative overflow-hidden">
-      {/* Background Radial Glow */}
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl pointer-events-none" />
-      
-      <div className="max-w-7xl mx-auto px-6 relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 pb-16 border-b border-white/5">
+    <footer className="bg-navy border-t border-white/10 pt-24 pb-12 relative overflow-hidden">
+      {/* Background Blobs */}
+      <div className="absolute -top-40 -left-40 w-96 h-96 bg-blue-600/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -bottom-40 -right-40 w-96 h-96 bg-accent/5 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-16 border-b border-white/5 pb-16 text-gray-400">
         
-        {/* Brand Information Column */}
+        {/* Left Column: Brand & Description */}
         <div className="lg:col-span-4 space-y-6">
-          <a
-            href="#home"
-            className="flex items-center space-x-3 text-white font-space text-2xl font-bold tracking-tight"
+          <Link
+            href="/"
+            className="flex items-center space-x-3 text-white font-space text-2xl font-bold tracking-tight group"
           >
-            <div className="relative w-10 h-10 rounded-xl overflow-hidden border border-white/10 bg-white flex items-center justify-center">
+            {/* Logo Container - Fix cropping using object-contain & equal padding */}
+            <div className="relative w-12 h-12 rounded-full overflow-hidden border border-white/10 bg-white flex items-center justify-center p-1 transition-transform group-hover:scale-105">
               <Image
                 src="/logo.jpg"
                 alt="iPhonix Logo"
                 fill
-                sizes="40px"
-                className="object-cover scale-150"
+                sizes="48px"
+                className="object-contain p-1"
               />
             </div>
             <span>
               iPhonix
             </span>
-          </a>
+          </Link>
           <p className="text-gray-400 text-sm leading-relaxed max-w-sm">
             Professional Mobile Repair Services. Door-to-Door smartphone repair in Karamana, Trivandrum with certified technicians and genuine spare parts.
           </p>
@@ -117,23 +127,14 @@ export default function Footer() {
         <div className="lg:col-span-2 space-y-6">
           <h4 className="font-space text-lg font-bold text-white uppercase tracking-wider">Quick Links</h4>
           <ul className="space-y-3 text-sm">
-            {[
-              { name: "Home", href: "#home" },
-              { name: "Services", href: "#services" },
-              { name: "Repairs", href: "#repairs" },
-              { name: "Why Us", href: "#why-us" },
-              { name: "Reviews", href: "#reviews" },
-              { name: "FAQ", href: "#faq" },
-              { name: "Contact", href: "#contact" },
-            ].map((link) => (
+            {quickLinks.map((link) => (
               <li key={link.name}>
-                <a
+                <Link
                   href={link.href}
-                  onClick={(e) => scrollToSection(e, link.href)}
                   className="hover:text-accent transition-colors duration-200"
                 >
                   {link.name}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -143,23 +144,14 @@ export default function Footer() {
         <div className="lg:col-span-3 space-y-6">
           <h4 className="font-space text-lg font-bold text-white uppercase tracking-wider">Our Services</h4>
           <ul className="space-y-3 text-sm">
-            {[
-              "Screen Replacement",
-              "Battery Replacement",
-              "Charging Port Repair",
-              "Water Damage Recovery",
-              "Motherboard Micro-soldering",
-              "Camera & Audio Fixes",
-              "Diagnostic Surveys",
-            ].map((srv) => (
-              <li key={srv}>
-                <a
-                  href="#services"
-                  onClick={(e) => scrollToSection(e, "#services")}
+            {footerServicesList.map((srv) => (
+              <li key={srv.name}>
+                <Link
+                  href={srv.href}
                   className="hover:text-accent transition-colors duration-200"
                 >
-                  {srv}
-                </a>
+                  {srv.name}
+                </Link>
               </li>
             ))}
           </ul>
@@ -178,11 +170,11 @@ export default function Footer() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Your email address"
-              className="w-full pl-4 pr-12 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-accent text-sm"
+              className="w-full px-4 py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl focus:outline-none focus:ring-1 focus:ring-accent text-white text-sm transition-all pr-12 placeholder-gray-500"
             />
             <button
               type="submit"
-              className="absolute right-1 top-1 bottom-1 px-3 bg-accent hover:bg-accent-hover text-navy font-bold rounded-lg flex items-center justify-center transition-colors"
+              className="absolute right-1 top-1 bottom-1 px-3 bg-accent hover:bg-accent-hover text-navy font-bold rounded-lg transition-all flex items-center justify-center"
               aria-label="Subscribe"
             >
               <Send className="w-4 h-4" />
@@ -204,8 +196,8 @@ export default function Footer() {
           <p>© {new Date().getFullYear()} iPhonix Repair Labs. All rights reserved.</p>
         </div>
         <div className="flex space-x-6">
-          <a href="#privacy" className="hover:text-accent transition-colors">Privacy Policy</a>
-          <a href="#terms" className="hover:text-accent transition-colors">Terms of Service</a>
+          <Link href="/privacy" className="hover:text-accent transition-colors">Privacy Policy</Link>
+          <Link href="/terms" className="hover:text-accent transition-colors">Terms of Service</Link>
         </div>
         
         {/* Payment Mock Badges */}

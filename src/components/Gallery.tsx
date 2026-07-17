@@ -3,43 +3,38 @@
 import { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ChevronLeft, ChevronRight, ZoomIn } from "lucide-react";
+import { X, ChevronLeft, ChevronRight, ZoomIn, Play } from "lucide-react";
 
 const galleryImages = [
   {
-    src: "https://images.unsplash.com/photo-1601524909162-be87252be298?auto=format&fit=crop&q=80&w=800",
-    title: "Micro-soldering Board Repair",
-    category: "Motherboard",
+    src: "https://i.ibb.co/rKf19074/Whats-App-Image-2026-07-14-at-4-01-59-PM.jpg",
+    title: "Precision Micro-soldering Workstation",
+    category: "Logic Board",
     span: "md:col-span-2 md:row-span-2",
   },
   {
-    src: "https://images.unsplash.com/photo-1597740985671-2a8a3b80f02e?auto=format&fit=crop&q=80&w=800",
-    title: "Disassembled Screen Components",
-    category: "Screen",
+    src: "https://i.ibb.co/qYdTpnyy/Chat-GPT-Image-Jul-16-2026-05-37-12-PM.png",
+    title: "Diagnostic Equipment & Calibration",
+    category: "Diagnostics",
     span: "md:col-span-1 md:row-span-1",
   },
   {
-    src: "https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&q=80&w=800",
-    title: "Diagnostic Sweep Procedure",
-    category: "Diagnostics",
+    src: "https://i.ibb.co/twrp24qK/Chat-GPT-Image-Jul-16-2026-05-45-19-PM.png",
+    title: "TrueDepth Face ID Sensor Recovery",
+    category: "Face ID",
     span: "md:col-span-1 md:row-span-2",
   },
   {
-    src: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80&w=800",
-    title: "Precision Hardware Cleaning",
-    category: "Cleaning",
-    span: "md:col-span-1 md:row-span-1",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1517055727195-b404d7045b95?auto=format&fit=crop&q=80&w=800",
-    title: "Smartphone Glass Lamination",
-    category: "Lamination",
+    src: "https://i.ibb.co/tpPKNHV3/image.png",
+    title: "On-site Doorstep Repair Spares",
+    category: "Doorstep",
     span: "md:col-span-2 md:row-span-1",
   },
 ];
 
 export default function Gallery() {
   const [activeIdx, setActiveIdx] = useState<number | null>(null);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
 
   const openLightbox = (idx: number) => {
     setActiveIdx(idx);
@@ -64,25 +59,25 @@ export default function Gallery() {
   };
 
   return (
-    <section className="py-24 md:py-32 bg-white relative">
+    <section id="gallery" className="py-24 md:py-32 bg-white relative">
       <div className="max-w-7xl mx-auto px-6">
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 md:mb-24 space-y-4">
           <span className="text-xs md:text-sm font-semibold text-darkblue uppercase tracking-widest bg-darkblue/5 px-4 py-2 rounded-full">
-            Our Gallery
+            Our Work
           </span>
           <h2 className="font-space text-3xl sm:text-4xl md:text-5xl font-extrabold text-navy tracking-tight mt-2">
             Inside Our Precision <br />
             <span className="gradient-text-navy">Repair Workshop</span>
           </h2>
           <p className="text-gray-500 text-sm md:text-base max-w-xl mx-auto">
-            Take a look at our state-of-the-art repair tools, micro-soldering labs, and certified technician workflows.
+            View our state-of-the-art diagnostic gear, micro-soldering labs, and doorstep repair setups.
           </p>
         </div>
 
         {/* Masonry Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[240px]">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[240px] mb-24">
           {galleryImages.map((img, index) => (
             <motion.div
               key={index}
@@ -118,6 +113,58 @@ export default function Gallery() {
             </motion.div>
           ))}
         </div>
+
+        {/* Video Section Below Grid */}
+        <div className="max-w-4xl mx-auto space-y-8">
+          <div className="text-center space-y-2">
+            <span className="text-xs font-bold text-darkblue uppercase tracking-widest bg-darkblue/5 px-4 py-1.5 rounded-full">
+              Video Showcase
+            </span>
+            <h3 className="font-space text-2xl md:text-3xl font-extrabold text-navy">
+              Watch Our Technicians in Action
+            </h3>
+            <p className="text-gray-500 text-sm max-w-lg mx-auto">
+              Get an insider look at our motherboard micro-soldering, repair setups, and premium parts inspection.
+            </p>
+          </div>
+
+          {/* Premium Video Card */}
+          <div className="relative aspect-video rounded-3xl overflow-hidden shadow-2xl shadow-navy/10 border border-gray-100 group bg-black">
+            {isVideoPlaying ? (
+              <iframe
+                src="https://www.youtube.com/embed/spiDMgLnYLY?autoplay=1"
+                title="iPhonix Repair Lab Video"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="absolute inset-0 w-full h-full border-none"
+              />
+            ) : (
+              <div className="absolute inset-0 w-full h-full relative cursor-pointer" onClick={() => setIsVideoPlaying(true)}>
+                {/* Unsplash Background to represent the cover */}
+                <Image
+                  src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&q=80&w=1200"
+                  alt="Video Cover"
+                  fill
+                  className="object-cover opacity-80 transition-transform duration-500 group-hover:scale-105"
+                />
+                
+                {/* Gradient overlay */}
+                <div className="absolute inset-0 bg-navy/40 transition-opacity duration-300 group-hover:bg-navy/30" />
+
+                {/* Pulse Play button */}
+                <div className="absolute inset-0 flex flex-col items-center justify-center space-y-4">
+                  <div className="w-20 h-20 bg-accent hover:bg-accent-hover text-navy rounded-full flex items-center justify-center shadow-lg transition-transform duration-300 scale-100 group-hover:scale-110 active:scale-95 z-10">
+                    <Play className="w-8 h-8 fill-navy stroke-none ml-1" />
+                  </div>
+                  <span className="font-space text-white font-bold text-sm tracking-wider uppercase drop-shadow-md">
+                    Click to Play Video
+                  </span>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+
       </div>
 
       {/* Lightbox Modal */}
@@ -153,7 +200,7 @@ export default function Gallery() {
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
-              transition={{ type: "spring", stiffness: 120, damping: 20 }}
+              transition={{ type: "spring" as const, stiffness: 120, damping: 20 }}
               onClick={(e) => e.stopPropagation()}
               className="max-w-4xl max-h-[80vh] relative flex flex-col items-center"
             >

@@ -4,7 +4,6 @@ import Services from "@/components/Services";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import RepairProcess from "@/components/RepairProcess";
 import Brands from "@/components/Brands";
-import Gallery from "@/components/Gallery";
 import Testimonials from "@/components/Testimonials";
 import Faq from "@/components/Faq";
 import ContactForm from "@/components/ContactForm";
@@ -20,7 +19,6 @@ export default function Home() {
         <WhyChooseUs />
         <RepairProcess />
         <Brands />
-        <Gallery />
         <Testimonials />
         <Faq />
         <ContactForm />
