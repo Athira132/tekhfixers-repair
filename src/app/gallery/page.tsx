@@ -4,7 +4,7 @@ import Gallery from "@/components/Gallery";
 import PremiumHeroBackground from "@/components/PremiumHeroBackground";
 import Link from "next/link";
 import ImageWithFallback from "@/components/ImageWithFallback";
-import { ArrowRight, Wrench, Shield, CheckCircle, Phone, MessageSquare } from "lucide-react";
+import { ArrowRight, Wrench, Shield, CheckCircle, Phone, MessageSquare, Layers, BatteryCharging, Zap, Camera, Cpu, Droplet } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -15,24 +15,48 @@ export const metadata: Metadata = {
   },
 };
 
-const beforeAfterRepairs = [
+const repairExpertise = [
   {
-    title: "iPhone Screen Replacement",
-    desc: "Complete screen restoration using OEM-grade display modules, fully programmed and serialized.",
-    beforeImg: "https://images.unsplash.com/photo-1574756587643-f54856c5476c?auto=format&fit=crop&q=80&w=800",
-    afterImg: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&q=80&w=800",
+    title: "Screen Replacement",
+    desc: "OEM-grade glass replacements to resolve cracked, scratched, or shattered front glass modules.",
+    img: "https://i.ibb.co/rLg9D5h/image.png",
+    icon: Layers,
+    slug: "screen-replacement",
   },
   {
-    title: "Logic Board Corrosion Cleanup",
-    desc: "Microscopic board cleaning and reballing following extensive water exposure.",
-    beforeImg: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800",
-    afterImg: "https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?auto=format&fit=crop&q=80&w=800",
+    title: "Battery Replacement",
+    desc: "Restore your device's original battery life with premium, certified lithium-ion replacements.",
+    img: "https://i.ibb.co/MyPYqZ3j/image.png",
+    icon: BatteryCharging,
+    slug: "battery-replacement",
   },
   {
-    title: "Battery Diagnostic & Swap",
-    desc: "Replacing degraded, swollen cells with genuine safety-certified lithium-ion batteries.",
-    beforeImg: "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?auto=format&fit=crop&q=80&w=800",
-    afterImg: "https://images.unsplash.com/photo-1601524909162-be87252be298?auto=format&fit=crop&q=80&w=800",
+    title: "Charging Port Repair",
+    desc: "Fix connection issues, slow charging speeds, and loose ports with complete board repairs.",
+    img: "https://i.ibb.co/QRwLj07/image.png",
+    icon: Zap,
+    slug: "charging-port-repair",
+  },
+  {
+    title: "Camera Repair",
+    desc: "Replace scratched lenses, broken sensors, and non-functioning focus systems on front and back cameras.",
+    img: "https://i.ibb.co/Q7JSyDRz/image.png",
+    icon: Camera,
+    slug: "camera-repair",
+  },
+  {
+    title: "Motherboard Repair",
+    desc: "Micro-soldering, chip level repairs, and custom diagnostic logic for complex boards.",
+    img: "https://i.ibb.co/KxmBknMz/image.png",
+    icon: Cpu,
+    slug: "motherboard-repair",
+  },
+  {
+    title: "Water Damage Repair",
+    desc: "Ultrasonic cleaning and moisture extraction to recover water-damaged components and data.",
+    img: "https://i.ibb.co/bMG8Nnqr/image.png",
+    icon: Droplet,
+    slug: "water-damage-repair",
   },
 ];
 
@@ -134,74 +158,69 @@ export default function GalleryPage() {
         {/* Section 1: Main Photo Gallery (Workshop & Diagnostics) */}
         <Gallery />
 
-        {/* Section 2: Before & After Repairs Showcase (Interactive Hover Panels) */}
+        {/* Section 2: Our Repair Expertise */}
         <section className="py-24 bg-[#F7F8FB] relative">
           <div className="max-w-7xl mx-auto px-6">
             
             <div className="text-center max-w-3xl mx-auto mb-16 md:mb-24 space-y-4">
               <span className="text-xs md:text-sm font-semibold text-darkblue uppercase tracking-widest bg-darkblue/5 px-4 py-2 rounded-full">
-                Interactive Results
+                Expert Showcase
               </span>
               <h2 className="font-space text-3xl sm:text-4xl md:text-5xl font-extrabold text-navy tracking-tight mt-2">
-                Before & After Repairs
+                Our Repair Expertise
               </h2>
               <p className="text-gray-600 text-sm md:text-base max-w-xl mx-auto">
-                Hover over each repair card to witness the transformation from damaged hardware to pristine factory-calibrated condition.
+                Explore our main smartphone repair specialties, executed with clinical precision and OEM-grade parts.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-              {beforeAfterRepairs.map((item, index) => (
-                <div 
-                  key={index}
-                  className="bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-md shadow-gray-200/50 flex flex-col justify-between"
-                >
-                  {/* Hover Image Slider Layer */}
-                  <div className="relative aspect-[4/3] w-full overflow-hidden group cursor-pointer">
-                    {/* Before Image */}
-                    <ImageWithFallback 
-                      src={item.beforeImg} 
-                      alt="Before Repair" 
-                      fill 
-                      sizes="(max-width: 1024px) 100vw, 33vw"
-                      className="object-cover transition-opacity duration-500 ease-in-out group-hover:opacity-0"
-                    />
-                    
-                    {/* After Image (Visible on Hover) */}
-                    <ImageWithFallback 
-                      src={item.afterImg} 
-                      alt="After Repair" 
-                      fill 
-                      sizes="(max-width: 1024px) 100vw, 33vw"
-                      className="object-cover absolute inset-0 opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100"
-                    />
-
-                    {/* Sliding Label Badge */}
-                    <div className="absolute top-4 left-4 bg-navy/85 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10 text-white text-[10px] font-bold uppercase tracking-wider">
-                      <span className="group-hover:hidden">Before</span>
-                      <span className="hidden group-hover:inline text-accent">After</span>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {repairExpertise.map((item, index) => {
+                const Icon = item.icon;
+                return (
+                  <div 
+                    key={index}
+                    className="group bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-md shadow-gray-200/50 flex flex-col justify-between hover:-translate-y-2 hover:shadow-xl transition-all duration-300"
+                  >
+                    {/* Image Layer */}
+                    <div className="relative aspect-[4/3] w-full overflow-hidden">
+                      <ImageWithFallback 
+                        src={item.img} 
+                        alt={item.title} 
+                        fill 
+                        sizes="(max-width: 1024px) 100vw, 33vw"
+                        className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                      />
+                      
+                      {/* Icon overlay */}
+                      <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-md p-3 rounded-2xl text-navy shadow-sm group-hover:bg-accent group-hover:text-navy transition-colors duration-300">
+                        <Icon className="w-5 h-5" />
+                      </div>
                     </div>
 
-                    {/* Interactive hover instruction overlay */}
-                    <div className="absolute bottom-4 right-4 bg-black/60 backdrop-blur-sm rounded-full p-2 text-white opacity-100 group-hover:opacity-0 transition-opacity duration-300 pointer-events-none">
-                      <span className="text-[9px] uppercase tracking-widest font-bold px-2">Hover to Reveal</span>
+                    {/* Content */}
+                    <div className="p-8 space-y-4 flex-1 flex flex-col justify-between">
+                      <div>
+                        <h3 className="font-space text-xl font-bold text-navy">{item.title}</h3>
+                        <p className="text-gray-500 text-xs leading-relaxed mt-2">{item.desc}</p>
+                      </div>
+                      
+                      <div className="pt-4 border-t border-gray-100 flex items-center justify-between">
+                        <Link 
+                          href={`/services/${item.slug}`}
+                          className="inline-flex items-center text-xs font-bold text-navy hover:text-darkblue transition-colors duration-200"
+                        >
+                          <span className="mr-2 uppercase tracking-wider">Learn More</span>
+                          <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
+                        </Link>
+                        <span className="text-[10px] font-bold text-emerald-600 uppercase tracking-wider bg-emerald-50 px-2.5 py-1 rounded-full">
+                          Certified
+                        </span>
+                      </div>
                     </div>
                   </div>
-
-                  {/* Card Metadata */}
-                  <div className="p-8 space-y-3 flex-1 flex flex-col justify-between">
-                    <div>
-                      <h3 className="font-space text-xl font-bold text-navy">{item.title}</h3>
-                      <p className="text-gray-500 text-xs leading-relaxed mt-2">{item.desc}</p>
-                    </div>
-                    
-                    <div className="pt-4 border-t border-gray-50 flex items-center space-x-2 text-accent-hover font-semibold text-xs uppercase tracking-wider">
-                      <CheckCircle className="w-4 h-4 text-emerald-500" />
-                      <span>Calibrated & Guaranteed</span>
-                    </div>
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </section>

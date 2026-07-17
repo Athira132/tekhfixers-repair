@@ -7,19 +7,34 @@ import { X, ChevronLeft, ChevronRight, ZoomIn } from "lucide-react";
 
 const galleryImages = [
   {
-    src: "https://images.unsplash.com/photo-1601524909162-be87252be298?auto=format&fit=crop&q=80&w=800",
-    title: "Diagnostic Equipment & Calibration",
-    category: "Diagnostics",
+    src: "https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&q=80&w=800",
+    title: "Mobile Repair Workshop",
+    category: "Workshop",
   },
   {
-    src: "https://images.unsplash.com/photo-1581092520455-2c4901cc9624?auto=format&fit=crop&q=80&w=800",
-    title: "TrueDepth Face ID Sensor Recovery",
-    category: "Face ID",
+    src: "https://images.unsplash.com/photo-1563770660941-20978e870e26?auto=format&fit=crop&q=80&w=800",
+    title: "Technician Repairing an iPhone",
+    category: "Repair",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?auto=format&fit=crop&q=80&w=800",
+    title: "Precision Microsoldering",
+    category: "Microsoldering",
   },
   {
     src: "https://images.unsplash.com/photo-1605236453806-6ff36851218e?auto=format&fit=crop&q=80&w=800",
-    title: "On-site Doorstep Repair Spares",
-    category: "Doorstep",
+    title: "Professional Repair Tools",
+    category: "Tools",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1574756587643-f54856c5476c?auto=format&fit=crop&q=80&w=800",
+    title: "Display Replacement Process",
+    category: "Display",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1601524909162-be87252be298?auto=format&fit=crop&q=80&w=800",
+    title: "Customer Device Inspection",
+    category: "Inspection",
   },
 ];
 
