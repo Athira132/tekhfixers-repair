@@ -1,11 +1,12 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import Gallery from "@/components/Gallery";
 import Testimonials from "@/components/Testimonials";
 import Faq from "@/components/Faq";
 import RepairProcess from "@/components/RepairProcess";
 import WhyChooseUs from "@/components/WhyChooseUs";
+import PremiumHeroBackground from "@/components/PremiumHeroBackground";
 import { ShieldCheck, Award, Eye } from "lucide-react";
+import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -20,19 +21,25 @@ export default function AboutPage() {
   return (
     <>
       <Navbar />
-      <main className="flex-grow pt-24">
+      <main className="flex-grow">
         
-        {/* About Hero Banner */}
-        <section className="relative py-24 overflow-hidden bg-navy text-white">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(30,144,255,0.08),transparent)] pointer-events-none" />
-          <div className="max-w-7xl mx-auto px-6 relative z-10 text-center space-y-4">
-            <span className="text-xs font-bold text-accent uppercase tracking-widest bg-accent/10 px-4 py-1.5 rounded-full border border-accent/20">
-              Who We Are
-            </span>
-            <h1 className="font-space text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight">
+        {/* Premium About Hero Banner */}
+        <section className="relative py-28 md:py-36 overflow-hidden bg-navy text-white flex items-center justify-center text-center">
+          <PremiumHeroBackground backgroundImage="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1920" />
+
+          <div className="max-w-4xl mx-auto px-6 relative z-10 space-y-4 md:space-y-6">
+            {/* Breadcrumbs */}
+            <nav className="flex justify-center items-center space-x-2 text-xs font-semibold uppercase tracking-widest text-accent/80">
+              <Link href="/" className="hover:text-white transition-colors">Home</Link>
+              <span>/</span>
+              <span className="text-gray-400">About</span>
+            </nav>
+
+            <h1 className="font-space text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-tight">
               About <span className="gradient-text-accent">iPhonix</span>
             </h1>
-            <p className="text-gray-400 text-sm md:text-base max-w-xl mx-auto leading-relaxed">
+            
+            <p className="text-gray-300 text-sm md:text-base max-w-xl mx-auto leading-relaxed">
               Trivandrum&apos;s premium doorstep smartphone repair specialists, combining laboratory precision with standard convenience.
             </p>
           </div>
@@ -104,9 +111,6 @@ export default function AboutPage() {
         {/* Why Choose Us & Doorstep Process */}
         <WhyChooseUs />
         <RepairProcess />
-
-        {/* Gallery Section */}
-        <Gallery />
 
         {/* Testimonials & FAQs */}
         <Testimonials />

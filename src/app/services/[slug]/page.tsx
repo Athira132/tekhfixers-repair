@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import PremiumHeroBackground from "@/components/PremiumHeroBackground";
 import { servicesData } from "@/data/servicesData";
 import {
   Check,
@@ -99,45 +100,29 @@ export default async function ServiceDetailPage({ params }: PageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <main className="flex-grow pt-24 bg-white">
+      <main className="flex-grow bg-white">
         
-        {/* Dynamic Hero Banner */}
-        <section className="relative py-20 md:py-28 overflow-hidden bg-navy text-white">
-          <div className="absolute inset-0 z-0 opacity-40">
-            <Image
-              src={service.bannerImage}
-              alt={service.title}
-              fill
-              className="object-cover"
-              priority
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/90 to-transparent" />
-          </div>
-          
-          <div className="max-w-7xl mx-auto px-6 relative z-10 space-y-6">
+        {/* Premium Dynamic Hero Banner */}
+        <section className="relative py-28 md:py-36 overflow-hidden bg-navy text-white flex items-center justify-center text-center">
+          <PremiumHeroBackground backgroundImage={service.bannerImage} />
+
+          <div className="max-w-4xl mx-auto px-6 relative z-10 space-y-4 md:space-y-6 animate-fade-in">
             {/* Breadcrumbs UI */}
-            <div className="flex items-center space-x-2 text-xs font-semibold text-gray-400 uppercase tracking-widest">
-              <Link href="/" className="hover:text-accent flex items-center space-x-1">
-                <Home className="w-3.5 h-3.5" />
-                <span>Home</span>
-              </Link>
-              <ChevronRight className="w-3.5 h-3.5 text-gray-600" />
-              <span className="text-gray-500">Services</span>
-              <ChevronRight className="w-3.5 h-3.5 text-gray-600" />
+            <nav className="flex justify-center items-center space-x-2 text-xs font-semibold uppercase tracking-widest text-accent/80">
+              <Link href="/" className="hover:text-white transition-colors">Home</Link>
+              <span>/</span>
+              <span className="text-gray-400">Services</span>
+              <span>/</span>
               <span className="text-accent">{service.title}</span>
-            </div>
+            </nav>
+
+            <h1 className="font-space text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-tight">
+              {service.title}
+            </h1>
             
-            <div className="max-w-3xl space-y-4 pt-4">
-              <span className="text-xs font-bold text-accent uppercase tracking-widest bg-accent/10 px-4 py-1.5 rounded-full border border-accent/20">
-                iPhonix Service Detail
-              </span>
-              <h1 className="font-space text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight">
-                {service.title}
-              </h1>
-              <p className="text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed max-w-2xl">
-                {service.shortDesc}
-              </p>
-            </div>
+            <p className="text-gray-300 text-sm md:text-base max-w-xl mx-auto leading-relaxed">
+              {service.shortDesc}
+            </p>
           </div>
         </section>
 

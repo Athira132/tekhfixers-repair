@@ -8,7 +8,7 @@ import Link from "next/link";
 const quickLinks = [
   { name: "Home", href: "/" },
   { name: "About Us", href: "/about" },
-  { name: "Gallery Showcase", href: "/about#gallery" },
+  { name: "Gallery Showcase", href: "/gallery" },
   { name: "Contact Hub", href: "/contact" },
   { name: "Book doorstep repair", href: "/book" },
 ];
@@ -54,7 +54,7 @@ export default function Footer() {
                 alt="iPhonix Logo"
                 fill
                 sizes="48px"
-                className="object-contain scale-[1.35]"
+                className="object-contain scale-[1.6]"
               />
             </div>
             <span>

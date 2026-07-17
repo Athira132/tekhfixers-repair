@@ -24,11 +24,17 @@ const servicesList = [
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMobileDropdownOpen, setIsMobileDropdownOpen] = useState(false);
   
+  // Custom states for premium dropdown behavior
+  const [isTriggerHovered, setIsTriggerHovered] = useState(false);
+  const [isDropdownHovered, setIsDropdownHovered] = useState(false);
+  const [isClickedOpen, setIsClickedOpen] = useState(false);
+
+  const isDropdownOpen = isTriggerHovered || isDropdownHovered || isClickedOpen;
+  
   const pathname = usePathname();
-  const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const triggerTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
@@ -43,44 +49,52 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      if (dropdownTimeoutRef.current) {
-        clearTimeout(dropdownTimeoutRef.current);
+      if (triggerTimeoutRef.current) {
+        clearTimeout(triggerTimeoutRef.current);
       }
     };
   }, []);
 
   // Close menus on page transitions
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    if (isMobileMenuOpen) setIsMobileMenuOpen(false);
-    if (isDropdownOpen) setIsDropdownOpen(false);
-    if (isMobileDropdownOpen) setIsMobileDropdownOpen(false);
-  }, [pathname, isMobileMenuOpen, isDropdownOpen, isMobileDropdownOpen]);
+    setIsMobileMenuOpen(false);
+    setIsTriggerHovered(false);
+    setIsDropdownHovered(false);
+    setIsClickedOpen(false);
+    setIsMobileDropdownOpen(false);
+  }, [pathname]);
 
   const isActive = (href: string) => pathname === href;
 
-  // Desktop Hover Debounce Logic
-  const handleMouseEnter = () => {
-    if (dropdownTimeoutRef.current) {
-      clearTimeout(dropdownTimeoutRef.current);
-      dropdownTimeoutRef.current = null;
+  // Desktop Hover Debounce Logic with no-gap bridging
+  const handleTriggerEnter = () => {
+    if (triggerTimeoutRef.current) {
+      clearTimeout(triggerTimeoutRef.current);
+      triggerTimeoutRef.current = null;
     }
-    setIsDropdownOpen(true);
+    setIsTriggerHovered(true);
   };
 
-  const handleMouseLeave = () => {
-    if (dropdownTimeoutRef.current) {
-      clearTimeout(dropdownTimeoutRef.current);
-    }
-    dropdownTimeoutRef.current = setTimeout(() => {
-      setIsDropdownOpen(false);
-    }, 200); // 200ms delay to bridge layout gap
+  const handleTriggerLeave = () => {
+    triggerTimeoutRef.current = setTimeout(() => {
+      setIsTriggerHovered(false);
+    }, 150); // 150ms delay to bridge cursor movement to dropdown
+  };
+
+  const handleDropdownEnter = () => {
+    setIsDropdownHovered(true);
+  };
+
+  const handleDropdownLeave = () => {
+    setIsDropdownHovered(false);
   };
 
   // Keyboard navigation & accessibility handlers
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Escape") {
-      setIsDropdownOpen(false);
+      setIsTriggerHovered(false);
+      setIsDropdownHovered(false);
+      setIsClickedOpen(false);
       triggerRef.current?.focus();
     }
   };
@@ -107,7 +121,7 @@ export default function Navbar() {
                 fill
                 sizes="48px"
                 priority
-                className="object-contain scale-[1.35]"
+                className="object-contain scale-[1.6]"
               />
             </div>
             <span>
@@ -142,13 +156,13 @@ export default function Navbar() {
               {/* Dropdown Menu for Services (Debounced Hover + Accessibility) */}
               <li
                 className="relative py-2"
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
+                onMouseEnter={handleTriggerEnter}
+                onMouseLeave={handleTriggerLeave}
                 onKeyDown={handleKeyDown}
               >
                 <button
                   ref={triggerRef}
-                  onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                  onClick={() => setIsClickedOpen(!isClickedOpen)}
                   aria-haspopup="menu"
                   aria-expanded={isDropdownOpen}
                   aria-controls="services-dropdown"
@@ -168,12 +182,12 @@ export default function Navbar() {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 10 }}
                       transition={{ duration: 0.2 }}
-                      className="absolute left-0 top-full w-64 pt-2 z-50"
+                      className="absolute left-0 top-full w-64 pt-3 z-50"
                       id="services-dropdown"
                       role="menu"
                       aria-labelledby="services-trigger"
-                      onMouseEnter={handleMouseEnter}
-                      onMouseLeave={handleMouseLeave}
+                      onMouseEnter={handleDropdownEnter}
+                      onMouseLeave={handleDropdownLeave}
                     >
                       <div className="rounded-2xl bg-navy/95 border border-white/10 backdrop-blur-xl p-3 shadow-xl shadow-black/30">
                         <ul className="space-y-1">
@@ -201,7 +215,7 @@ export default function Navbar() {
 
               <li>
                 <Link
-                  href="/about#gallery"
+                  href="/gallery"
                   className={`font-medium text-sm transition-colors duration-200 ${
                     pathname === "/gallery" ? "text-accent" : "text-gray-300 hover:text-accent"
                   }`}
@@ -310,7 +324,7 @@ export default function Navbar() {
 
               <li>
                 <Link
-                  href="/about#gallery"
+                  href="/gallery"
                   className={`font-space text-lg font-medium block border-b border-white/5 pb-2 transition-colors duration-200 ${
                     pathname === "/gallery" ? "text-accent" : "text-gray-200 hover:text-accent"
                   }`}
