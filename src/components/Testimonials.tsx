@@ -7,32 +7,32 @@ import ImageWithFallback from "@/components/ImageWithFallback";
 
 const testimonials = [
   {
-    name: "Sarah Jenkins",
-    device: "iPhone 14 Pro Screen Repair",
+    name: "Anjali Nair",
+    device: "iPhone 14 Pro Screen Repair (Trivandrum)",
     rating: 5,
-    text: "Unbelievable service! My screen was completely shattered. They replaced it with an OEM-grade panel in under 20 minutes. It looks and feels absolutely brand new. Highly recommended!",
-    img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150",
+    text: "Excellent doorstep service in Trivandrum. My iPhone screen was shattered, and they replaced it in 20 minutes at my office. Highly professional and very convenient!",
+    img: "https://images.unsplash.com/photo-1589156280159-27698a70f29e?auto=format&fit=crop&q=80&w=150",
   },
   {
-    name: "David Miller",
-    device: "Samsung S23 Ultra Board Repair",
+    name: "Akhil Menon",
+    device: "Samsung S23 Ultra Board Repair (Kochi)",
     rating: 5,
-    text: "Other shops said my water-damaged phone was dead. iPhonix performed micro-soldering motherboard repairs and recovered all my critical data. True experts, worth every penny.",
+    text: "Highly recommended! Other shops told me my Samsung motherboard was unfixable. iPhonix repaired it at the chip level and recovered all my photos. Great job!",
+    img: "https://images.unsplash.com/photo-1599566150163-29194dcaad36?auto=format&fit=crop&q=80&w=150",
+  },
+  {
+    name: "Meera Suresh",
+    device: "Google Pixel 8 Battery Swap (Karamana)",
+    rating: 5,
+    text: "The doorstep pickup and delivery in Karamana was very prompt. They swapped my Pixel battery and resolved the rapid drainage issue on the same day. Extremely satisfied.",
+    img: "https://images.unsplash.com/photo-1619380061814-58f03707f082?auto=format&fit=crop&q=80&w=150",
+  },
+  {
+    name: "Vishnu Prasad",
+    device: "OnePlus 11 Charging Issue (Kozhikode)",
+    rating: 5,
+    text: "Professional service at a reasonable price. The technician repaired my loose charging connector quickly and explained the repair step-by-step. Excellent work!",
     img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150",
-  },
-  {
-    name: "Amanda Ross",
-    device: "Google Pixel 8 Battery Swap",
-    rating: 5,
-    text: "The pickup and delivery service was incredibly smooth. They picked up my phone from my office and returned it fully fixed by the end of the day. A truly premium customer experience.",
-    img: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=150",
-  },
-  {
-    name: "James Peterson",
-    device: "iPad Pro Charging Port Fix",
-    rating: 5,
-    text: "Very professional staff and transparent pricing. They replaced the charging port and gave me a lifetime warranty on the parts. Extremely satisfied with their quality of work.",
-    img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150",
   },
 ];
 

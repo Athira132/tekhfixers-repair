@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import ImageWithFallback from "@/components/ImageWithFallback";
 import {
   Smartphone,
   Layers,
@@ -28,6 +29,7 @@ const services = [
     desc: "OEM-grade glass replacements to resolve cracked, scratched, or shattered front glass modules.",
     color: "from-blue-500/10 to-indigo-500/10",
     iconColor: "text-blue-500",
+    img: "https://i.ibb.co/rLg9D5h/image.png",
   },
   {
     slug: "display-replacement",
@@ -36,6 +38,7 @@ const services = [
     desc: "Cracked or bleeding displays replaced with OEM-grade OLED & LCD panels in under 30 minutes.",
     color: "from-emerald-500/10 to-teal-500/10",
     iconColor: "text-emerald-500",
+    img: "https://i.ibb.co/DgjsCj8n/image.png",
   },
   {
     slug: "battery-replacement",
@@ -44,6 +47,7 @@ const services = [
     desc: "Restore your device's original battery life with premium, certified lithium-ion replacements.",
     color: "from-amber-500/10 to-orange-500/10",
     iconColor: "text-amber-500",
+    img: "https://i.ibb.co/MyPYqZ3j/image.png",
   },
   {
     slug: "charging-port-repair",
@@ -52,6 +56,7 @@ const services = [
     desc: "Fix connection issues, slow charging speeds, and loose ports with complete board repairs.",
     color: "from-purple-500/10 to-pink-500/10",
     iconColor: "text-purple-500",
+    img: "https://i.ibb.co/QRwLj07/image.png",
   },
   {
     slug: "camera-repair",
@@ -60,6 +65,7 @@ const services = [
     desc: "Replace scratched lenses, broken sensors, and non-functioning focus systems on front and back cameras.",
     color: "from-rose-500/10 to-red-500/10",
     iconColor: "text-rose-500",
+    img: "https://i.ibb.co/Q7JSyDRz/image.png",
   },
   {
     slug: "speaker-repair",
@@ -68,6 +74,7 @@ const services = [
     desc: "Fix crackling sounds, quiet speakers, and broken audio modules for clear calls and media.",
     color: "from-yellow-500/10 to-amber-500/10",
     iconColor: "text-yellow-500",
+    img: "https://images.unsplash.com/photo-1588508065123-287b28e013da?auto=format&fit=crop&q=80&w=800",
   },
   {
     slug: "speaker-repair", // Map microphone to speaker repair page
@@ -76,6 +83,7 @@ const services = [
     desc: "Resolve low caller volume, mic statics, and complete audio recording failures on your device.",
     color: "from-indigo-500/10 to-blue-500/10",
     iconColor: "text-indigo-500",
+    img: "https://images.unsplash.com/photo-1588508065123-287b28e013da?auto=format&fit=crop&q=80&w=800",
   },
   {
     slug: "motherboard-repair",
@@ -84,6 +92,7 @@ const services = [
     desc: "Micro-soldering, chip level repairs, and custom diagnostic logic for complex boards.",
     color: "from-violet-500/10 to-purple-500/10",
     iconColor: "text-violet-500",
+    img: "https://i.ibb.co/KxmBknMz/image.png",
   },
   {
     slug: "water-damage-repair",
@@ -92,6 +101,7 @@ const services = [
     desc: "Ultrasonic cleaning and moisture extraction to recover water-damaged components and data.",
     color: "from-sky-500/10 to-blue-500/10",
     iconColor: "text-sky-500",
+    img: "https://i.ibb.co/bMG8Nnqr/image.png",
   },
   {
     slug: "software-repair",
@@ -100,6 +110,7 @@ const services = [
     desc: "Resolve boot loops, system crashes, storage blocks, and perform complete OS recovery.",
     color: "from-cyan-500/10 to-teal-500/10",
     iconColor: "text-cyan-500",
+    img: "https://images.unsplash.com/photo-1607799279861-4dd421887fb3?auto=format&fit=crop&q=80&w=800",
   },
   {
     slug: "face-id-repair",
@@ -108,6 +119,7 @@ const services = [
     desc: "Repair biometric sensors, dot projectors, and true-depth camera logic safely.",
     color: "from-emerald-500/10 to-green-500/10",
     iconColor: "text-emerald-500",
+    img: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&q=80&w=800",
   },
   {
     slug: "motherboard-repair", // Map touch IC to motherboard repair page
@@ -116,6 +128,7 @@ const services = [
     desc: "Precision soldering to restore unresponsive touchscreen controllers and display chips.",
     color: "from-fuchsia-500/10 to-pink-500/10",
     iconColor: "text-fuchsia-500",
+    img: "https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?auto=format&fit=crop&q=80&w=800",
   },
   {
     slug: "data-recovery",
@@ -124,6 +137,7 @@ const services = [
     desc: "Retrieve contacts, precious photos, and critical documents from bricked or broken devices.",
     color: "from-rose-500/10 to-orange-500/10",
     iconColor: "text-rose-500",
+    img: "https://i.ibb.co/whhVng3x/image.png",
   },
   {
     slug: "", // Map generic diagnosis to booking form
@@ -132,6 +146,7 @@ const services = [
     desc: "Thorough multi-point sweep to identify hard-to-detect signal, sensor, or power leakage issues.",
     color: "from-neutral-500/10 to-slate-500/10",
     iconColor: "text-slate-600",
+    img: "https://images.unsplash.com/photo-1601524909162-be87252be298?auto=format&fit=crop&q=80&w=800",
   },
 ];
 
@@ -195,36 +210,45 @@ export default function Services() {
               <motion.div
                 key={`${service.title}-${index}`}
                 variants={cardVariants}
-                className="group relative bg-white rounded-3xl p-8 border border-gray-100 shadow-md shadow-gray-200/50 hover:shadow-xl hover:shadow-navy/5 transition-all duration-300 hover:-translate-y-2 glow-card-navy overflow-hidden"
+                className="group bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-md shadow-gray-200/50 hover:shadow-xl hover:shadow-navy/5 transition-all duration-300 hover:-translate-y-2 flex flex-col justify-between"
               >
-                {/* Background Accent Gradient Card */}
-                <div
-                  className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none`}
-                />
-
-                {/* Card Icon Header */}
-                <div className="relative mb-6">
-                  <div className="w-14 h-14 bg-[#F7F8FB] group-hover:bg-white rounded-2xl flex items-center justify-center shadow-inner transition-all duration-300">
-                    <Icon className={`w-7 h-7 ${service.iconColor} transition-transform duration-300 group-hover:scale-110`} />
+                {/* Image Header */}
+                <div className="relative aspect-[16/10] w-full overflow-hidden">
+                  <ImageWithFallback
+                    src={service.img}
+                    alt={service.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                  />
+                  {/* Floating Icon Badge overlay */}
+                  <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-md p-2.5 rounded-2xl text-navy shadow-sm group-hover:bg-accent group-hover:text-navy transition-colors duration-300">
+                    <Icon className="w-5 h-5" />
                   </div>
                 </div>
 
-                {/* Card Body */}
-                <h3 className="font-space text-xl font-bold text-navy mb-3">
-                  {service.title}
-                </h3>
-                <p className="text-gray-500 text-sm leading-relaxed mb-6 font-medium">
-                  {service.desc}
-                </p>
+                {/* Content */}
+                <div className="p-6 flex-grow flex flex-col justify-between space-y-4">
+                  <div>
+                    <h3 className="font-space text-lg font-bold text-navy">
+                      {service.title}
+                    </h3>
+                    <p className="text-gray-500 text-xs leading-relaxed mt-2 font-medium">
+                      {service.desc}
+                    </p>
+                  </div>
 
-                {/* Link */}
-                <Link
-                  href={targetUrl}
-                  className="inline-flex items-center text-xs font-bold text-navy group-hover:text-darkblue transition-colors duration-200"
-                >
-                  <span className="mr-2 uppercase tracking-wider">Learn More</span>
-                  <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
-                </Link>
+                  {/* Link */}
+                  <div className="pt-4 border-t border-gray-50 flex items-center justify-between">
+                    <Link
+                      href={targetUrl}
+                      className="inline-flex items-center text-xs font-bold text-navy hover:text-darkblue transition-colors duration-200"
+                    >
+                      <span className="mr-2 uppercase tracking-wider">Learn More</span>
+                      <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1" />
+                    </Link>
+                  </div>
+                </div>
               </motion.div>
             );
           })}
