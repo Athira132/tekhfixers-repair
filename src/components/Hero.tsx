@@ -187,7 +187,7 @@ export default function Hero() {
             {/* Real Phone Image */}
             <div className="relative w-full h-full overflow-hidden rounded-[2.5rem] flex items-center justify-center">
               <ImageWithFallback
-                src="https://i.ibb.co/wFq2KNCn/image.png"
+                src="https://i.ibb.co/TxRV9yTq/image-removebg-preview.png"
                 alt="iPhonix Premium Repair Mockup"
                 fill
                 sizes="(max-width: 768px) 100vw, 400px"
