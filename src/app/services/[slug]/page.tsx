@@ -63,41 +63,85 @@ export default async function ServiceDetailPage({ params }: PageProps) {
     notFound();
   }
 
-  // Create JSON-LD Service Schema dynamically
-  const jsonLd = {
+  // Create JSON-LD Schemas dynamically
+  const schemas = {
     "@context": "https://schema.org",
-    "@type": "Service",
-    "name": service.title,
-    "serviceType": "Smartphone Hardware Repair",
-    "provider": {
-      "@type": "LocalBusiness",
-      "name": "iPhonix",
-      "image": "https://tekhfixers-repair.vercel.app/logo.jpg",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Karamana",
-        "addressLocality": "Trivandrum",
-        "addressRegion": "Kerala",
-        "postalCode": "695002",
-        "addressCountry": "IN"
+    "@graph": [
+      {
+        "@type": "Service",
+        "name": service.title,
+        "serviceType": "Smartphone Hardware Repair",
+        "provider": {
+          "@type": "LocalBusiness",
+          "name": "iPhonix",
+          "image": "https://tekhfixers-repair.vercel.app/logo.jpg",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Karamana",
+            "addressLocality": "Trivandrum",
+            "addressRegion": "Kerala",
+            "postalCode": "695002",
+            "addressCountry": "IN"
+          },
+          "telephone": "7306243424"
+        },
+        "description": service.metaDesc,
+        "areaServed": [
+          {
+            "@type": "AdministrativeArea",
+            "name": "Karamana"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Trivandrum"
+          }
+        ]
       },
-      "telephone": "7306243424"
-    },
-    "description": service.metaDesc,
-    "areaServed": {
-      "@type": "AdministrativeArea",
-      "name": "Trivandrum"
-    }
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://tekhfixers-repair.vercel.app"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Services",
+            "item": "https://tekhfixers-repair.vercel.app/gallery"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": service.title,
+            "item": `https://tekhfixers-repair.vercel.app/services/${slug}`
+          }
+        ]
+      },
+      ...(service.faqs && service.faqs.length > 0 ? [{
+        "@type": "FAQPage",
+        "mainEntity": service.faqs.map(faq => ({
+          "@type": "Question",
+          "name": faq.q,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": faq.a
+          }
+        }))
+      }] : [])
+    ]
   };
 
   return (
     <>
       <Navbar />
       
-      {/* Breadcrumb Schema Integration */}
+      {/* Dynamic Schema Integration */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }}
       />
 
       <main className="flex-grow bg-white">

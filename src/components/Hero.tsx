@@ -116,12 +116,12 @@ export default function Hero() {
             </motion.h1>
             
             <p className="text-accent text-lg sm:text-xl md:text-2xl font-bold font-space tracking-wide uppercase pt-2">
-              Professional Doorstep Mobile Repair Services
+              Trivandrum & Karamana Mobile Repair
             </p>
           </div>
 
           <p className="text-gray-300 text-sm sm:text-base md:text-lg max-w-xl font-normal leading-relaxed">
-            Support for Apple, Samsung, OnePlus, Google Pixel, Nothing, Motorola, Vivo, Oppo, Redmi, Realme, Nokia, and more.
+            Professional mobile repair services in Karamana, Trivandrum with expert technicians, quality repairs, and doorstep service for smartphones and major mobile brands.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 pt-4">

@@ -8,8 +8,8 @@ import { ArrowRight, Wrench, Shield, CheckCircle, Phone, MessageSquare, Layers, 
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Precision Repair Gallery | iPhonix Specialists",
-  description: "Explore our dynamic workshop gallery containing real micro-soldering repairs, doorstep repair setups, and before-and-after diagnostics.",
+  title: "Mobile Repair Gallery & Workshop Photos Trivandrum | iPhonix",
+  description: "Explore the iPhonix mobile repair workshop gallery in Karamana, Trivandrum. Real technician photos displaying screen replacements, motherboard diagnostics, and professional repair tools.",
   alternates: {
     canonical: "https://tekhfixers-repair.vercel.app/gallery",
   },
@@ -63,12 +63,12 @@ const repairExpertise = [
 const extraWorkshopPhotos = [
   {
     src: "https://images.unsplash.com/photo-1597740985671-2a8a3b80502e?auto=format&fit=crop&q=80&w=800",
-    title: "Signal Analyzer Diagnostics",
+    title: "Mobile repair signal analyzer diagnostics in Karamana Trivandrum",
     category: "RF Testing",
   },
   {
     src: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&q=80&w=800",
-    title: "ESD-Safe Clean Bench",
+    title: "ESD-safe smartphone calibration workbench at iPhonix Trivandrum",
     category: "Environment",
   },
 ];
@@ -76,12 +76,12 @@ const extraWorkshopPhotos = [
 const customerRepairs = [
   {
     src: "https://images.unsplash.com/photo-1563770660941-20978e870e26?auto=format&fit=crop&q=80&w=800",
-    title: "iPhone Pro Max Frame Realignment",
+    title: "iPhone chassis and frame realignment service in Trivandrum",
     category: "Chassis",
   },
   {
     src: "https://images.unsplash.com/photo-1605236453806-6ff36851218e?auto=format&fit=crop&q=80&w=800",
-    title: "Post-Repair Sensor Calibration",
+    title: "Post-repair face ID and sensor calibration in Karamana lab",
     category: "Calibration",
   },
 ];

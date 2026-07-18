@@ -6,8 +6,8 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Contact Us | iPhonix Smartphone Repair Labs",
-  description: "Get in touch with iPhonix for premium doorstep smartphone repair services in Karamana, Trivandrum. Fast response, direct call, WhatsApp redirection, and live booking.",
+  title: "Contact Mobile Service Centre in Trivandrum | iPhonix",
+  description: "Contact iPhonix, your trusted mobile service centre in Karamana, Trivandrum. Reach out via call or email for doorstep smartphone screen, battery, and board repairs.",
   alternates: {
     canonical: "https://tekhfixers-repair.vercel.app/contact",
   },

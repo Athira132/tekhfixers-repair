@@ -10,8 +10,8 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Us | iPhonix Smartphone Repair Specialists",
-  description: "Learn more about iPhonix - our mission, vision, and doorstep smartphone repair process. Meet our certified technicians and explore our premium promise.",
+  title: "About iPhonix | Mobile Repair Specialists in Trivandrum",
+  description: "Learn about iPhonix, the leading mobile repair service in Karamana & Trivandrum. Our certified technicians offer doorstep smartphone repairs with warranty support.",
   alternates: {
     canonical: "https://tekhfixers-repair.vercel.app/about",
   },
@@ -115,6 +115,26 @@ export default function AboutPage() {
         {/* Testimonials & FAQs */}
         <Testimonials />
         <Faq />
+
+        {/* Contact CTA Banner */}
+        <section className="py-16 bg-[#F7F8FB] border-t border-gray-100 relative">
+          <div className="max-w-4xl mx-auto px-6 text-center space-y-6">
+            <h2 className="font-space text-2xl md:text-3xl font-extrabold text-navy">
+              Have Questions About Our Smartphone Repairs?
+            </h2>
+            <p className="text-gray-600 text-sm max-w-lg mx-auto leading-relaxed">
+              Our technicians in Karamana, Trivandrum are ready to help you with diagnostics, motherboard schematics, or screen replacements.
+            </p>
+            <div className="flex justify-center">
+              <Link
+                href="/contact"
+                className="px-8 py-3.5 bg-navy hover:bg-[#072A57] text-white font-bold rounded-xl transition-all duration-200 shadow-lg shadow-navy/15 flex items-center space-x-2"
+              >
+                <span>Contact iPhonix Mobile Repair</span>
+              </Link>
+            </div>
+          </div>
+        </section>
 
       </main>
       <Footer />

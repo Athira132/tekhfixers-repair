@@ -51,11 +51,94 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // LocalBusiness, MobilePhoneStore, Organization, and WebSite schemas
+  const globalSchema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "MobilePhoneStore",
+        "@id": "https://tekhfixers-repair.vercel.app/#localbusiness",
+        "name": "iPhonix",
+        "image": "https://tekhfixers-repair.vercel.app/logo.jpg",
+        "telephone": "+917306243424",
+        "email": "iphonixmobileliveservicecentre@gmail.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Karamana",
+          "addressLocality": "Trivandrum",
+          "addressRegion": "Kerala",
+          "postalCode": "695002",
+          "addressCountry": "IN"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 8.4735234,
+          "longitude": 76.9649563
+        },
+        "url": "https://tekhfixers-repair.vercel.app",
+        "priceRange": "$$",
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+            "opens": "09:00",
+            "closes": "19:00"
+          }
+        ],
+        "areaServed": [
+          {
+            "@type": "AdministrativeArea",
+            "name": "Karamana"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Trivandrum"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Thiruvananthapuram"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Kerala"
+          }
+        ]
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://tekhfixers-repair.vercel.app/#organization",
+        "name": "iPhonix",
+        "url": "https://tekhfixers-repair.vercel.app",
+        "logo": "https://tekhfixers-repair.vercel.app/logo.jpg",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+917306243424",
+          "contactType": "customer service",
+          "areaServed": "IN",
+          "availableLanguage": ["en", "ml"]
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://tekhfixers-repair.vercel.app/#website",
+        "url": "https://tekhfixers-repair.vercel.app",
+        "name": "iPhonix",
+        "publisher": {
+          "@id": "https://tekhfixers-repair.vercel.app/#organization"
+        }
+      }
+    ]
+  };
+
   return (
     <html lang="en" className="scroll-smooth">
       <head>
         <link rel="icon" href="/logo.jpg" type="image/jpeg" />
         <link rel="apple-touch-icon" href="/logo.jpg" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(globalSchema) }}
+        />
       </head>
       <body className="antialiased min-h-screen bg-white text-[#171717] flex flex-col font-sans">
         {children}

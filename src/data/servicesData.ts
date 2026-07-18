@@ -42,8 +42,8 @@ export const servicesData: Record<string, ServiceInfo> = {
     reviews: [
       { author: "Rahul Sharma", rating: 5, text: "Excellent screen repair. The glass looks as good as new and the touch sensitivity is perfectly preserved. Done at my doorstep in 40 minutes!", date: "2 days ago" }
     ],
-    metaTitle: "Premium Screen Glass Replacement Service | iPhonix Trivandrum",
-    metaDesc: "Get premium, OEM-grade smartphone screen glass replacements at your doorstep in Trivandrum. Fast 30-minute turnarounds with full warranty support."
+    metaTitle: "Screen Replacement in Trivandrum | iPhonix Mobile Repair",
+    metaDesc: "Looking for screen replacement in Trivandrum? iPhonix provides professional smartphone screen replacement services in Karamana with quality parts and expert technicians."
   },
   "display-replacement": {
     slug: "display-replacement",
@@ -72,8 +72,8 @@ export const servicesData: Record<string, ServiceInfo> = {
     reviews: [
       { author: "Ananya Nair", rating: 5, text: "My screen was bleeding purple ink after a bad drop. iPhonix replaced the entire display right inside my living room. Truly professional!", date: "1 week ago" }
     ],
-    metaTitle: "Premium OLED & LCD Display Replacement | iPhonix",
-    metaDesc: "Solve phone display green lines, black spots, and touch failures with certified display replacements. Onsite service in Karamana, Trivandrum."
+    metaTitle: "Mobile Display Replacement in Trivandrum | iPhonix",
+    metaDesc: "Professional mobile display replacement in Karamana, Trivandrum for iPhone, Samsung, OnePlus, Pixel, and other major smartphone brands."
   },
   "battery-replacement": {
     slug: "battery-replacement",
@@ -102,8 +102,8 @@ export const servicesData: Record<string, ServiceInfo> = {
     reviews: [
       { author: "Michael George", rating: 5, text: "Battery health went from 76% to 100%. Phone is snappy again and doesn't shutdown at 20% charge. Awesome doorstep service!", date: "3 days ago" }
     ],
-    metaTitle: "Certified Smartphone Battery Replacement | iPhonix",
-    metaDesc: "Restore battery runtime and health back to 100%. Certified battery swaps in Karamana, Trivandrum at affordable prices."
+    metaTitle: "Mobile Battery Replacement in Trivandrum | iPhonix",
+    metaDesc: "Get professional smartphone battery replacement in Karamana and Trivandrum from experienced mobile repair technicians."
   },
   "charging-port-repair": {
     slug: "charging-port-repair",
@@ -132,8 +132,8 @@ export const servicesData: Record<string, ServiceInfo> = {
     reviews: [
       { author: "Siddharth S.", rating: 5, text: "Charging cable kept falling out. The tech cleaned it out and replaced the charging port in 25 mins. Highly recommended doorstep service.", date: "5 days ago" }
     ],
-    metaTitle: "Charging Port & USB Dock Repair | iPhonix",
-    metaDesc: "Fix slow charging, loose ports, and connection errors. iPhonix doorstep smartphone charging port repair in Trivandrum."
+    metaTitle: "Charging Port Repair in Trivandrum | iPhonix",
+    metaDesc: "Professional charging port repair for smartphones in Karamana, Trivandrum. Get reliable mobile repair service from iPhonix."
   },
   "camera-repair": {
     slug: "camera-repair",
@@ -162,8 +162,8 @@ export const servicesData: Record<string, ServiceInfo> = {
     reviews: [
       { author: "Karthik R.", rating: 5, text: "My iPhone camera lens was shattered and pictures were blurry. iPhonix replaced the glass at my house. Now photos are crisp again!", date: "1 week ago" }
     ],
-    metaTitle: "Professional Smartphone Camera & Lens Repair | iPhonix",
-    metaDesc: "Fix blurry camera feeds, cracked lenses, and OIS sensor shaking. Quick doorstep camera replacement services in Trivandrum."
+    metaTitle: "Mobile Camera Repair in Trivandrum | iPhonix",
+    metaDesc: "Expert smartphone camera repair services in Karamana, Trivandrum for iPhone, Samsung, OnePlus, Pixel, and more."
   },
   "motherboard-repair": {
     slug: "motherboard-repair",
@@ -192,8 +192,8 @@ export const servicesData: Record<string, ServiceInfo> = {
     reviews: [
       { author: "Deepak G.", rating: 5, text: "Other repair shops told me my dead iPhone board was unfixable. iPhonix diagnosed a short capacitor, replaced it, and booted it up! Lifesavers.", date: "3 days ago" }
     ],
-    metaTitle: "Advanced Logic Board & Motherboard Repair | iPhonix",
-    metaDesc: "Expert micro-soldering and chip-level board repairs for dead phones in Karamana, Trivandrum. High success rate guaranteed."
+    metaTitle: "Mobile Motherboard Repair in Trivandrum | iPhonix",
+    metaDesc: "Professional mobile motherboard repair and advanced smartphone diagnostics in Karamana, Trivandrum."
   },
   "speaker-repair": {
     slug: "speaker-repair",
@@ -222,8 +222,8 @@ export const servicesData: Record<string, ServiceInfo> = {
     reviews: [
       { author: "Arjun Krishnan", rating: 5, text: "My loudspeaker was crackling terribly. They came and replaced the speaker unit inside my office. Sound is clear now!", date: "4 days ago" }
     ],
-    metaTitle: "Speaker & Microphone Repair Service | iPhonix",
-    metaDesc: "Fix crackling sounds, quiet ear speakers, and caller voice issues. Quick doorstep audio repairs in Karamana, Trivandrum."
+    metaTitle: "Mobile Speaker & Microphone Repair in Trivandrum | iPhonix",
+    metaDesc: "Get expert mobile speaker and microphone repair in Karamana, Trivandrum. Fast doorstep repairs for distorted audio or mic issues at iPhonix."
   },
   "water-damage-repair": {
     slug: "water-damage-repair",
@@ -252,8 +252,8 @@ export const servicesData: Record<string, ServiceInfo> = {
     reviews: [
       { author: "Vivek Pillai", rating: 5, text: "Dropped my phone in a pool. iPhonix did a quick chemical cleaning, fixed a blown power rail on the board, and got it working. Highly professional!", date: "2 weeks ago" }
     ],
-    metaTitle: "Emergency Water Damage Repair Service | iPhonix",
-    metaDesc: "Professional chemical decontamination, ultrasonic board cleaning, and short circuit repairs for water-damaged smartphones."
+    metaTitle: "Water Damage Mobile Repair in Trivandrum | iPhonix",
+    metaDesc: "Get professional water damage repair for smartphones in Karamana and Trivandrum from experienced technicians."
   },
   "software-repair": {
     slug: "software-repair",
@@ -282,8 +282,8 @@ export const servicesData: Record<string, ServiceInfo> = {
     reviews: [
       { author: "Nikhil Raj", rating: 5, text: "Phone was stuck on the apple logo after a storage full error. iPhonix resolved the boot loop without wiping my photos. Life saver!", date: "1 week ago" }
     ],
-    metaTitle: "Smartphone Software & OS Recovery | iPhonix",
-    metaDesc: "Resolve boot loops, stuck logos, and system crashes. Professional stock firmware flashing services in Trivandrum."
+    metaTitle: "Mobile Software Repair & OS Troubleshooting in Trivandrum | iPhonix",
+    metaDesc: "Expert mobile software repair, bootloop fix, and OS troubleshooting in Karamana, Trivandrum. Recover and optimize your smartphone operating system."
   },
   "face-id-repair": {
     slug: "face-id-repair",
@@ -312,8 +312,8 @@ export const servicesData: Record<string, ServiceInfo> = {
     reviews: [
       { author: "Shruti Sen", rating: 5, text: "Face ID got disabled after light water splash. iPhonix desoldered the sensor, cleaned it, and realigned the projector. Face unlock works perfectly now!", date: "3 days ago" }
     ],
-    metaTitle: "TrueDepth Face ID & Biometric Repair | iPhonix",
-    metaDesc: "Fix 'Face ID is not available' errors. iPhonix expert micro-soldering and sensor realignment in Karamana, Trivandrum."
+    metaTitle: "iPhone Face ID & Touch ID Repair in Trivandrum | iPhonix",
+    metaDesc: "Professional iPhone Face ID and Touch ID sensor repair services in Karamana, Trivandrum. Restore biometric security options on your Apple device."
   },
   "data-recovery": {
     slug: "data-recovery",
@@ -342,7 +342,7 @@ export const servicesData: Record<string, ServiceInfo> = {
     reviews: [
       { author: "Thomas Mathew", rating: 5, text: "My phone was crushed by a car. I lost all hope of getting my business files back. iPhonix transplanted the chips to a donor board and recovered everything. Speechless!", date: "1 week ago" }
     ],
-    metaTitle: "Emergency Smartphone Data Recovery | iPhonix",
-    metaDesc: "Recover photos, contacts, and files from broken, dead, or water-damaged phones. Trivandrum's top chip-level data recovery lab."
+    metaTitle: "Mobile Data Recovery in Trivandrum | iPhonix",
+    metaDesc: "Professional mobile data recovery services in Karamana, Trivandrum for smartphones experiencing software or hardware issues."
   }
 };
