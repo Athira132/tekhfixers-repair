@@ -36,6 +36,31 @@ const galleryImages = [
     title: "Customer Device Inspection",
     category: "Inspection",
   },
+  {
+    src: "https://i.ibb.co/jvG0P5sr/image.png",
+    title: "Motherboard diagnostics and micro soldering under microscope",
+    category: "Microsoldering",
+  },
+  {
+    src: "https://i.ibb.co/DHKB41hB/image.png",
+    title: "Precision OCA screen lamination and glass replacement",
+    category: "Lamination",
+  },
+  {
+    src: "https://i.ibb.co/N2Yw0dT0/image.png",
+    title: "Cleanroom dust-free workbench for smartphone repair",
+    category: "Environment",
+  },
+  {
+    src: "https://i.ibb.co/5xz68dG0/image.png",
+    title: "Advanced infrared thermal imaging check on logic board",
+    category: "Diagnostics",
+  },
+  {
+    src: "https://i.ibb.co/JR5K4PtP/image.png",
+    title: "Battery calibration and resistance verification test",
+    category: "Battery",
+  },
 ];
 
 export default function Gallery() {

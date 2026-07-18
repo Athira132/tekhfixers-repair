@@ -8,6 +8,7 @@ import Testimonials from "@/components/Testimonials";
 import Faq from "@/components/Faq";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
+import WatchOurStory from "@/components/WatchOurStory";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -28,6 +29,7 @@ export default function Home() {
         <WhyChooseUs />
         <RepairProcess />
         <Brands />
+        <WatchOurStory />
         <Testimonials />
         <Faq />
         <ContactForm />
