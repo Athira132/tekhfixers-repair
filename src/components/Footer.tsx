@@ -126,7 +126,7 @@ export default function Footer() {
 
       </div>
 
-      {/* Bottom Bar: Copyright, Terms, Payment Mock */}
+      {/* Bottom Bar: Copyright & Terms */}
       <div className="max-w-7xl mx-auto px-6 pt-8 flex flex-col md:flex-row items-center justify-between text-xs space-y-4 md:space-y-0">
         <div>
           <p>© {new Date().getFullYear()} iPhonix Repair Labs. All rights reserved.</p>
@@ -134,14 +134,6 @@ export default function Footer() {
         <div className="flex space-x-6">
           <Link href="/privacy" className="hover:text-accent transition-colors">Privacy Policy</Link>
           <Link href="/terms" className="hover:text-accent transition-colors">Terms of Service</Link>
-        </div>
-        
-        {/* Payment Mock Badges */}
-        <div className="flex items-center space-x-3 opacity-60">
-          <span className="font-semibold uppercase tracking-wider text-[10px]">Secure Payments:</span>
-          <div className="px-2 py-1 bg-white/5 rounded border border-white/5 font-mono text-[9px] font-bold text-white">VISA</div>
-          <div className="px-2 py-1 bg-white/5 rounded border border-white/5 font-mono text-[9px] font-bold text-white">AMEX</div>
-          <div className="px-2 py-1 bg-white/5 rounded border border-white/5 font-mono text-[9px] font-bold text-white">APPLE PAY</div>
         </div>
       </div>
     </footer>
