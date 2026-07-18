@@ -25,14 +25,14 @@ const testimonials = [
     device: "Google Pixel 8 Battery Swap (Karamana)",
     rating: 5,
     text: "The doorstep pickup and delivery in Karamana was very prompt. They swapped my Pixel battery and resolved the rapid drainage issue on the same day. Extremely satisfied.",
-    img: "https://images.unsplash.com/photo-1619380061814-58f03707f082?auto=format&fit=crop&q=80&w=150",
+    img: "https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&q=80&w=150",
   },
   {
     name: "Vishnu Prasad",
     device: "OnePlus 11 Charging Issue (Kozhikode)",
     rating: 5,
     text: "Professional service at a reasonable price. The technician repaired my loose charging connector quickly and explained the repair step-by-step. Excellent work!",
-    img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150",
+    img: "https://images.unsplash.com/photo-1624224971170-2f84fed5eb5e?auto=format&fit=crop&q=80&w=150",
   },
 ];
 
