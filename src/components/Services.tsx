@@ -74,7 +74,7 @@ const services = [
     desc: "Fix crackling sounds, quiet speakers, and broken audio modules for clear calls and media.",
     color: "from-yellow-500/10 to-amber-500/10",
     iconColor: "text-yellow-500",
-    img: "https://images.unsplash.com/photo-1588508065123-287b28e013da?auto=format&fit=crop&q=80&w=800",
+    img: "https://images.unsplash.com/photo-1605236453806-6ff36851218e?auto=format&fit=crop&q=80&w=800",
   },
   {
     slug: "speaker-repair", // Map microphone to speaker repair page
@@ -83,7 +83,7 @@ const services = [
     desc: "Resolve low caller volume, mic statics, and complete audio recording failures on your device.",
     color: "from-indigo-500/10 to-blue-500/10",
     iconColor: "text-indigo-500",
-    img: "https://images.unsplash.com/photo-1588508065123-287b28e013da?auto=format&fit=crop&q=80&w=800",
+    img: "https://i.ibb.co/xNNrCpj/image.png",
   },
   {
     slug: "motherboard-repair",

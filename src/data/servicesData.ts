@@ -200,8 +200,8 @@ export const servicesData: Record<string, ServiceInfo> = {
     title: "Speaker Repair",
     shortDesc: "Fix quiet ear speakers, crackling loud speakers, and broken microphone units.",
     overview: "Muffled call audio, distorted playback, quiet ringtones, or absolute audio failures can severely limit your device. We deep-clean acoustic meshes and replace faulty ear speakers, bottom loudspeakers, and microphones to restore clear call volumes and high-quality audio playback.",
-    image: "https://images.unsplash.com/photo-1588508065123-287b28e013da?auto=format&fit=crop&q=80&w=800",
-    bannerImage: "https://images.unsplash.com/photo-1588508065123-287b28e013da?auto=format&fit=crop&q=80&w=1200",
+    image: "https://i.ibb.co/xNNrCpj/image.png",
+    bannerImage: "https://i.ibb.co/xNNrCpj/image.png",
     process: [
       { step: "01", title: "Acoustic Test", desc: "We check frequency outputs and volume levels to confirm transducer degradation." },
       { step: "02", title: "Sonic Mesh Clean", desc: "We apply alcohol solvent and use microscopic brushes to clear oils, wax, and metal dust from grills." },
