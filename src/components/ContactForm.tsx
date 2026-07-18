@@ -364,7 +364,7 @@ export default function ContactForm() {
 
                 {/* Email Button */}
                 <a
-                  href="mailto:support@iphonix.in"
+                  href="mailto:iphonixmobileliveservicecentre@gmail.com"
                   className="flex items-center space-x-4 p-4 bg-white/5 hover:bg-white/10 rounded-2xl border border-white/5 transition-all"
                 >
                   <div className="w-10 h-10 bg-accent/20 rounded-xl flex items-center justify-center text-accent">
@@ -372,7 +372,7 @@ export default function ContactForm() {
                   </div>
                   <div>
                     <p className="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Support Mail</p>
-                    <p className="font-space text-base font-bold">support@iphonix.in</p>
+                    <p className="font-space text-sm sm:text-base font-bold break-all">iphonixmobileliveservicecentre@gmail.com</p>
                   </div>
                 </a>
 
@@ -383,9 +383,8 @@ export default function ContactForm() {
                   </div>
                   <div className="space-y-1">
                     <p className="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Business Hours</p>
-                    <p className="text-sm font-semibold">Mon - Fri: 8:00 AM - 7:00 PM</p>
-                    <p className="text-sm font-semibold">Saturday: 9:00 AM - 5:00 PM</p>
-                    <p className="text-xs text-accent font-medium">Sunday: Closed (Emergency pickups only)</p>
+                    <p className="text-sm font-semibold">Monday – Saturday: 9:00 AM – 7:00 PM</p>
+                    <p className="text-xs text-accent font-medium">Sunday: Closed</p>
                   </div>
                 </div>
               </div>

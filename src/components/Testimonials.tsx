@@ -3,7 +3,6 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Star, ChevronLeft, ChevronRight, Quote } from "lucide-react";
-import ImageWithFallback from "@/components/ImageWithFallback";
 
 const testimonials = [
   {
@@ -11,28 +10,24 @@ const testimonials = [
     device: "iPhone 14 Pro Screen Repair (Trivandrum)",
     rating: 5,
     text: "Excellent doorstep service in Trivandrum. My iPhone screen was shattered, and they replaced it in 20 minutes at my office. Highly professional and very convenient!",
-    img: "https://images.unsplash.com/photo-1589156280159-27698a70f29e?auto=format&fit=crop&q=80&w=150",
   },
   {
     name: "Akhil Menon",
     device: "Samsung S23 Ultra Board Repair (Kochi)",
     rating: 5,
     text: "Highly recommended! Other shops told me my Samsung motherboard was unfixable. iPhonix repaired it at the chip level and recovered all my photos. Great job!",
-    img: "https://images.unsplash.com/photo-1599566150163-29194dcaad36?auto=format&fit=crop&q=80&w=150",
   },
   {
     name: "Meera Suresh",
     device: "Google Pixel 8 Battery Swap (Karamana)",
     rating: 5,
     text: "The doorstep pickup and delivery in Karamana was very prompt. They swapped my Pixel battery and resolved the rapid drainage issue on the same day. Extremely satisfied.",
-    img: "https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&q=80&w=150",
   },
   {
     name: "Vishnu Prasad",
     device: "OnePlus 11 Charging Issue (Kozhikode)",
     rating: 5,
     text: "Professional service at a reasonable price. The technician repaired my loose charging connector quickly and explained the repair step-by-step. Excellent work!",
-    img: "https://images.unsplash.com/photo-1624224971170-2f84fed5eb5e?auto=format&fit=crop&q=80&w=150",
   },
 ];
 
@@ -120,42 +115,31 @@ export default function Testimonials() {
               animate="center"
               exit="exit"
               transition={{ duration: 0.4, ease: "easeInOut" }}
-              className="w-full glass-card rounded-3xl p-8 sm:p-12 border border-white/10 flex flex-col sm:flex-row gap-8 items-center relative"
+              className="w-full glass-card rounded-3xl p-8 sm:p-12 border border-white/10 flex flex-col justify-between relative space-y-6"
             >
-              {/* Quote Mark Decoration */}
-              <Quote className="absolute top-6 right-8 w-16 h-16 text-white/5 pointer-events-none stroke-[1.5]" />
-
-              {/* Customer Photo Column */}
-              <div className="flex-shrink-0 text-center sm:text-left">
-                <div className="w-24 h-24 rounded-full p-1 bg-gradient-to-tr from-accent to-blue-500 shadow-xl shadow-accent/10 mx-auto sm:mx-0 overflow-hidden flex items-center justify-center">
-                  <ImageWithFallback
-                    src={testimonials[current].img}
-                    alt={testimonials[current].name}
-                    width={88}
-                    height={88}
-                    className="rounded-full object-cover border-2 border-navy"
-                  />
-                </div>
-                <div className="mt-4 flex justify-center sm:justify-start space-x-1">
+              {/* Top Row: Star Ratings & Quote Icon */}
+              <div className="flex justify-between items-center w-full">
+                <div className="flex space-x-1">
                   {[...Array(testimonials[current].rating)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-accent text-accent" />
+                    <Star key={i} className="w-5 h-5 fill-accent text-accent" />
                   ))}
                 </div>
+                <Quote className="w-10 h-10 text-accent/20 stroke-[1.5]" />
               </div>
 
-              {/* Text Column */}
-              <div className="flex-1 space-y-4 text-center sm:text-left">
-                <p className="text-gray-200 text-base sm:text-lg italic font-medium leading-relaxed">
-                  &ldquo;{testimonials[current].text}&rdquo;
+              {/* Body Text: Clean Typography */}
+              <p className="text-gray-200 text-base sm:text-lg md:text-xl font-medium leading-relaxed italic text-left">
+                &ldquo;{testimonials[current].text}&rdquo;
+              </p>
+
+              {/* Footer Row: User Details */}
+              <div className="pt-4 border-t border-white/5 space-y-1 text-left w-full animate-fade-in">
+                <h3 className="font-space text-lg sm:text-xl font-bold text-white">
+                  {testimonials[current].name}
+                </h3>
+                <p className="text-accent text-xs font-bold uppercase tracking-wider">
+                  {testimonials[current].device}
                 </p>
-                <div className="space-y-0.5">
-                  <h3 className="font-space text-xl font-bold text-white">
-                    {testimonials[current].name}
-                  </h3>
-                  <p className="text-accent text-xs font-bold uppercase tracking-wider">
-                    {testimonials[current].device}
-                  </p>
-                </div>
               </div>
             </motion.div>
           </AnimatePresence>
