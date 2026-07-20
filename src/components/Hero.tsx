@@ -176,22 +176,22 @@ export default function Hero() {
               stiffness: isHovered ? 400 : 150,
               damping: isHovered ? 30 : 25,
             }}
-            className="relative w-[300px] h-[550px] md:w-[350px] md:h-[650px] cursor-pointer flex items-center justify-center"
+            className="relative w-[320px] h-[580px] sm:w-[420px] sm:h-[720px] md:w-[500px] md:h-[820px] lg:w-[560px] lg:h-[920px] xl:w-[620px] xl:h-[980px] cursor-pointer flex items-center justify-center"
           >
             {/* Phone Base Shadow */}
-            <div className="absolute -bottom-6 left-1/10 right-1/10 h-10 bg-black/50 blur-2xl rounded-full pointer-events-none" />
+            <div className="absolute -bottom-8 left-1/12 right-1/12 h-14 bg-black/60 blur-3xl rounded-full pointer-events-none" />
 
             {/* Glowing Backdrop Layer */}
-            <div className="absolute inset-0 bg-accent/25 rounded-[2.5rem] blur-2xl opacity-60 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+            <div className="absolute inset-4 bg-accent/25 rounded-[3rem] blur-3xl opacity-70 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
             {/* Real Phone Image */}
-            <div className="relative w-full h-full overflow-hidden rounded-[2.5rem] flex items-center justify-center">
+            <div className="relative w-full h-full flex items-center justify-center">
               <ImageWithFallback
                 src="https://i.ibb.co/sdq8xPjK/image-removebg-preview-1.png"
                 alt="iPhonix Premium Repair Mockup"
                 fill
-                sizes="(max-width: 768px) 100vw, 400px"
-                className="object-contain drop-shadow-[0_25px_25px_rgba(0,0,0,0.5)] transition-transform duration-500 ease-out group-hover:scale-105"
+                sizes="(max-width: 768px) 100vw, 700px"
+                className="object-contain drop-shadow-[0_35px_35px_rgba(0,0,0,0.6)] transition-transform duration-500 ease-out group-hover:scale-105"
                 priority
               />
             </div>
