@@ -8,10 +8,16 @@ import { ArrowRight, Wrench, Shield, CheckCircle, Phone, MessageSquare, Layers, 
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Mobile Repair Gallery & Workshop Photos Trivandrum | iPhonix",
-  description: "Explore the iPhonix mobile repair workshop gallery in Karamana, Trivandrum. Real technician photos displaying screen replacements, motherboard diagnostics, and professional repair tools.",
+  title: "Mobile Repair Gallery & Workshop Photos in Trivandrum | iPhonix",
+  description: "Explore the iPhonix mobile repair workshop gallery in Karamana, Trivandrum & Kerala. Real technician photos displaying screen replacements, motherboard diagnostics, and professional repair tools.",
   alternates: {
-    canonical: "https://tekhfixers-repair.vercel.app/gallery",
+    canonical: "https://iphonix.in/gallery",
+  },
+  openGraph: {
+    title: "Mobile Repair Gallery & Workshop Photos in Trivandrum | iPhonix",
+    description: "Explore the iPhonix mobile repair workshop gallery in Karamana, Trivandrum & Kerala.",
+    url: "https://iphonix.in/gallery",
+    siteName: "iPhonix Mobile Service Centre",
   },
 };
 

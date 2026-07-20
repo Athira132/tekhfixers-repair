@@ -2,47 +2,70 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "iPhonix | Professional Mobile Repair Services | Trivandrum",
-  description: "Professional mobile repair services in Trivandrum with doorstep support for Apple, Samsung, OnePlus, Google Pixel, Nothing, Oppo, Vivo, Redmi, Motorola, Nokia, Realme, and more.",
+  title: {
+    default: "iPhonix | Mobile Phone Repair Service in Kerala & Trivandrum",
+    template: "%s | iPhonix Mobile Service Centre",
+  },
+  description: "iPhonix is a premier mobile phone repair service centre in Karamana, Trivandrum & Kerala. Expert doorstep smartphone screen replacement, display repair, battery replacement, charging port repair, motherboard repair, and software troubleshooting.",
   keywords: [
+    "Mobile phone repair service",
+    "Mobile phone repair in Kerala",
+    "Mobile service centre in Kerala",
+    "Phone repair service near me",
+    "Smartphone repair service",
+    "iPhone repair service",
+    "Android phone repair",
+    "Mobile screen replacement",
+    "Mobile battery replacement",
+    "Mobile charging port repair",
+    "Mobile software repair",
+    "Water damage phone repair",
     "iPhonix",
-    "Mobile Repair Trivandrum",
-    "Doorstep Mobile Repair",
-    "iPhone Repair",
-    "Samsung Repair",
-    "OnePlus Repair",
-    "Google Pixel Repair",
-    "Screen Replacement",
-    "Battery Replacement",
-    "Smartphone Service",
-    "Mobile Service Kerala"
+    "Mobile repair Trivandrum",
+    "Doorstep mobile repair"
   ],
-  authors: [{ name: "iPhonix" }],
-  metadataBase: new URL("https://tekhfixers-repair.vercel.app"),
+  authors: [{ name: "iPhonix Mobile Service Centre", url: "https://iphonix.in" }],
+  creator: "iPhonix Mobile Service Centre",
+  publisher: "iPhonix Mobile Service Centre",
+  metadataBase: new URL("https://iphonix.in"),
   alternates: {
-    canonical: "/",
+    canonical: "https://iphonix.in",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || "YOUR_GOOGLE_SEARCH_CONSOLE_VERIFICATION_CODE",
   },
   openGraph: {
-    title: "iPhonix | Professional Mobile Repair Services | Trivandrum",
-    description: "Door-to-door smartphone repair with professional technicians, genuine spare parts, quick turnaround, and support for all major brands.",
-    url: "https://tekhfixers-repair.vercel.app",
-    siteName: "iPhonix",
+    title: "iPhonix | Mobile Phone Repair Service in Kerala & Trivandrum",
+    description: "Doorstep smartphone repair in Karamana & Trivandrum with certified technicians, genuine spare parts, quick turnaround, and support for iPhone and Android devices.",
+    url: "https://iphonix.in",
+    siteName: "iPhonix Mobile Service Centre",
     images: [
       {
-        url: "/logo.jpg",
+        url: "https://iphonix.in/logo.jpg",
         width: 800,
         height: 800,
-        alt: "iPhonix Mobile Repair Services"
+        alt: "iPhonix Mobile Phone Repair Service Centre"
       }
     ],
-    locale: "en_US",
+    locale: "en_IN",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "iPhonix | Professional Mobile Repair Services | Trivandrum",
-    description: "Door-to-door smartphone repair in Trivandrum with professional technicians, genuine spare parts, quick turnaround, and support for all major brands.",
-    images: ["/logo.jpg"],
+    title: "iPhonix | Mobile Phone Repair Service in Kerala & Trivandrum",
+    description: "Doorstep smartphone repair in Trivandrum & Kerala with certified technicians, genuine spare parts, quick turnaround, and support for all major mobile brands.",
+    images: ["https://iphonix.in/logo.jpg"],
   },
 };
 
@@ -51,15 +74,16 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // LocalBusiness, MobilePhoneStore, Organization, and WebSite schemas
+  // LocalBusiness, MobilePhoneStore, Organization, and WebSite JSON-LD schemas
   const globalSchema = {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "MobilePhoneStore",
-        "@id": "https://tekhfixers-repair.vercel.app/#localbusiness",
+        "@type": ["MobilePhoneStore", "LocalBusiness"],
+        "@id": "https://iphonix.in/#localbusiness",
         "name": "iPhonix",
-        "image": "https://tekhfixers-repair.vercel.app/logo.jpg",
+        "legalName": "iPhonix Mobile Service Centre",
+        "image": "https://iphonix.in/logo.jpg",
         "telephone": "+917306243424",
         "email": "iphonixmobileliveservicecentre@gmail.com",
         "address": {
@@ -75,8 +99,9 @@ export default function RootLayout({
           "latitude": 8.4735234,
           "longitude": 76.9649563
         },
-        "url": "https://tekhfixers-repair.vercel.app",
+        "url": "https://iphonix.in",
         "priceRange": "$$",
+        "paymentAccepted": "Cash, UPI, Credit Card, Debit Card",
         "openingHoursSpecification": [
           {
             "@type": "OpeningHoursSpecification",
@@ -106,25 +131,29 @@ export default function RootLayout({
       },
       {
         "@type": "Organization",
-        "@id": "https://tekhfixers-repair.vercel.app/#organization",
-        "name": "iPhonix",
-        "url": "https://tekhfixers-repair.vercel.app",
-        "logo": "https://tekhfixers-repair.vercel.app/logo.jpg",
+        "@id": "https://iphonix.in/#organization",
+        "name": "iPhonix Mobile Service Centre",
+        "url": "https://iphonix.in",
+        "logo": "https://iphonix.in/logo.jpg",
         "contactPoint": {
           "@type": "ContactPoint",
           "telephone": "+917306243424",
           "contactType": "customer service",
           "areaServed": "IN",
           "availableLanguage": ["en", "ml"]
-        }
+        },
+        "sameAs": [
+          "https://www.facebook.com/share/1FXiJWsKGv/",
+          "https://www.instagram.com/iphonix_mobile_service?igsh=YnVib2hoamZ5ZDBi"
+        ]
       },
       {
         "@type": "WebSite",
-        "@id": "https://tekhfixers-repair.vercel.app/#website",
-        "url": "https://tekhfixers-repair.vercel.app",
-        "name": "iPhonix",
+        "@id": "https://iphonix.in/#website",
+        "url": "https://iphonix.in",
+        "name": "iPhonix Mobile Service Centre",
         "publisher": {
-          "@id": "https://tekhfixers-repair.vercel.app/#organization"
+          "@id": "https://iphonix.in/#organization"
         }
       }
     ]

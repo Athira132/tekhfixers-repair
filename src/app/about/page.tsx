@@ -10,10 +10,16 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About iPhonix | Mobile Repair Specialists in Trivandrum",
-  description: "Learn about iPhonix, the leading mobile repair service in Karamana & Trivandrum. Our certified technicians offer doorstep smartphone repairs with warranty support.",
+  title: "About iPhonix | Mobile Phone Repair Service Centre in Trivandrum, Kerala",
+  description: "Learn about iPhonix, the leading mobile phone repair service centre in Karamana, Trivandrum & Kerala. Certified technicians offering doorstep smartphone screen, battery, and board repairs.",
   alternates: {
-    canonical: "https://tekhfixers-repair.vercel.app/about",
+    canonical: "https://iphonix.in/about",
+  },
+  openGraph: {
+    title: "About iPhonix | Mobile Phone Repair Service Centre in Trivandrum, Kerala",
+    description: "Learn about iPhonix, Trivandrum's premium doorstep smartphone repair specialists.",
+    url: "https://iphonix.in/about",
+    siteName: "iPhonix Mobile Service Centre",
   },
 };
 

@@ -17,9 +17,9 @@ export interface ServiceInfo {
 export const servicesData: Record<string, ServiceInfo> = {
   "screen-replacement": {
     slug: "screen-replacement",
-    title: "Screen Replacement",
+    title: "Mobile Screen Replacement",
     shortDesc: "OEM-grade glass replacements to resolve cracked, scratched, or shattered front glass modules.",
-    overview: "Our screen replacement service targets devices with cracked external glass while the underlying OLED/LCD display remains fully functional. By replacing only the outer glass layer using specialized OCA lamination tools, we preserve your original factory display panel and save you up to 50% compared to a complete display swap.",
+    overview: "Our mobile screen replacement service targets smartphones with cracked external glass while the underlying OLED/LCD display remains fully functional. By replacing only the outer glass layer using specialized OCA lamination tools, we preserve your original factory display panel and save you up to 50% compared to a complete display swap for iPhone and Android phone repair.",
     image: "https://i.ibb.co/rLg9D5h/image.png",
     bannerImage: "https://i.ibb.co/rLg9D5h/image.png",
     process: [
@@ -42,14 +42,14 @@ export const servicesData: Record<string, ServiceInfo> = {
     reviews: [
       { author: "Rahul Sharma", rating: 5, text: "Excellent screen repair. The glass looks as good as new and the touch sensitivity is perfectly preserved. Done at my doorstep in 40 minutes!", date: "2 days ago" }
     ],
-    metaTitle: "Screen Replacement in Trivandrum | iPhonix Mobile Repair",
-    metaDesc: "Looking for screen replacement in Trivandrum? iPhonix provides professional smartphone screen replacement services in Karamana with quality parts and expert technicians."
+    metaTitle: "Mobile Screen Replacement Service in Kerala & Trivandrum | iPhonix",
+    metaDesc: "Professional mobile screen replacement service in Karamana, Trivandrum & Kerala. OEM-grade glass replacement for iPhone, Samsung, and Android smartphones."
   },
   "display-replacement": {
     slug: "display-replacement",
-    title: "Display Replacement",
+    title: "Mobile Display Replacement",
     shortDesc: "Complete OLED & LCD panel replacements to resolve display bleeding, dead pixels, and touch failures.",
-    overview: "If your screen shows black spots, vertical green/purple lines, bleeding colors, or has completely stopped registering touch inputs, you require a complete display panel replacement. We use premium, certified OEM-grade display units to restore crisp visual clarity, original refresh rates, and immediate touch responsiveness.",
+    overview: "If your smartphone screen shows black spots, vertical green/purple lines, bleeding colors, or has completely stopped registering touch inputs, you require a complete display panel replacement. We use premium, certified OEM-grade display units to restore crisp visual clarity, original refresh rates, and immediate touch responsiveness.",
     image: "https://i.ibb.co/DgjsCj8n/image.png",
     bannerImage: "https://i.ibb.co/DgjsCj8n/image.png",
     process: [
@@ -72,14 +72,14 @@ export const servicesData: Record<string, ServiceInfo> = {
     reviews: [
       { author: "Ananya Nair", rating: 5, text: "My screen was bleeding purple ink after a bad drop. iPhonix replaced the entire display right inside my living room. Truly professional!", date: "1 week ago" }
     ],
-    metaTitle: "Mobile Display Replacement in Trivandrum | iPhonix",
-    metaDesc: "Professional mobile display replacement in Karamana, Trivandrum for iPhone, Samsung, OnePlus, Pixel, and other major smartphone brands."
+    metaTitle: "Mobile Display Replacement Service in Trivandrum, Kerala | iPhonix",
+    metaDesc: "Expert mobile display replacement in Karamana, Trivandrum for iPhone, Samsung, OnePlus, and Android smartphones. OLED & LCD screen repairs with warranty."
   },
   "battery-replacement": {
     slug: "battery-replacement",
-    title: "Battery Replacement",
+    title: "Mobile Battery Replacement",
     shortDesc: "Certified battery swaps to restore battery health, prevent rapid drain, and eliminate random shutdowns.",
-    overview: "Over time, lithium-ion batteries degrade, leading to reduced runtime, sudden percentage drops, and processor throttling. If your battery health is below 80% or you experience shutdowns under load, our certified battery replacement restores your device to peak performance and original capacity.",
+    overview: "Over time, lithium-ion batteries degrade, leading to reduced runtime, sudden percentage drops, and processor throttling. If your battery health is below 80% or you experience shutdowns under load, our certified mobile battery replacement restores your device to peak performance and original capacity.",
     image: "https://i.ibb.co/MyPYqZ3j/image.png",
     bannerImage: "https://i.ibb.co/MyPYqZ3j/image.png",
     process: [
@@ -102,14 +102,14 @@ export const servicesData: Record<string, ServiceInfo> = {
     reviews: [
       { author: "Michael George", rating: 5, text: "Battery health went from 76% to 100%. Phone is snappy again and doesn't shutdown at 20% charge. Awesome doorstep service!", date: "3 days ago" }
     ],
-    metaTitle: "Mobile Battery Replacement in Trivandrum | iPhonix",
-    metaDesc: "Get professional smartphone battery replacement in Karamana and Trivandrum from experienced mobile repair technicians."
+    metaTitle: "Mobile Battery Replacement Service in Trivandrum, Kerala | iPhonix",
+    metaDesc: "Get fast, certified mobile battery replacement in Karamana, Trivandrum & Kerala. High-capacity smartphone battery swaps for iPhone and Android phones."
   },
   "charging-port-repair": {
     slug: "charging-port-repair",
     title: "Charging Port Repair",
     shortDesc: "Resolve loose charging connections, slow charging speeds, and auxiliary port faults.",
-    overview: "A loose charging cable, slow charging indicators, or complete failure to draw current is usually caused by accumulated debris, corrosion, or fractured solder joints in the charging port. We repair or replace charging docks to restore high-speed Power Delivery and sync capabilities.",
+    overview: "A loose charging cable, slow charging indicators, or complete failure to draw current is usually caused by accumulated debris, corrosion, or fractured solder joints in the charging port. We repair or replace charging docks to restore high-speed Power Delivery and sync capabilities for iPhone and Android phone repair.",
     image: "https://i.ibb.co/QRwLj07/image.png",
     bannerImage: "https://i.ibb.co/QRwLj07/image.png",
     process: [
@@ -132,14 +132,14 @@ export const servicesData: Record<string, ServiceInfo> = {
     reviews: [
       { author: "Siddharth S.", rating: 5, text: "Charging cable kept falling out. The tech cleaned it out and replaced the charging port in 25 mins. Highly recommended doorstep service.", date: "5 days ago" }
     ],
-    metaTitle: "Charging Port Repair in Trivandrum | iPhonix",
-    metaDesc: "Professional charging port repair for smartphones in Karamana, Trivandrum. Get reliable mobile repair service from iPhonix."
+    metaTitle: "Mobile Charging Port Repair Service in Trivandrum | iPhonix",
+    metaDesc: "Professional mobile charging port repair and USB dock replacement in Karamana, Trivandrum. Fast phone repair service for iPhone & Android devices."
   },
   "camera-repair": {
     slug: "camera-repair",
-    title: "Camera Repair",
+    title: "Smartphone Camera Repair",
     shortDesc: "Resolve blurry lenses, focusing failures, image stabilization shaking, and camera sensor cracks.",
-    overview: "If your front or rear camera has broken lens glass, fails to focus, displays black viewfinders, or has a shaking sensor due to failed optical image stabilization (OIS), we can replace the camera modules or outer lens covers to restore sharp photo and video recording capabilities.",
+    overview: "If your front or rear camera has broken lens glass, fails to focus, displays black viewfinders, or has a shaking sensor due to failed optical image stabilization (OIS), we replace the camera modules or outer lens covers to restore sharp photo and video recording capabilities.",
     image: "https://i.ibb.co/Q7JSyDRz/image.png",
     bannerImage: "https://i.ibb.co/Q7JSyDRz/image.png",
     process: [
@@ -162,12 +162,12 @@ export const servicesData: Record<string, ServiceInfo> = {
     reviews: [
       { author: "Karthik R.", rating: 5, text: "My iPhone camera lens was shattered and pictures were blurry. iPhonix replaced the glass at my house. Now photos are crisp again!", date: "1 week ago" }
     ],
-    metaTitle: "Mobile Camera Repair in Trivandrum | iPhonix",
-    metaDesc: "Expert smartphone camera repair services in Karamana, Trivandrum for iPhone, Samsung, OnePlus, Pixel, and more."
+    metaTitle: "Smartphone Camera Repair & Lens Replacement in Trivandrum | iPhonix",
+    metaDesc: "Expert mobile phone camera repair and lens replacement in Karamana, Trivandrum. Fast smartphone camera service for iPhone, Samsung, Pixel & Android."
   },
   "motherboard-repair": {
     slug: "motherboard-repair",
-    title: "Motherboard Repair",
+    title: "Mobile Motherboard Repair",
     shortDesc: "Advanced micro-soldering, chip level diagnostics, and logic board circuit repairs.",
     overview: "When a phone refuses to turn on, won't charge, loop restarts, or has lost signal due to logic board faults, general repair shops declare it dead. At iPhonix, our micro-soldering engineers specialize in schematic diagnostics, trace repairs, short-circuit detection, and IC chip replacements under high-power microscopes.",
     image: "https://i.ibb.co/KxmBknMz/image.png",
@@ -192,14 +192,14 @@ export const servicesData: Record<string, ServiceInfo> = {
     reviews: [
       { author: "Deepak G.", rating: 5, text: "Other repair shops told me my dead iPhone board was unfixable. iPhonix diagnosed a short capacitor, replaced it, and booted it up! Lifesavers.", date: "3 days ago" }
     ],
-    metaTitle: "Mobile Motherboard Repair in Trivandrum | iPhonix",
-    metaDesc: "Professional mobile motherboard repair and advanced smartphone diagnostics in Karamana, Trivandrum."
+    metaTitle: "Mobile Motherboard Repair & Chip-Level Service in Trivandrum | iPhonix",
+    metaDesc: "Advanced mobile motherboard repair, logic board micro-soldering, and chip-level smartphone diagnostics in Karamana, Trivandrum, Kerala."
   },
   "speaker-repair": {
     slug: "speaker-repair",
-    title: "Speaker Repair",
+    title: "Speaker & Microphone Repair",
     shortDesc: "Fix quiet ear speakers, crackling loud speakers, and broken microphone units.",
-    overview: "Muffled call audio, distorted playback, quiet ringtones, or absolute audio failures can severely limit your device. We deep-clean acoustic meshes and replace faulty ear speakers, bottom loudspeakers, and microphones to restore clear call volumes and high-quality audio playback.",
+    overview: "Muffled call audio, distorted playback, quiet ringtones, or absolute audio failures can severely limit your device. We deep-clean acoustic meshes and replace faulty ear speakers, bottom loudspeakers, and microphones to restore clear call volumes and high-quality audio playback for iPhone and Android phone repair.",
     image: "https://i.ibb.co/xNNrCpj/image.png",
     bannerImage: "https://i.ibb.co/xNNrCpj/image.png",
     process: [
@@ -222,14 +222,14 @@ export const servicesData: Record<string, ServiceInfo> = {
     reviews: [
       { author: "Arjun Krishnan", rating: 5, text: "My loudspeaker was crackling terribly. They came and replaced the speaker unit inside my office. Sound is clear now!", date: "4 days ago" }
     ],
-    metaTitle: "Mobile Speaker & Microphone Repair in Trivandrum | iPhonix",
-    metaDesc: "Get expert mobile speaker and microphone repair in Karamana, Trivandrum. Fast doorstep repairs for distorted audio or mic issues at iPhonix."
+    metaTitle: "Mobile Speaker & Microphone Repair Service in Trivandrum | iPhonix",
+    metaDesc: "Professional mobile speaker and microphone repair in Karamana, Trivandrum. Fast phone audio service for clear calls and media on iPhone & Android."
   },
   "water-damage-repair": {
     slug: "water-damage-repair",
-    title: "Water Damage Repair",
+    title: "Water Damage Phone Repair",
     shortDesc: "Emergency ultrasonic cleaning and moisture extraction to recover water-damaged boards.",
-    overview: "Accidental drops in pools, sinks, or rain can cause short circuits and corrosion on your phone's main board. Rice does not fix this. Our liquid damage recovery protocol involves immediate teardown, board cleaning in chemical ultrasonic baths, and targeted micro-soldering to save the device and protect your data.",
+    overview: "Accidental drops in pools, sinks, or rain cause short circuits and corrosion on your phone's main board. Rice does not fix this. Our water damage phone repair protocol involves immediate teardown, board cleaning in chemical ultrasonic baths, and targeted micro-soldering to save the device and protect your data.",
     image: "https://i.ibb.co/bMG8Nnqr/image.png",
     bannerImage: "https://i.ibb.co/bMG8Nnqr/image.png",
     process: [
@@ -252,14 +252,14 @@ export const servicesData: Record<string, ServiceInfo> = {
     reviews: [
       { author: "Vivek Pillai", rating: 5, text: "Dropped my phone in a pool. iPhonix did a quick chemical cleaning, fixed a blown power rail on the board, and got it working. Highly professional!", date: "2 weeks ago" }
     ],
-    metaTitle: "Water Damage Mobile Repair in Trivandrum | iPhonix",
-    metaDesc: "Get professional water damage repair for smartphones in Karamana and Trivandrum from experienced technicians."
+    metaTitle: "Water Damage Phone Repair Service in Trivandrum, Kerala | iPhonix",
+    metaDesc: "Emergency water damage phone repair and chemical ultrasonic board restoration in Karamana, Trivandrum. Expert smartphone liquid damage recovery."
   },
   "software-repair": {
     slug: "software-repair",
-    title: "Software Repair",
+    title: "Mobile Software Repair",
     shortDesc: "Resolve boot loops, frozen systems, storage blocks, and perform complete OS recovery.",
-    overview: "Operating system crashes, corrupted update packages, storage blockages, and boot loops ('stuck on logo') can brick your smartphone. We flash official stock firmware, bypass boot errors, clear memory blockages, and resolve software bugs while prioritizing data safety.",
+    overview: "Operating system crashes, corrupted update packages, storage blockages, and boot loops ('stuck on logo') can brick your smartphone. We flash official stock firmware, bypass boot errors, clear memory blockages, and resolve software bugs for mobile software repair while prioritizing data safety.",
     image: "https://images.unsplash.com/photo-1607799279861-4dd421887fb3?auto=format&fit=crop&q=80&w=800",
     bannerImage: "https://images.unsplash.com/photo-1607799279861-4dd421887fb3?auto=format&fit=crop&q=80&w=1200",
     process: [
@@ -282,12 +282,12 @@ export const servicesData: Record<string, ServiceInfo> = {
     reviews: [
       { author: "Nikhil Raj", rating: 5, text: "Phone was stuck on the apple logo after a storage full error. iPhonix resolved the boot loop without wiping my photos. Life saver!", date: "1 week ago" }
     ],
-    metaTitle: "Mobile Software Repair & OS Troubleshooting in Trivandrum | iPhonix",
-    metaDesc: "Expert mobile software repair, bootloop fix, and OS troubleshooting in Karamana, Trivandrum. Recover and optimize your smartphone operating system."
+    metaTitle: "Mobile Software Repair & OS Recovery in Trivandrum, Kerala | iPhonix",
+    metaDesc: "Expert mobile software repair, boot loop fix, and OS recovery for iPhone and Android phone repair in Karamana, Trivandrum & Kerala."
   },
   "face-id-repair": {
     slug: "face-id-repair",
-    title: "Face ID Repair",
+    title: "iPhone Face ID Repair",
     shortDesc: "Repair biometric sensors, dot projectors, and true-depth camera logic safely.",
     overview: "Face ID failures ('Move iPhone higher/lower' or 'Face ID is not available') occur when the dot projector, infrared camera, or flood illuminator gets slightly wet, dropped, or desynchronized from the secure enclave. We perform precision component-level repairs to restore biometric security without losing face tracking capabilities.",
     image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&q=80&w=800",
@@ -312,14 +312,14 @@ export const servicesData: Record<string, ServiceInfo> = {
     reviews: [
       { author: "Shruti Sen", rating: 5, text: "Face ID got disabled after light water splash. iPhonix desoldered the sensor, cleaned it, and realigned the projector. Face unlock works perfectly now!", date: "3 days ago" }
     ],
-    metaTitle: "iPhone Face ID & Touch ID Repair in Trivandrum | iPhonix",
-    metaDesc: "Professional iPhone Face ID and Touch ID sensor repair services in Karamana, Trivandrum. Restore biometric security options on your Apple device."
+    metaTitle: "iPhone Face ID & Biometric Sensor Repair in Trivandrum | iPhonix",
+    metaDesc: "Specialized iPhone Face ID repair and biometric sensor alignment in Karamana, Trivandrum. Micro-soldering solutions for Apple smartphone repair."
   },
   "data-recovery": {
     slug: "data-recovery",
-    title: "Data Recovery",
+    title: "Mobile Data Recovery",
     shortDesc: "Retrieve contacts, photos, and critical documents from bricked or broken devices.",
-    overview: "When a smartphone is smashed, ran over, or suffers a fatal board crash, recovering personal photos, WhatsApp backups, and work files is critical. We perform temporary board restorations, CPU swaps (transplants), and memory chip reads in our cleanroom labs to recover 100% of your data.",
+    overview: "When a smartphone is smashed, ran over, or suffers a fatal board crash, recovering personal photos, WhatsApp backups, and work files is critical. We perform temporary board restorations, CPU swaps (transplants), and memory chip reads in our cleanroom labs for mobile data recovery.",
     image: "https://i.ibb.co/whhVng3x/image.png",
     bannerImage: "https://i.ibb.co/whhVng3x/image.png",
     process: [
@@ -342,7 +342,7 @@ export const servicesData: Record<string, ServiceInfo> = {
     reviews: [
       { author: "Thomas Mathew", rating: 5, text: "My phone was crushed by a car. I lost all hope of getting my business files back. iPhonix transplanted the chips to a donor board and recovered everything. Speechless!", date: "1 week ago" }
     ],
-    metaTitle: "Mobile Data Recovery in Trivandrum | iPhonix",
-    metaDesc: "Professional mobile data recovery services in Karamana, Trivandrum for smartphones experiencing software or hardware issues."
+    metaTitle: "Mobile Data Recovery Service in Trivandrum, Kerala | iPhonix",
+    metaDesc: "Professional mobile data recovery service in Karamana, Trivandrum & Kerala. Retrieve photos, contacts, and files from dead or broken smartphones."
   }
 };

@@ -2,10 +2,10 @@ import { MetadataRoute } from 'next';
 import { servicesData } from '@/data/servicesData';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://tekhfixers-repair.vercel.app';
+  const baseUrl = 'https://iphonix.in';
   
   // Static pages
-  const staticPages = ['', '/about', '/contact', '/book', '/gallery'].map(route => ({
+  const staticPages = ['', '/about', '/contact', '/book', '/gallery', '/privacy', '/terms'].map(route => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
     changeFrequency: 'monthly' as const,

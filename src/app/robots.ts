@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://tekhfixers-repair.vercel.app/sitemap.xml',
+    sitemap: 'https://iphonix.in/sitemap.xml',
   };
 }

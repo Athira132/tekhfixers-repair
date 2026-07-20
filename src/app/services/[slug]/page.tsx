@@ -34,21 +34,21 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!service) return { title: "Service Not Found" };
 
   return {
-    title: `${service.title} | iPhonix Smartphone Repair`,
+    title: service.metaTitle,
     description: service.metaDesc,
     alternates: {
-      canonical: `https://tekhfixers-repair.vercel.app/services/${slug}`,
+      canonical: `https://iphonix.in/services/${slug}`,
     },
     openGraph: {
       title: service.metaTitle,
       description: service.metaDesc,
-      url: `https://tekhfixers-repair.vercel.app/services/${slug}`,
+      url: `https://iphonix.in/services/${slug}`,
       images: [
         {
           url: service.image,
           width: 800,
           height: 600,
-          alt: service.title,
+          alt: `${service.title} - iPhonix Mobile Phone Repair Service`,
         },
       ],
     },
@@ -70,11 +70,11 @@ export default async function ServiceDetailPage({ params }: PageProps) {
       {
         "@type": "Service",
         "name": service.title,
-        "serviceType": "Smartphone Hardware Repair",
+        "serviceType": "Mobile Phone Repair Service",
         "provider": {
           "@type": "LocalBusiness",
-          "name": "iPhonix",
-          "image": "https://tekhfixers-repair.vercel.app/logo.jpg",
+          "name": "iPhonix Mobile Service Centre",
+          "image": "https://iphonix.in/logo.jpg",
           "address": {
             "@type": "PostalAddress",
             "streetAddress": "Karamana",
@@ -83,7 +83,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
             "postalCode": "695002",
             "addressCountry": "IN"
           },
-          "telephone": "7306243424"
+          "telephone": "+917306243424"
         },
         "description": service.metaDesc,
         "areaServed": [
@@ -94,6 +94,10 @@ export default async function ServiceDetailPage({ params }: PageProps) {
           {
             "@type": "AdministrativeArea",
             "name": "Trivandrum"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Kerala"
           }
         ]
       },
@@ -104,19 +108,19 @@ export default async function ServiceDetailPage({ params }: PageProps) {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://tekhfixers-repair.vercel.app"
+            "item": "https://iphonix.in"
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Services",
-            "item": "https://tekhfixers-repair.vercel.app/gallery"
+            "item": "https://iphonix.in/#services"
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": service.title,
-            "item": `https://tekhfixers-repair.vercel.app/services/${slug}`
+            "item": `https://iphonix.in/services/${slug}`
           }
         ]
       },
