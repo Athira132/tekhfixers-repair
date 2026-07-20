@@ -1,236 +1,106 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
-import { motion, useInView } from "framer-motion";
-import {
-  Clock,
-  ShieldCheck,
-  Truck,
-  Award,
-  Star,
-  Users,
-  Calendar,
-  Smartphone,
-  Tag,
-} from "lucide-react";
+import { motion } from "framer-motion";
+import ImageWithFallback from "@/components/ImageWithFallback";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
-// CountUp Component for premium stat counting animation
-function CountUp({ end, suffix = "", duration = 2 }: { end: number; suffix?: string; duration?: number }) {
-  const [count, setCount] = useState(0);
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
-  useEffect(() => {
-    if (!isInView) return;
-
-    let startTime: number | null = null;
-    const startValue = 0;
-
-    const animate = (timestamp: number) => {
-      if (!startTime) startTime = timestamp;
-      const progress = Math.min((timestamp - startTime) / (duration * 1000), 1);
-      setCount(Math.floor(progress * (end - startValue) + startValue));
-
-      if (progress < 1) {
-        requestAnimationFrame(animate);
-      } else {
-        setCount(end);
-      }
-    };
-
-    requestAnimationFrame(animate);
-  }, [end, duration, isInView]);
-
-  return (
-    <span ref={ref} className="font-space font-extrabold text-5xl md:text-6xl text-white">
-      {count}
-      {suffix}
-    </span>
-  );
-}
-
-const stats = [
+const whyUsPoints = [
   {
-    value: 20000,
-    suffix: "+",
-    label: "Devices Repaired",
-    icon: Users,
-    color: "bg-blue-500/10 text-blue-400",
+    title: "Licensed Local Captains & Crew",
+    desc: "Decades of backwater navigation experience navigating narrow canals and open lakes safely.",
+    tag: "Certified Crew",
   },
   {
-    value: 10,
-    suffix: "+",
-    label: "Years Experience",
-    icon: Calendar,
-    color: "bg-emerald-500/10 text-emerald-400",
+    title: "Onboard Gourmet Kerala Chefs",
+    desc: "Fresh Karimeen fish fry, tiger prawns, and traditional vegetarian banana-leaf sadhya cooked live.",
+    tag: "Fresh Cuisine",
   },
   {
-    value: 5,
-    suffix: ".0",
-    label: "Customer Rating",
-    icon: Star,
-    isFloat: true,
-    color: "bg-amber-500/10 text-amber-400",
-  },
-];
-
-const values = [
-  {
-    icon: Truck,
-    title: "Doorstep Service",
-    desc: "Our technicians come directly to your doorstep in Trivandrum to repair your smartphone.",
-    glowColor: "group-hover:border-blue-500/30 group-hover:shadow-blue-500/10",
+    title: "Glass-Wall Luxury Bedroom Suites",
+    desc: "Air-conditioned bedrooms featuring full panoramic views of the water from your private bed.",
+    tag: "Panoramic Comfort",
   },
   {
-    icon: Clock,
-    title: "Same Day Repair",
-    desc: "Most screen, battery, and charging port repairs are completed on the same day.",
-    glowColor: "group-hover:border-emerald-500/30 group-hover:shadow-emerald-500/10",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Genuine Spare Parts",
-    desc: "We use only premium, original manufacturer-grade replacement parts for repairs.",
-    glowColor: "group-hover:border-purple-500/30 group-hover:shadow-purple-500/10",
-  },
-  {
-    icon: Award,
-    title: "Warranty Support",
-    desc: "Every repair is backed by our comprehensive warranty program for absolute peace of mind.",
-    glowColor: "group-hover:border-rose-500/30 group-hover:shadow-rose-500/10",
-  },
-  {
-    icon: Users,
-    title: "Certified Technicians",
-    desc: "Our experienced hardware engineers hold industry certifications for all major platforms.",
-    glowColor: "group-hover:border-amber-500/30 group-hover:shadow-amber-500/10",
-  },
-  {
-    icon: Smartphone,
-    title: "Multi-Brand Support",
-    desc: "We repair Apple, Samsung, OnePlus, Google Pixel, Nothing, Motorola, Vivo, and more.",
-    glowColor: "group-hover:border-violet-500/30 group-hover:shadow-violet-500/10",
-  },
-  {
-    icon: Tag,
-    title: "Affordable Pricing",
-    desc: "Get upfront quotes with transparent pricing and absolutely no hidden diagnostic fees.",
-    glowColor: "group-hover:border-cyan-500/30 group-hover:shadow-cyan-500/10",
-  },
-  {
-    icon: Star,
-    title: "Professional Service",
-    desc: "Experience a seamless, professional repair process designed entirely around your comfort.",
-    glowColor: "group-hover:border-pink-500/30 group-hover:shadow-pink-500/10",
+    title: "100% Safety & Environmental Compliance",
+    desc: "Fully equipped with life jackets, fire safety systems, and eco-friendly silent engines.",
+    tag: "Safety First",
   },
 ];
 
 export default function WhyChooseUs() {
   return (
-    <section id="why-us" className="py-24 md:py-32 gradient-bg-dark relative overflow-hidden">
-      {/* Decorative Blur Gradients */}
-      <div className="absolute top-1/4 left-0 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl pointer-events-none" />
-
-      {/* Diagonal Curve Cuts */}
-      <div className="absolute top-0 left-0 w-full overflow-hidden leading-none z-10 rotate-180">
-        <svg
-          viewBox="0 0 1200 120"
-          preserveAspectRatio="none"
-          className="relative block w-full h-[60px] md:h-[100px] text-[#F7F8FB] fill-current"
-        >
-          <path d="M1200 120L0 120L0 0C300 80 900 80 1200 0L1200 120Z"></path>
-        </svg>
-      </div>
-
-      <div className="max-w-7xl mx-auto px-6 relative z-20">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+    <section className="py-24 md:py-32 bg-white relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
-          {/* Left Column: Title and Values Grid */}
-          <div className="lg:col-span-7 space-y-12">
-            <div className="space-y-4">
-              <span className="text-xs md:text-sm font-semibold text-accent uppercase tracking-widest bg-accent/10 px-4 py-2 rounded-full border border-accent/20">
-                Why Choose Us
+          {/* Left Column: Image-First Showcase */}
+          <div className="lg:col-span-6 space-y-6">
+            <div className="relative aspect-[4/3] rounded-3xl overflow-hidden border border-gray-100 shadow-2xl group bg-[#06201B]">
+              <ImageWithFallback
+                src="https://i.ibb.co/gbts7Rrj/image.png"
+                alt="Phoenix Cruise Houseboat Interior & Deck"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#06201B]/80 via-transparent to-transparent pointer-events-none" />
+              
+              <div className="absolute bottom-6 left-6 right-6 text-white space-y-1">
+                <span className="text-[10px] font-bold text-amber-400 uppercase tracking-widest bg-emerald-950/80 px-3 py-1 rounded-full border border-emerald-500/30 inline-block">
+                  Luxury Backwater Interior
+                </span>
+                <h3 className="font-space text-xl font-bold text-white">
+                  Designed for Ultimate Backwater Comfort
+                </h3>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column: Clean Features (No icon clutter) */}
+          <div className="lg:col-span-6 space-y-8">
+            <div className="space-y-3">
+              <span className="text-xs font-bold text-emerald-800 uppercase tracking-widest bg-emerald-100/60 px-4 py-1.5 rounded-full">
+                The Phoenix Difference
               </span>
-              <h2 className="font-space text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight mt-2">
-                Uncompromising Quality <br />
-                <span className="gradient-text-accent">For Every Device Repair</span>
+              <h2 className="font-space text-3xl sm:text-4xl font-extrabold text-[#06201B] tracking-tight">
+                Why Travel With Phoenix Cruise?
               </h2>
-              <p className="text-gray-300 text-base sm:text-lg max-w-xl">
-                We combine industry-certified expertise, OEM-grade components, and lightning-fast turnaround times to deliver a first-class repair experience.
+              <p className="text-gray-600 text-sm leading-relaxed">
+                We combine traditional Kettuvalam craftsmanship with modern luxury, personalized dining, and strict safety standards.
               </p>
             </div>
 
-            {/* Core Values List */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {values.map((val) => {
-                const Icon = val.icon;
-                return (
-                  <div
-                    key={val.title}
-                    className={`group p-6 glass-card rounded-2xl border border-white/5 transition-all duration-300 hover:scale-[1.02] ${val.glowColor}`}
-                  >
-                    <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center mb-4 transition-all duration-300 group-hover:bg-accent group-hover:text-navy text-accent">
-                      <Icon className="w-6 h-6 stroke-[2]" />
-                    </div>
-                    <h3 className="font-space text-lg font-bold text-white mb-2">
-                      {val.title}
-                    </h3>
-                    <p className="text-gray-400 text-xs md:text-sm font-medium leading-relaxed">
-                      {val.desc}
-                    </p>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Right Column: High-End Statistics Displays */}
-          <div className="lg:col-span-5 space-y-6 flex flex-col justify-center">
-            {stats.map((stat, idx) => {
-              const Icon = stat.icon;
-              return (
-                <motion.div
-                  key={stat.label}
-                  initial={{ opacity: 0, x: 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: idx * 0.15 }}
-                  className="p-8 bg-white/5 rounded-3xl border border-white/10 flex items-center justify-between shadow-2xl relative overflow-hidden group hover:border-accent/30 transition-all duration-300"
+              {whyUsPoints.map((item, idx) => (
+                <div
+                  key={idx}
+                  className="p-6 bg-[#FAFBF8] rounded-2xl border border-gray-200/60 space-y-3 hover:border-emerald-300 transition-colors"
                 >
-                  {/* Background Radial Glow */}
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-accent/5 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                  <span className="text-[10px] font-bold text-emerald-800 uppercase tracking-wider bg-emerald-100/80 px-2.5 py-1 rounded-full inline-block">
+                    {item.tag}
+                  </span>
+                  <h4 className="font-space text-base font-bold text-[#06201B]">{item.title}</h4>
+                  <p className="text-gray-500 text-xs leading-relaxed">{item.desc}</p>
+                </div>
+              ))}
+            </div>
 
-                  <div className="space-y-1 relative z-10">
-                    <CountUp
-                      end={stat.value}
-                      suffix={stat.suffix}
-                      duration={stat.isFloat ? 1.5 : 2}
-                    />
-                    <p className="text-gray-400 text-sm font-semibold uppercase tracking-wider">
-                      {stat.label}
-                    </p>
-                  </div>
-                  <div className={`w-16 h-16 ${stat.color} rounded-2xl flex items-center justify-center relative z-10 shadow-lg`}>
-                    <Icon className="w-8 h-8 stroke-[2.2]" />
-                  </div>
-                </motion.div>
-              );
-            })}
+            <div className="pt-4">
+              <Link
+                href="/about"
+                className="inline-flex items-center text-xs font-bold text-[#06201B] hover:text-emerald-700 uppercase tracking-wider transition-colors"
+              >
+                <span className="mr-2">Learn More About Phoenix Cruise</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+
           </div>
 
         </div>
-      </div>
 
-      {/* Curve Cut bottom */}
-      <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-10">
-        <svg
-          viewBox="0 0 1200 120"
-          preserveAspectRatio="none"
-          className="relative block w-full h-[60px] md:h-[100px] text-white fill-current"
-        >
-          <path d="M1200 120L0 120L0 0C300 80 900 80 1200 0L1200 120Z"></path>
-        </svg>
       </div>
     </section>
   );

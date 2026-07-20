@@ -9,20 +9,21 @@ import Faq from "@/components/Faq";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import WatchOurStory from "@/components/WatchOurStory";
+import Gallery from "@/components/Gallery";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "iPhonix | Mobile Phone Repair Service in Kerala & Trivandrum",
-  description: "iPhonix is a professional mobile phone repair service centre in Karamana, Trivandrum & Kerala offering screen replacement, display repair, battery replacement, charging port repair, motherboard repair, software repair, and doorstep phone service.",
+  title: "Phoenix Cruise | Luxury Houseboat & Backwater Cruises in Alappuzha, Kerala",
+  description: "Phoenix Cruise offers luxury houseboat stays, day cruises, sunset specials, and authentic Kerala seafood dining on the serene backwaters of Alappuzha, Kerala.",
   alternates: {
     canonical: "https://iphonix.in",
   },
   openGraph: {
-    title: "iPhonix | Mobile Phone Repair Service in Kerala & Trivandrum",
-    description: "Professional doorstep mobile phone repair service in Karamana, Trivandrum & Kerala for iPhone and Android smartphones.",
+    title: "Phoenix Cruise | Luxury Houseboat & Backwater Cruises in Alappuzha, Kerala",
+    description: "Experience the serene beauty of Kerala's palm-fringed backwaters, luxury houseboat stays, and authentic traditional dining in Alappuzha.",
     url: "https://iphonix.in",
-    siteName: "iPhonix Mobile Service Centre",
-    images: [{ url: "https://iphonix.in/logo.jpg", width: 800, height: 800, alt: "iPhonix Mobile Phone Repair Service" }],
+    siteName: "Phoenix Cruise",
+    images: [{ url: "https://i.ibb.co/v4FnnCRs/Whats-App-Image-2026-07-14-at-1-19-44-PM.jpg", width: 1200, height: 800, alt: "Phoenix Cruise Houseboat" }],
   },
 };
 
@@ -35,8 +36,9 @@ export default function Home() {
         <Services />
         <WhyChooseUs />
         <RepairProcess />
-        <Brands />
+        <Gallery />
         <WatchOurStory />
+        <Brands />
         <Testimonials />
         <Faq />
         <ContactForm />

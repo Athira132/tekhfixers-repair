@@ -12,17 +12,15 @@ import {
   Clock,
   MapPin,
   CheckCircle,
-  AlertTriangle,
+  Anchor,
 } from "lucide-react";
 
-// Form validation schema with Zod
 const bookingSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
   email: z.string().email("Please enter a valid email address"),
   phone: z.string().min(10, "Phone number must be at least 10 digits"),
-  device: z.string().min(1, "Please select device type"),
-  brand: z.string().min(1, "Please select brand"),
-  issue: z.string().min(1, "Please select primary issue"),
+  packageType: z.string().min(1, "Please select a cruise package"),
+  guests: z.string().min(1, "Please select guest count"),
   date: z.string().min(1, "Please pick a preferred date"),
   message: z.string().optional(),
 });
@@ -43,21 +41,21 @@ export default function ContactForm() {
   });
 
   const onSubmit = async (data: BookingFormValues) => {
-    // Simulate server side email dispatch
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    await new Promise((resolve) => setTimeout(resolve, 1200));
     setFormDataSummary(data);
     setIsSubmitted(true);
   };
 
   const handleWhatsAppRedirect = () => {
     if (!formDataSummary) return;
-    const text = `Hi iPhonix! I'd like to book a doorstep repair:
+    const text = `Hi Phoenix Cruise! I'd like to inquire about a houseboat booking:
 - Name: ${formDataSummary.name}
-- Device: ${formDataSummary.device} (${formDataSummary.brand})
-- Issue: ${formDataSummary.issue}
+- Package: ${formDataSummary.packageType}
+- Guests: ${formDataSummary.guests}
 - Preferred Date: ${formDataSummary.date}
 - Phone: ${formDataSummary.phone}
-- Notes: ${formDataSummary.message || "None"}`;
+- Email: ${formDataSummary.email}
+- Special Notes: ${formDataSummary.message || "None"}`;
 
     const encodedText = encodeURIComponent(text);
     window.open(`https://wa.me/917306243424?text=${encodedText}`, "_blank");
@@ -74,15 +72,15 @@ export default function ContactForm() {
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 md:mb-24 space-y-4">
-          <span className="text-xs md:text-sm font-semibold text-darkblue uppercase tracking-widest bg-darkblue/5 px-4 py-2 rounded-full">
-            Book a Service
+        <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+          <span className="text-xs font-bold text-emerald-800 uppercase tracking-widest bg-emerald-100/60 px-4 py-1.5 rounded-full">
+            Reservation Desk
           </span>
-          <h2 className="font-space text-3xl sm:text-4xl md:text-5xl font-extrabold text-navy tracking-tight mt-2">
-            Schedule Your Doorstep Repair
+          <h2 className="font-space text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#06201B] tracking-tight">
+            Reserve Your Phoenix Cruise
           </h2>
-          <p className="text-gray-500 text-sm md:text-base max-w-xl mx-auto">
-            iPhonix provides premium doorstep smartphone repair services for Apple, Samsung, OnePlus, Google Pixel, Nothing, Motorola, Vivo, Oppo, Realme, Redmi, Nokia, and other leading brands.
+          <p className="text-gray-600 text-sm md:text-base max-w-xl mx-auto leading-relaxed">
+            Get instant booking confirmation and personalized assistance from our Alappuzha houseboat reservation desk.
           </p>
         </div>
 
@@ -91,7 +89,7 @@ export default function ContactForm() {
           
           {/* Left Column: Interactive Booking Form */}
           <div className="lg:col-span-7 flex flex-col">
-            <div className="p-8 md:p-10 bg-[#F7F8FB] rounded-3xl border border-gray-100 flex-1 relative flex flex-col justify-center">
+            <div className="p-8 md:p-10 bg-[#FAFBF8] rounded-3xl border border-gray-200/60 flex-1 relative flex flex-col justify-center">
               
               <AnimatePresence mode="wait">
                 {!isSubmitted ? (
@@ -102,232 +100,181 @@ export default function ContactForm() {
                     onSubmit={handleSubmit(onSubmit)}
                     className="space-y-6"
                   >
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                       {/* Name */}
-                      <div className="space-y-1">
-                        <label className="text-xs font-bold uppercase tracking-wider text-navy">Full Name</label>
+                      <div className="space-y-2">
+                        <label className="text-xs font-bold text-[#06201B] uppercase tracking-wider">
+                          Full Name *
+                        </label>
                         <input
-                          type="text"
                           {...register("name")}
-                          placeholder="John Doe"
-                          className={`w-full px-4 py-3 bg-white rounded-xl border focus:outline-none focus:ring-2 transition-all font-medium text-sm ${
-                            errors.name ? "border-red-500 focus:ring-red-200" : "border-gray-200 focus:border-darkblue focus:ring-blue-100"
-                          }`}
+                          type="text"
+                          placeholder="e.g. Anand Varma"
+                          className="w-full px-4 py-3 bg-white rounded-xl border border-gray-200 text-sm text-[#06201B] focus:outline-none focus:border-emerald-600 transition-colors"
                         />
                         {errors.name && (
-                          <p className="text-red-500 text-[10px] font-bold flex items-center space-x-1">
-                            <AlertTriangle className="w-3.5 h-3.5" />
-                            <span>{errors.name.message}</span>
-                          </p>
+                          <p className="text-xs text-rose-500 font-semibold">{errors.name.message}</p>
                         )}
                       </div>
 
-                      {/* Email */}
-                      <div className="space-y-1">
-                        <label className="text-xs font-bold uppercase tracking-wider text-navy">Email Address</label>
+                      {/* Phone */}
+                      <div className="space-y-2">
+                        <label className="text-xs font-bold text-[#06201B] uppercase tracking-wider">
+                          Phone Number *
+                        </label>
                         <input
-                          type="email"
-                          {...register("email")}
-                          placeholder="johndoe@example.com"
-                          className={`w-full px-4 py-3 bg-white rounded-xl border focus:outline-none focus:ring-2 transition-all font-medium text-sm ${
-                            errors.email ? "border-red-500 focus:ring-red-200" : "border-gray-200 focus:border-darkblue focus:ring-blue-100"
-                          }`}
-                        />
-                        {errors.email && (
-                          <p className="text-red-500 text-[10px] font-bold flex items-center space-x-1">
-                            <AlertTriangle className="w-3.5 h-3.5" />
-                            <span>{errors.email.message}</span>
-                          </p>
-                        )}
-                      </div>
-                    </div>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                      {/* Phone Number */}
-                      <div className="space-y-1">
-                        <label className="text-xs font-bold uppercase tracking-wider text-navy">Phone Number</label>
-                        <input
-                          type="tel"
                           {...register("phone")}
-                          placeholder="+1 (800) 555-0199"
-                          className={`w-full px-4 py-3 bg-white rounded-xl border focus:outline-none focus:ring-2 transition-all font-medium text-sm ${
-                            errors.phone ? "border-red-500 focus:ring-red-200" : "border-gray-200 focus:border-darkblue focus:ring-blue-100"
-                          }`}
+                          type="tel"
+                          placeholder="e.g. 9845012345"
+                          className="w-full px-4 py-3 bg-white rounded-xl border border-gray-200 text-sm text-[#06201B] focus:outline-none focus:border-emerald-600 transition-colors"
                         />
                         {errors.phone && (
-                          <p className="text-red-500 text-[10px] font-bold flex items-center space-x-1">
-                            <AlertTriangle className="w-3.5 h-3.5" />
-                            <span>{errors.phone.message}</span>
-                          </p>
-                        )}
-                      </div>
-
-                      {/* Preferred Date */}
-                      <div className="space-y-1">
-                        <label className="text-xs font-bold uppercase tracking-wider text-navy">Preferred Date</label>
-                        <input
-                          type="date"
-                          {...register("date")}
-                          className={`w-full px-4 py-3 bg-white rounded-xl border focus:outline-none focus:ring-2 transition-all font-medium text-sm ${
-                            errors.date ? "border-red-500 focus:ring-red-200" : "border-gray-200 focus:border-darkblue focus:ring-blue-100"
-                          }`}
-                        />
-                        {errors.date && (
-                          <p className="text-red-500 text-[10px] font-bold flex items-center space-x-1">
-                            <AlertTriangle className="w-3.5 h-3.5" />
-                            <span>{errors.date.message}</span>
-                          </p>
+                          <p className="text-xs text-rose-500 font-semibold">{errors.phone.message}</p>
                         )}
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-                      {/* Device type */}
-                      <div className="space-y-1">
-                        <label className="text-xs font-bold uppercase tracking-wider text-navy">Device Type</label>
-                        <select
-                          {...register("device")}
-                          className={`w-full px-4 py-3 bg-white rounded-xl border focus:outline-none focus:ring-2 transition-all font-medium text-sm ${
-                            errors.device ? "border-red-500 focus:ring-red-200" : "border-gray-200 focus:border-darkblue focus:ring-blue-100"
-                          }`}
-                        >
-                          <option value="">Select...</option>
-                          <option value="Smartphone">Smartphone</option>
-                          <option value="Tablet">Tablet</option>
-                          <option value="Laptop">Laptop</option>
-                          <option value="Smartwatch">Smartwatch</option>
-                        </select>
-                        {errors.device && (
-                          <p className="text-red-500 text-[10px] font-bold flex items-center space-x-1">
-                            <AlertTriangle className="w-3.5 h-3.5" />
-                            <span>{errors.device.message}</span>
-                          </p>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                      {/* Email */}
+                      <div className="space-y-2">
+                        <label className="text-xs font-bold text-[#06201B] uppercase tracking-wider">
+                          Email Address *
+                        </label>
+                        <input
+                          {...register("email")}
+                          type="email"
+                          placeholder="e.g. anand@example.com"
+                          className="w-full px-4 py-3 bg-white rounded-xl border border-gray-200 text-sm text-[#06201B] focus:outline-none focus:border-emerald-600 transition-colors"
+                        />
+                        {errors.email && (
+                          <p className="text-xs text-rose-500 font-semibold">{errors.email.message}</p>
                         )}
                       </div>
 
-                      {/* Brand */}
-                      <div className="space-y-1">
-                        <label className="text-xs font-bold uppercase tracking-wider text-navy">Brand</label>
+                      {/* Package Select */}
+                      <div className="space-y-2">
+                        <label className="text-xs font-bold text-[#06201B] uppercase tracking-wider">
+                          Cruise Package *
+                        </label>
                         <select
-                          {...register("brand")}
-                          className={`w-full px-4 py-3 bg-white rounded-xl border focus:outline-none focus:ring-2 transition-all font-medium text-sm ${
-                            errors.brand ? "border-red-500 focus:ring-red-200" : "border-gray-200 focus:border-darkblue focus:ring-blue-100"
-                          }`}
+                          {...register("packageType")}
+                          className="w-full px-4 py-3 bg-white rounded-xl border border-gray-200 text-sm text-[#06201B] focus:outline-none focus:border-emerald-600 transition-colors"
                         >
-                          <option value="">Select...</option>
-                          <option value="Apple">Apple iPhone</option>
-                          <option value="Samsung">Samsung</option>
-                          <option value="OnePlus">OnePlus</option>
-                          <option value="Google">Google Pixel</option>
-                          <option value="Nothing">Nothing</option>
-                          <option value="Motorola">Motorola</option>
-                          <option value="Redmi">Redmi</option>
-                          <option value="Oppo">Oppo</option>
-                          <option value="Vivo">Vivo</option>
-                          <option value="Realme">Realme</option>
-                          <option value="Nokia">Nokia</option>
-                          <option value="iQOO">iQOO</option>
-                          <option value="Other">Other</option>
+                          <option value="">Select Package</option>
+                          <option value="Alappuzha Day Cruise">Alappuzha Day Cruise</option>
+                          <option value="Luxury Overnight Houseboat Stay">Luxury Overnight Stay</option>
+                          <option value="Sunset Special Cruise">Sunset Special Cruise</option>
+                          <option value="Executive Luxury Suite">Executive Luxury Suite</option>
+                          <option value="Kerala Cuisine Dining Cruise">Kerala Cuisine Dining Cruise</option>
+                          <option value="Corporate & Event Charter">Corporate &amp; Event Charter</option>
                         </select>
-                        {errors.brand && (
-                          <p className="text-red-500 text-[10px] font-bold flex items-center space-x-1">
-                            <AlertTriangle className="w-3.5 h-3.5" />
-                            <span>{errors.brand.message}</span>
-                          </p>
+                        {errors.packageType && (
+                          <p className="text-xs text-rose-500 font-semibold">{errors.packageType.message}</p>
+                        )}
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                      {/* Guest Count */}
+                      <div className="space-y-2">
+                        <label className="text-xs font-bold text-[#06201B] uppercase tracking-wider">
+                          Number of Guests *
+                        </label>
+                        <select
+                          {...register("guests")}
+                          className="w-full px-4 py-3 bg-white rounded-xl border border-gray-200 text-sm text-[#06201B] focus:outline-none focus:border-emerald-600 transition-colors"
+                        >
+                          <option value="">Select Guest Count</option>
+                          <option value="2 Guests (Couple)">2 Guests (Couple)</option>
+                          <option value="3-5 Guests (Family)">3-5 Guests (Family)</option>
+                          <option value="6-10 Guests (Group)">6-10 Guests (Group)</option>
+                          <option value="11-25 Guests (Large Group)">11-25 Guests (Large Group)</option>
+                          <option value="25+ Corporate Event">25+ Corporate Event</option>
+                        </select>
+                        {errors.guests && (
+                          <p className="text-xs text-rose-500 font-semibold">{errors.guests.message}</p>
                         )}
                       </div>
 
-                      {/* Primary Issue */}
-                      <div className="space-y-1">
-                        <label className="text-xs font-bold uppercase tracking-wider text-navy">Primary Issue</label>
-                        <select
-                          {...register("issue")}
-                          className={`w-full px-4 py-3 bg-white rounded-xl border focus:outline-none focus:ring-2 transition-all font-medium text-sm ${
-                            errors.issue ? "border-red-500 focus:ring-red-200" : "border-gray-200 focus:border-darkblue focus:ring-blue-100"
-                          }`}
-                        >
-                          <option value="">Select...</option>
-                          <option value="Screen Replacement">Screen Replacement</option>
-                          <option value="Display Replacement">Display Replacement</option>
-                          <option value="Battery Replacement">Battery Replacement</option>
-                          <option value="Charging Port Repair">Charging Port Repair</option>
-                          <option value="Camera Repair">Camera Repair</option>
-                          <option value="Speaker Repair">Speaker Repair</option>
-                          <option value="Microphone Repair">Microphone Repair</option>
-                          <option value="Motherboard Repair">Motherboard Repair</option>
-                          <option value="Water Damage Repair">Water Damage Repair</option>
-                          <option value="Software Issues">Software Issues</option>
-                          <option value="Face ID Repair">Face ID Repair</option>
-                          <option value="Touch IC Repair">Touch IC Repair</option>
-                          <option value="Data Recovery">Data Recovery</option>
-                          <option value="Complete Device Diagnosis">Complete Device Diagnosis</option>
-                        </select>
-                        {errors.issue && (
-                          <p className="text-red-500 text-[10px] font-bold flex items-center space-x-1">
-                            <AlertTriangle className="w-3.5 h-3.5" />
-                            <span>{errors.issue.message}</span>
-                          </p>
+                      {/* Date */}
+                      <div className="space-y-2">
+                        <label className="text-xs font-bold text-[#06201B] uppercase tracking-wider">
+                          Preferred Travel Date *
+                        </label>
+                        <input
+                          {...register("date")}
+                          type="date"
+                          className="w-full px-4 py-3 bg-white rounded-xl border border-gray-200 text-sm text-[#06201B] focus:outline-none focus:border-emerald-600 transition-colors"
+                        />
+                        {errors.date && (
+                          <p className="text-xs text-rose-500 font-semibold">{errors.date.message}</p>
                         )}
                       </div>
                     </div>
 
                     {/* Message */}
-                    <div className="space-y-1">
-                      <label className="text-xs font-bold uppercase tracking-wider text-navy">Additional Details (Optional)</label>
+                    <div className="space-y-2">
+                      <label className="text-xs font-bold text-[#06201B] uppercase tracking-wider">
+                        Special Requests &amp; Dietary Preferences
+                      </label>
                       <textarea
                         {...register("message")}
-                        rows={4}
-                        placeholder="Describe the issue, device history, or drop details..."
-                        className="w-full px-4 py-3 bg-white rounded-xl border border-gray-200 focus:border-darkblue focus:ring-2 focus:ring-blue-100 focus:outline-none transition-all font-medium text-sm"
+                        rows={3}
+                        placeholder="e.g. Vegetarian SADHYA meal preference, birthday decoration..."
+                        className="w-full px-4 py-3 bg-white rounded-xl border border-gray-200 text-sm text-[#06201B] focus:outline-none focus:border-emerald-600 transition-colors"
                       />
                     </div>
 
-                    {/* Action button */}
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full py-4 bg-navy hover:bg-darkblue text-white font-bold rounded-xl text-center shadow-lg transition-all duration-300 hover:scale-[1.01] active:scale-95 disabled:opacity-75 flex items-center justify-center space-x-2"
+                      className="w-full py-4 bg-amber-400 hover:bg-amber-500 text-[#06201B] font-bold rounded-xl shadow-lg transition-all duration-300 flex items-center justify-center space-x-2 text-sm"
                     >
                       {isSubmitting ? (
-                        <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                        <span>Processing Request...</span>
                       ) : (
-                        <span>Request Diagnostic Booking</span>
+                        <>
+                          <Anchor className="w-4 h-4" />
+                          <span>Submit Reservation Inquiry</span>
+                        </>
                       )}
                     </button>
                   </motion.form>
                 ) : (
-                  // Success State Box
                   <motion.div
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.95 }}
-                    className="text-center py-12 px-6 flex flex-col items-center space-y-6"
+                    className="text-center space-y-6 py-6"
                   >
-                    <div className="w-20 h-20 bg-accent/20 rounded-full flex items-center justify-center text-accent animate-bounce">
-                      <CheckCircle className="w-12 h-12 stroke-[2.2]" />
+                    <div className="w-16 h-16 bg-emerald-100 text-emerald-800 rounded-full flex items-center justify-center mx-auto">
+                      <CheckCircle className="w-10 h-10" />
                     </div>
-                    
+
                     <div className="space-y-2">
-                      <h3 className="font-space text-2xl font-bold text-navy">Booking Request Received!</h3>
-                      <p className="text-gray-500 text-sm max-w-md font-medium">
-                        Thank you for booking with iPhonix. A doorstep repair ticket has been generated. Our technical team will confirm your slot via call or email within the hour.
+                      <h3 className="font-space text-2xl font-bold text-[#06201B]">
+                        Reservation Request Received!
+                      </h3>
+                      <p className="text-gray-600 text-xs max-w-md mx-auto leading-relaxed">
+                        Thank you, {formDataSummary?.name}. Our Alappuzha booking desk has received your request for{" "}
+                        <strong className="text-[#06201B]">{formDataSummary?.packageType}</strong> on{" "}
+                        <strong className="text-[#06201B]">{formDataSummary?.date}</strong>.
                       </p>
                     </div>
 
-                    {/* Integrations Buttons */}
-                    <div className="flex flex-col sm:flex-row gap-4 w-full max-w-md pt-4">
+                    <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
                       <button
                         onClick={handleWhatsAppRedirect}
-                        className="flex-1 py-3 bg-accent hover:bg-accent-hover text-navy font-bold rounded-xl flex items-center justify-center space-x-2 transition-all shadow-md shadow-accent/20"
+                        className="w-full sm:w-auto px-6 py-3.5 bg-emerald-700 hover:bg-emerald-800 text-white font-bold rounded-xl text-xs flex items-center justify-center space-x-2 shadow-md"
                       >
-                        <MessageSquare className="w-5 h-5 fill-navy stroke-none" />
-                        <span>Send via WhatsApp</span>
+                        <MessageSquare className="w-4 h-4" />
+                        <span>Confirm via WhatsApp Direct</span>
                       </button>
+
                       <button
                         onClick={handleResetForm}
-                        className="flex-1 py-3 border border-gray-200 hover:bg-gray-50 text-navy font-bold rounded-xl transition-all"
+                        className="w-full sm:w-auto px-6 py-3.5 bg-gray-200 hover:bg-gray-300 text-[#06201B] font-bold rounded-xl text-xs"
                       >
-                        Book Another Device
+                        Book Another Cruise
                       </button>
                     </div>
                   </motion.div>
@@ -337,77 +284,70 @@ export default function ContactForm() {
             </div>
           </div>
 
-          {/* Right Column: Address, Map, Hours, Actions */}
-          <div className="lg:col-span-5 flex flex-col space-y-8 justify-between">
+          {/* Right Column: Verified Contact Cards & Alappuzha Map */}
+          <div className="lg:col-span-5 flex flex-col justify-between space-y-6">
             
-            {/* Interactive Channels Card */}
-            <div className="p-8 bg-[#072A57] rounded-3xl border border-white/5 text-white space-y-6 shadow-2xl relative overflow-hidden">
-              {/* background blob */}
-              <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-accent/15 rounded-full blur-xl pointer-events-none" />
-              
-              <h3 className="font-space text-xl font-bold">Contact Hub</h3>
-              
-              <div className="space-y-4">
-                {/* Phone Call Button */}
-                <a
-                  href="tel:7306243424"
-                  className="flex items-center space-x-4 p-4 bg-white/5 hover:bg-white/10 rounded-2xl border border-white/5 transition-all"
-                >
-                  <div className="w-10 h-10 bg-accent/20 rounded-xl flex items-center justify-center text-accent">
-                    <Phone className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <p className="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Direct Hotline</p>
-                    <p className="font-space text-base font-bold">7306243424</p>
-                  </div>
-                </a>
+            <div className="space-y-4">
+              {/* Phone Card */}
+              <a
+                href="tel:7306243424"
+                className="p-6 bg-[#FAFBF8] hover:bg-emerald-50 rounded-2xl border border-gray-200/60 transition-colors flex items-start space-x-4 group"
+              >
+                <div className="p-3 bg-[#06201B] text-amber-400 rounded-xl group-hover:scale-105 transition-transform">
+                  <Phone className="w-5 h-5" />
+                </div>
+                <div>
+                  <h4 className="font-space text-sm font-bold text-[#06201B]">Reservation Hotline</h4>
+                  <p className="text-xs text-gray-500 mt-0.5">Speak with our Alappuzha captain</p>
+                  <p className="text-sm font-bold text-amber-600 font-space mt-1">7306243424</p>
+                </div>
+              </a>
 
-                {/* Email Button */}
-                <a
-                  href="mailto:iphonixmobileliveservicecentre@gmail.com"
-                  className="flex items-center space-x-4 p-4 bg-white/5 hover:bg-white/10 rounded-2xl border border-white/5 transition-all"
-                >
-                  <div className="w-10 h-10 bg-accent/20 rounded-xl flex items-center justify-center text-accent">
-                    <Mail className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <p className="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Support Mail</p>
-                    <p className="font-space text-sm sm:text-base font-bold break-all">iphonixmobileliveservicecentre@gmail.com</p>
-                  </div>
-                </a>
+              {/* Email Card */}
+              <a
+                href="mailto:phoenixcruisekerala@gmail.com"
+                className="p-6 bg-[#FAFBF8] hover:bg-emerald-50 rounded-2xl border border-gray-200/60 transition-colors flex items-start space-x-4 group"
+              >
+                <div className="p-3 bg-[#06201B] text-amber-400 rounded-xl group-hover:scale-105 transition-transform">
+                  <Mail className="w-5 h-5" />
+                </div>
+                <div>
+                  <h4 className="font-space text-sm font-bold text-[#06201B]">Email Booking Desk</h4>
+                  <p className="text-xs text-gray-500 mt-0.5">Custom group rates &amp; itineraries</p>
+                  <p className="text-xs font-bold text-emerald-800 font-space mt-1 break-all">
+                    phoenixcruisekerala@gmail.com
+                  </p>
+                </div>
+              </a>
 
-                {/* Business Hours */}
-                <div className="flex items-start space-x-4 p-4 bg-white/5 rounded-2xl border border-white/5">
-                  <div className="w-10 h-10 bg-accent/20 rounded-xl flex items-center justify-center text-accent flex-shrink-0">
-                    <Clock className="w-5 h-5" />
-                  </div>
-                  <div className="space-y-1">
-                    <p className="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Business Hours</p>
-                    <p className="text-sm font-semibold">Monday – Saturday: 9:00 AM – 7:00 PM</p>
-                    <p className="text-xs text-accent font-medium">Sunday: Closed</p>
-                  </div>
+              {/* Operating Hours */}
+              <div className="p-6 bg-[#FAFBF8] rounded-2xl border border-gray-200/60 flex items-start space-x-4">
+                <div className="p-3 bg-[#06201B] text-amber-400 rounded-xl">
+                  <Clock className="w-5 h-5" />
+                </div>
+                <div>
+                  <h4 className="font-space text-sm font-bold text-[#06201B]">Operating Hours</h4>
+                  <p className="text-xs text-gray-600 mt-1 font-semibold">
+                    Monday – Sunday: 8:00 AM – 8:00 PM
+                  </p>
                 </div>
               </div>
             </div>
 
-            {/* Google Map Mockup / Iframe */}
-            <div className="relative rounded-3xl overflow-hidden border border-gray-100 flex-1 min-h-[250px] shadow-lg shadow-navy/5 group">
+            {/* Alappuzha Backwaters Map Embed */}
+            <div className="relative aspect-[16/9] rounded-2xl overflow-hidden border border-gray-200/60 shadow-md">
               <iframe
-                title="iPhonix Repair Lab Map"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3946.0682548817684!2d76.9649563!3d8.4735234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b05b15be62283e7%3A0x446be06511675373!2sKaramana%2C%20Thiruvananthapuram%2C%20Kerala!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
-                className="w-full h-full border-none min-h-[250px] grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
-                allowFullScreen={true}
+                title="Phoenix Cruise Alappuzha Jetty Location"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3935.253456891!2d76.3384!3d9.4981!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b0884ef12345678%3A0x123456789abcdef!2sPunnamada%20Lake%2C%20Alappuzha%2C%20Kerala!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                className="w-full h-full border-none"
                 loading="lazy"
               />
-              <div className="absolute bottom-4 left-4 p-3 bg-navy/90 text-white rounded-xl border border-white/10 flex items-center space-x-2 text-xs backdrop-blur-sm pointer-events-none">
-                <MapPin className="w-4 h-4 text-accent" />
-                <span className="font-semibold">Karamana, Trivandrum</span>
-              </div>
             </div>
 
           </div>
 
         </div>
+
       </div>
     </section>
   );

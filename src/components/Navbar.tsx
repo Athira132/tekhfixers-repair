@@ -1,24 +1,19 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, Anchor } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-const servicesList = [
-  { name: "Screen Replacement", href: "/services/screen-replacement" },
-  { name: "Display Replacement", href: "/services/display-replacement" },
-  { name: "Battery Replacement", href: "/services/battery-replacement" },
-  { name: "Charging Port Repair", href: "/services/charging-port-repair" },
-  { name: "Camera Repair", href: "/services/camera-repair" },
-  { name: "Motherboard Repair", href: "/services/motherboard-repair" },
-  { name: "Speaker Repair", href: "/services/speaker-repair" },
-  { name: "Water Damage Repair", href: "/services/water-damage-repair" },
-  { name: "Software Repair", href: "/services/software-repair" },
-  { name: "Face ID Repair", href: "/services/face-id-repair" },
-  { name: "Data Recovery", href: "/services/data-recovery" },
+const cruisesList = [
+  { name: "Alappuzha Day Cruise", href: "/services/day-cruise" },
+  { name: "Luxury Overnight Stay", href: "/services/overnight-stay" },
+  { name: "Sunset Special Cruise", href: "/services/sunset-cruise" },
+  { name: "Executive Luxury Suite", href: "/services/executive-suite" },
+  { name: "Kerala Cuisine Dining", href: "/services/kerala-dining" },
+  { name: "Corporate & Event Charters", href: "/services/corporate-event" },
 ];
 
 export default function Navbar() {
@@ -26,7 +21,6 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobileDropdownOpen, setIsMobileDropdownOpen] = useState(false);
   
-  // Custom states for premium dropdown behavior
   const [isTriggerHovered, setIsTriggerHovered] = useState(false);
   const [isDropdownHovered, setIsDropdownHovered] = useState(false);
   const [isClickedOpen, setIsClickedOpen] = useState(false);
@@ -55,7 +49,6 @@ export default function Navbar() {
     };
   }, []);
 
-  // Close menus on page transitions
   useEffect(() => {
     setIsMobileMenuOpen(false);
     setIsTriggerHovered(false);
@@ -66,7 +59,6 @@ export default function Navbar() {
 
   const isActive = (href: string) => pathname === href;
 
-  // Desktop Hover Debounce Logic with no-gap bridging
   const handleTriggerEnter = () => {
     if (triggerTimeoutRef.current) {
       clearTimeout(triggerTimeoutRef.current);
@@ -78,7 +70,7 @@ export default function Navbar() {
   const handleTriggerLeave = () => {
     triggerTimeoutRef.current = setTimeout(() => {
       setIsTriggerHovered(false);
-    }, 150); // 150ms delay to bridge cursor movement to dropdown
+    }, 150);
   };
 
   const handleDropdownEnter = () => {
@@ -89,7 +81,6 @@ export default function Navbar() {
     setIsDropdownHovered(false);
   };
 
-  // Keyboard navigation & accessibility handlers
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Escape") {
       setIsTriggerHovered(false);
@@ -102,31 +93,30 @@ export default function Navbar() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
           isScrolled
-            ? "glass-nav py-4 shadow-lg shadow-black/10"
-            : "bg-transparent py-6"
+            ? "bg-[#06201B]/95 backdrop-blur-md py-4 shadow-xl border-b border-emerald-900/30"
+            : "bg-gradient-to-b from-black/80 via-black/40 to-transparent py-6"
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-          {/* Logo Container - Fix cropping using object-contain & scale */}
+          
+          {/* Logo Container */}
           <Link
             href="/"
             className="flex items-center space-x-3 text-white font-space text-2xl font-bold tracking-tight group"
           >
-            <div className="relative w-12 h-12 rounded-full overflow-hidden border border-white/10 bg-white flex items-center justify-center transition-transform group-hover:scale-105">
-              <Image
-                src="/logo.jpg"
-                alt="iPhonix Logo"
-                fill
-                sizes="48px"
-                priority
-                className="object-contain scale-[1.6]"
-              />
+            <div className="w-10 h-10 rounded-full bg-emerald-900/60 border border-emerald-400/40 flex items-center justify-center text-amber-400 shadow-md group-hover:scale-105 transition-transform duration-300">
+              <Anchor className="w-5 h-5" />
             </div>
-            <span>
-              iPhonix
-            </span>
+            <div className="flex flex-col">
+              <span className="font-space font-extrabold text-xl tracking-tight text-white group-hover:text-amber-400 transition-colors">
+                Phoenix Cruise
+              </span>
+              <span className="text-[9px] font-bold text-amber-300/80 tracking-widest uppercase -mt-1">
+                Kerala Backwaters
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
@@ -136,7 +126,7 @@ export default function Navbar() {
                 <Link
                   href="/"
                   className={`font-medium text-sm transition-colors duration-200 ${
-                    isActive("/") ? "text-accent" : "text-gray-300 hover:text-accent"
+                    isActive("/") ? "text-amber-400" : "text-gray-200 hover:text-amber-400"
                   }`}
                 >
                   Home
@@ -146,14 +136,14 @@ export default function Navbar() {
                 <Link
                   href="/about"
                   className={`font-medium text-sm transition-colors duration-200 ${
-                    isActive("/about") ? "text-accent" : "text-gray-300 hover:text-accent"
+                    isActive("/about") ? "text-amber-400" : "text-gray-200 hover:text-amber-400"
                   }`}
                 >
                   About
                 </Link>
               </li>
               
-              {/* Dropdown Menu for Services (Debounced Hover + Accessibility) */}
+              {/* Dropdown Menu for Cruises */}
               <li
                 className="relative py-2"
                 onMouseEnter={handleTriggerEnter}
@@ -165,13 +155,13 @@ export default function Navbar() {
                   onClick={() => setIsClickedOpen(!isClickedOpen)}
                   aria-haspopup="menu"
                   aria-expanded={isDropdownOpen}
-                  aria-controls="services-dropdown"
-                  id="services-trigger"
+                  aria-controls="cruises-dropdown"
+                  id="cruises-trigger"
                   className={`flex items-center space-x-1 font-medium text-sm transition-colors duration-200 focus:outline-none ${
-                    pathname.startsWith("/services") ? "text-accent" : "text-gray-300 hover:text-accent"
+                    pathname.startsWith("/services") ? "text-amber-400" : "text-gray-200 hover:text-amber-400"
                   }`}
                 >
-                  <span>Services</span>
+                  <span>Cruises &amp; Packages</span>
                   <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isDropdownOpen ? "rotate-180" : ""}`} />
                 </button>
 
@@ -182,24 +172,24 @@ export default function Navbar() {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 10 }}
                       transition={{ duration: 0.2 }}
-                      className="absolute left-0 top-full w-64 pt-3 z-50"
-                      id="services-dropdown"
+                      className="absolute left-0 top-full w-72 pt-3 z-50"
+                      id="cruises-dropdown"
                       role="menu"
-                      aria-labelledby="services-trigger"
+                      aria-labelledby="cruises-trigger"
                       onMouseEnter={handleDropdownEnter}
                       onMouseLeave={handleDropdownLeave}
                     >
-                      <div className="rounded-2xl bg-navy/95 border border-white/10 backdrop-blur-xl p-3 shadow-xl shadow-black/30">
+                      <div className="rounded-2xl bg-[#06201B]/95 border border-emerald-800/40 backdrop-blur-xl p-3 shadow-2xl">
                         <ul className="space-y-1">
-                          {servicesList.map((svc) => (
+                          {cruisesList.map((svc) => (
                             <li key={svc.name} role="none">
                               <Link
                                 href={svc.href}
                                 role="menuitem"
-                                className={`block px-4 py-2 text-xs font-semibold rounded-xl transition-all duration-200 ${
+                                className={`block px-4 py-2.5 text-xs font-semibold rounded-xl transition-all duration-200 ${
                                   isActive(svc.href)
-                                    ? "bg-accent text-navy"
-                                    : "text-gray-300 hover:bg-white/5 hover:text-white"
+                                    ? "bg-amber-400 text-[#06201B]"
+                                    : "text-gray-200 hover:bg-emerald-950/60 hover:text-amber-300"
                                 }`}
                               >
                                 {svc.name}
@@ -217,7 +207,7 @@ export default function Navbar() {
                 <Link
                   href="/gallery"
                   className={`font-medium text-sm transition-colors duration-200 ${
-                    pathname === "/gallery" ? "text-accent" : "text-gray-300 hover:text-accent"
+                    pathname === "/gallery" ? "text-amber-400" : "text-gray-200 hover:text-amber-400"
                   }`}
                 >
                   Gallery
@@ -227,25 +217,26 @@ export default function Navbar() {
                 <Link
                   href="/contact"
                   className={`font-medium text-sm transition-colors duration-200 ${
-                    isActive("/contact") ? "text-accent" : "text-gray-300 hover:text-accent"
+                    isActive("/contact") ? "text-amber-400" : "text-gray-200 hover:text-amber-400"
                   }`}
                 >
                   Contact
                 </Link>
               </li>
             </ul>
+
             <Link
               href="/book"
-              className="px-6 py-2.5 bg-accent hover:bg-accent-hover text-navy font-semibold text-sm rounded-xl transition-all duration-300 shadow-md shadow-accent/20 hover:scale-105 active:scale-95"
+              className="px-6 py-2.5 bg-amber-400 hover:bg-amber-500 text-[#06201B] font-bold text-sm rounded-xl transition-all duration-300 shadow-lg shadow-amber-400/20 hover:scale-105 active:scale-95"
             >
-              Book Repair
+              Book a Cruise
             </Link>
           </nav>
 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-2 text-gray-300 hover:text-white transition-colors"
+            className="lg:hidden p-2 text-gray-200 hover:text-amber-400 transition-colors"
             aria-label="Toggle Menu"
           >
             {isMobileMenuOpen ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
@@ -261,14 +252,14 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-navy/98 backdrop-blur-lg pt-28 px-8 flex flex-col space-y-6 lg:hidden overflow-y-auto"
+            className="fixed inset-0 z-40 bg-[#06201B]/98 backdrop-blur-xl pt-28 px-8 flex flex-col space-y-6 lg:hidden overflow-y-auto"
           >
             <ul className="flex flex-col space-y-4">
               <li>
                 <Link
                   href="/"
-                  className={`font-space text-lg font-medium block border-b border-white/5 pb-2 transition-colors duration-200 ${
-                    isActive("/") ? "text-accent" : "text-gray-200 hover:text-accent"
+                  className={`font-space text-lg font-medium block border-b border-emerald-900/40 pb-2 transition-colors duration-200 ${
+                    isActive("/") ? "text-amber-400" : "text-gray-200 hover:text-amber-400"
                   }`}
                 >
                   Home
@@ -277,23 +268,22 @@ export default function Navbar() {
               <li>
                 <Link
                   href="/about"
-                  className={`font-space text-lg font-medium block border-b border-white/5 pb-2 transition-colors duration-200 ${
-                    isActive("/about") ? "text-accent" : "text-gray-200 hover:text-accent"
+                  className={`font-space text-lg font-medium block border-b border-emerald-900/40 pb-2 transition-colors duration-200 ${
+                    isActive("/about") ? "text-amber-400" : "text-gray-200 hover:text-amber-400"
                   }`}
                 >
                   About
                 </Link>
               </li>
               
-              {/* Mobile Services Accordion (Click/Tap Toggle + Height Animation) */}
               <li>
                 <button
                   onClick={() => setIsMobileDropdownOpen(!isMobileDropdownOpen)}
-                  className={`w-full flex items-center justify-between font-space text-lg font-medium border-b border-white/5 pb-2 transition-colors duration-200 text-left ${
-                    pathname.startsWith("/services") ? "text-accent" : "text-gray-200 hover:text-accent"
+                  className={`w-full flex items-center justify-between font-space text-lg font-medium border-b border-emerald-900/40 pb-2 transition-colors duration-200 text-left ${
+                    pathname.startsWith("/services") ? "text-amber-400" : "text-gray-200 hover:text-amber-400"
                   }`}
                 >
-                  <span>Services</span>
+                  <span>Cruises &amp; Packages</span>
                   <ChevronDown className={`w-5 h-5 transition-transform duration-200 ${isMobileDropdownOpen ? "rotate-180" : ""}`} />
                 </button>
                 <AnimatePresence initial={false}>
@@ -303,14 +293,14 @@ export default function Navbar() {
                       animate={{ opacity: 1, height: "auto" }}
                       exit={{ opacity: 0, height: 0 }}
                       transition={{ duration: 0.25, ease: "easeInOut" }}
-                      className="pl-4 mt-2 space-y-2 border-l border-white/10 overflow-hidden"
+                      className="pl-4 mt-2 space-y-2 border-l border-emerald-800/40 overflow-hidden"
                     >
-                      {servicesList.map((svc) => (
+                      {cruisesList.map((svc) => (
                         <li key={svc.name}>
                           <Link
                             href={svc.href}
-                            className={`block py-1 text-sm font-semibold transition-colors duration-200 ${
-                              isActive(svc.href) ? "text-accent" : "text-gray-400 hover:text-white"
+                            className={`block py-1.5 text-sm font-semibold transition-colors duration-200 ${
+                              isActive(svc.href) ? "text-amber-400" : "text-gray-300 hover:text-white"
                             }`}
                           >
                             {svc.name}
@@ -325,8 +315,8 @@ export default function Navbar() {
               <li>
                 <Link
                   href="/gallery"
-                  className={`font-space text-lg font-medium block border-b border-white/5 pb-2 transition-colors duration-200 ${
-                    pathname === "/gallery" ? "text-accent" : "text-gray-200 hover:text-accent"
+                  className={`font-space text-lg font-medium block border-b border-emerald-900/40 pb-2 transition-colors duration-200 ${
+                    pathname === "/gallery" ? "text-amber-400" : "text-gray-200 hover:text-amber-400"
                   }`}
                 >
                   Gallery
@@ -335,8 +325,8 @@ export default function Navbar() {
               <li>
                 <Link
                   href="/contact"
-                  className={`font-space text-lg font-medium block border-b border-white/5 pb-2 transition-colors duration-200 ${
-                    isActive("/contact") ? "text-accent" : "text-gray-200 hover:text-accent"
+                  className={`font-space text-lg font-medium block border-b border-emerald-900/40 pb-2 transition-colors duration-200 ${
+                    isActive("/contact") ? "text-amber-400" : "text-gray-200 hover:text-amber-400"
                   }`}
                 >
                   Contact
@@ -345,9 +335,9 @@ export default function Navbar() {
             </ul>
             <Link
               href="/book"
-              className="w-full py-4 bg-accent hover:bg-accent-hover text-navy text-center font-bold rounded-xl transition-all duration-300 shadow-lg shadow-accent/20 block"
+              className="w-full py-4 bg-amber-400 hover:bg-amber-500 text-[#06201B] text-center font-bold rounded-xl transition-all duration-300 shadow-lg shadow-amber-400/20 block"
             >
-              Book Repair
+              Book a Cruise
             </Link>
           </motion.div>
         )}

@@ -1,199 +1,98 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Star, ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import { motion } from "framer-motion";
+import { Star, Quote } from "lucide-react";
 
 const testimonials = [
   {
     name: "Anjali Nair",
-    device: "iPhone 14 Pro Screen Repair (Trivandrum)",
-    rating: 5,
-    text: "Excellent doorstep service in Trivandrum. My iPhone screen was shattered, and they replaced it in 20 minutes at my office. Highly professional and very convenient!",
+    location: "Trivandrum, Kerala",
+    review: "The day cruise with Phoenix Cruise was an unforgettable experience for our family. The houseboat was pristine, and the Karimeen Pollichathu served on a fresh banana leaf was out of this world!",
   },
   {
     name: "Akhil Menon",
-    device: "Samsung S23 Ultra Board Repair (Kochi)",
-    rating: 5,
-    text: "Highly recommended! Other shops told me my Samsung motherboard was unfixable. iPhonix repaired it at the chip level and recovered all my photos. Great job!",
+    location: "Kochi, Kerala",
+    review: "Booked an overnight stay for our wedding anniversary. Watching the sunset over Lake Vembanad from the private upper deck while sipping hot tea was purely magical. 10/10 hospitality!",
+  },
+  {
+    name: "Sreeram Krishnan",
+    location: "Karamana, Trivandrum",
+    review: "Exceptional service by Captain and the onboard chef. The glass-wall bedroom was spotless, AC was cool all night, and waking up to backwater lily lagoons was surreal.",
   },
   {
     name: "Meera Suresh",
-    device: "Google Pixel 8 Battery Swap (Karamana)",
-    rating: 5,
-    text: "The doorstep pickup and delivery in Karamana was very prompt. They swapped my Pixel battery and resolved the rapid drainage issue on the same day. Extremely satisfied.",
+    location: "Kozhikode, Kerala",
+    review: "We reserved the executive suite for a family reunion. The food, safety standards, and peaceful canal navigation exceeded all our expectations. Highly recommended!",
   },
   {
     name: "Vishnu Prasad",
-    device: "OnePlus 11 Charging Issue (Kozhikode)",
-    rating: 5,
-    text: "Professional service at a reasonable price. The technician repaired my loose charging connector quickly and explained the repair step-by-step. Excellent work!",
+    location: "Thrissur, Kerala",
+    review: "The sunset cruise was breathtaking. The boat moved gently, the refreshments were delicious, and the evening lights over the water made for incredible photos.",
+  },
+  {
+    name: "Neha Nair",
+    location: "Bengaluru, Karnataka",
+    review: "Very professional booking process. Everything promised was delivered — clean linen, delicious Kerala sadhya, and a tranquil overnight anchorage.",
   },
 ];
 
 export default function Testimonials() {
-  const [current, setCurrent] = useState(0);
-  const [direction, setDirection] = useState(0); // -1 for left, 1 for right
-  const timerRef = useRef<NodeJS.Timeout | null>(null);
-
-  const handlePrev = useCallback(() => {
-    setDirection(-1);
-    setCurrent((prev) => (prev - 1 + testimonials.length) % testimonials.length);
-  }, []);
-
-  const handleNext = useCallback(() => {
-    setDirection(1);
-    setCurrent((prev) => (prev + 1) % testimonials.length);
-  }, []);
-
-  const resetTimer = useCallback(() => {
-    if (timerRef.current) clearInterval(timerRef.current);
-    timerRef.current = setInterval(() => {
-      handleNext();
-    }, 6000);
-  }, [handleNext]);
-
-  useEffect(() => {
-    resetTimer();
-    return () => {
-      if (timerRef.current) clearInterval(timerRef.current);
-    };
-  }, [current, resetTimer]);
-
-  // Animation variants
-  const slideVariants = {
-    enter: (dir: number) => ({
-      x: dir > 0 ? 100 : -100,
-      opacity: 0,
-    }),
-    center: {
-      x: 0,
-      opacity: 1,
-    },
-    exit: (dir: number) => ({
-      x: dir > 0 ? -100 : 100,
-      opacity: 0,
-    }),
-  };
-
   return (
-    <section id="reviews" className="py-24 md:py-32 gradient-bg-dark relative overflow-hidden">
-      {/* Background Layered Gradients */}
-      <div className="absolute top-1/3 left-1/10 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-1/3 right-1/10 w-80 h-80 bg-accent/5 rounded-full blur-3xl pointer-events-none" />
-
-      {/* Top curve */}
-      <div className="absolute top-0 left-0 w-full overflow-hidden leading-none z-10 rotate-180">
-        <svg
-          viewBox="0 0 1200 120"
-          preserveAspectRatio="none"
-          className="relative block w-full h-[60px] md:h-[100px] text-white fill-current"
-        >
-          <path d="M1200 120L0 120L0 0C300 80 900 80 1200 0L1200 120Z"></path>
-        </svg>
-      </div>
-
-      <div className="max-w-4xl mx-auto px-6 relative z-20">
+    <section className="py-24 md:py-32 bg-white relative">
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <span className="text-xs md:text-sm font-semibold text-accent uppercase tracking-widest bg-accent/10 px-4 py-2 rounded-full border border-accent/20">
-            Reviews
+        <div className="text-center max-w-3xl mx-auto mb-16 md:mb-20 space-y-3">
+          <span className="text-xs font-bold text-emerald-800 uppercase tracking-widest bg-emerald-100/60 px-4 py-1.5 rounded-full">
+            Guest Testimonials
           </span>
-          <h2 className="font-space text-3xl sm:text-4xl font-extrabold text-white tracking-tight mt-2">
-            What Our Customers Say
+          <h2 className="font-space text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#06201B] tracking-tight">
+            Guest Experiences
           </h2>
+          <p className="text-gray-600 text-sm md:text-base max-w-xl mx-auto leading-relaxed">
+            Real stories from travelers who sailed through Kerala&apos;s backwaters with Phoenix Cruise.
+          </p>
         </div>
 
-        {/* Carousel Slider Panel */}
-        <div className="relative min-h-[380px] sm:min-h-[320px] flex items-center justify-center">
-          <AnimatePresence initial={false} custom={direction} mode="wait">
+        {/* Testimonial Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {testimonials.map((item, idx) => (
             <motion.div
-              key={current}
-              custom={direction}
-              variants={slideVariants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{ duration: 0.4, ease: "easeInOut" }}
-              className="w-full glass-card rounded-3xl p-8 sm:p-12 border border-white/10 flex flex-col justify-between relative space-y-6"
+              key={idx}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: idx * 0.05 }}
+              className="p-8 bg-[#FAFBF8] rounded-3xl border border-gray-200/60 flex flex-col justify-between space-y-6 shadow-sm hover:shadow-md transition-shadow"
             >
-              {/* Top Row: Star Ratings & Quote Icon */}
-              <div className="flex justify-between items-center w-full">
-                <div className="flex space-x-1">
-                  {[...Array(testimonials[current].rating)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-accent text-accent" />
-                  ))}
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center space-x-1">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 fill-amber-400 stroke-none" />
+                    ))}
+                  </div>
+                  <Quote className="w-8 h-8 text-emerald-800/20" />
                 </div>
-                <Quote className="w-10 h-10 text-accent/20 stroke-[1.5]" />
-              </div>
 
-              {/* Body Text: Clean Typography */}
-              <p className="text-gray-200 text-base sm:text-lg md:text-xl font-medium leading-relaxed italic text-left">
-                &ldquo;{testimonials[current].text}&rdquo;
-              </p>
-
-              {/* Footer Row: User Details */}
-              <div className="pt-4 border-t border-white/5 space-y-1 text-left w-full animate-fade-in">
-                <h3 className="font-space text-lg sm:text-xl font-bold text-white">
-                  {testimonials[current].name}
-                </h3>
-                <p className="text-accent text-xs font-bold uppercase tracking-wider">
-                  {testimonials[current].device}
+                <p className="text-gray-600 text-xs sm:text-sm italic leading-relaxed">
+                  &ldquo;{item.review}&rdquo;
                 </p>
               </div>
+
+              <div className="pt-4 border-t border-gray-200/60 flex items-center justify-between">
+                <div>
+                  <h4 className="font-space text-sm font-bold text-[#06201B]">{item.name}</h4>
+                  <p className="text-[10px] font-semibold text-emerald-800 uppercase tracking-wider">{item.location}</p>
+                </div>
+                <span className="text-[10px] font-bold text-amber-600 uppercase tracking-wider bg-amber-50 px-2.5 py-1 rounded-full">
+                  Verified Guest
+                </span>
+              </div>
             </motion.div>
-          </AnimatePresence>
+          ))}
         </div>
 
-        {/* Control Bar */}
-        <div className="flex items-center justify-between mt-8">
-          {/* Bullet indicators */}
-          <div className="flex space-x-2.5">
-            {testimonials.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => {
-                  setDirection(i > current ? 1 : -1);
-                  setCurrent(i);
-                }}
-                className={`h-2.5 rounded-full transition-all duration-300 ${
-                  i === current ? "w-8 bg-accent" : "w-2.5 bg-white/20 hover:bg-white/40"
-                }`}
-                aria-label={`Go to slide ${i + 1}`}
-              />
-            ))}
-          </div>
-
-          {/* Nav arrow buttons */}
-          <div className="flex space-x-3">
-            <button
-              onClick={handlePrev}
-              className="p-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full text-white transition-colors"
-              aria-label="Previous Slide"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-            <button
-              onClick={handleNext}
-              className="p-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full text-white transition-colors"
-              aria-label="Next Slide"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
-          </div>
-        </div>
-
-      </div>
-
-      {/* Bottom curve */}
-      <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-10">
-        <svg
-          viewBox="0 0 1200 120"
-          preserveAspectRatio="none"
-          className="relative block w-full h-[60px] md:h-[100px] text-[#F7F8FB] fill-current"
-        >
-          <path d="M1200 120L0 120L0 0C300 80 900 80 1200 0L1200 120Z"></path>
-        </svg>
       </div>
     </section>
   );
