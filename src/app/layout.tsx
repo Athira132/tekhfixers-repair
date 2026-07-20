@@ -3,25 +3,30 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "Phoenix Cruise | Luxury Houseboat & Backwater Cruises in Alappuzha, Kerala",
-    template: "%s | Phoenix Cruise Kerala",
+    default: "iPhonix | Mobile Phone Repair Service in Kerala & Trivandrum",
+    template: "%s | iPhonix Mobile Service Centre",
   },
-  description: "Phoenix Cruise offers luxury houseboat stays, day cruises, sunset specials, and authentic Kerala seafood dining on the serene backwaters of Alappuzha, Kerala.",
+  description: "iPhonix is a premier mobile phone repair service centre in Karamana, Trivandrum & Kerala. Expert doorstep smartphone screen replacement, display repair, battery replacement, charging port repair, motherboard repair, and software troubleshooting.",
   keywords: [
-    "Phoenix Cruise",
-    "Kerala houseboat",
-    "Alappuzha houseboat",
-    "Alleppey backwater cruise",
-    "Day cruise Alappuzha",
-    "Overnight houseboat stay",
-    "Sunset houseboat cruise",
-    "Executive houseboat suite",
-    "Kerala seafood dining",
-    "Karimeen pollichathu"
+    "Mobile phone repair service",
+    "Mobile phone repair in Kerala",
+    "Mobile service centre in Kerala",
+    "Phone repair service near me",
+    "Smartphone repair service",
+    "iPhone repair service",
+    "Android phone repair",
+    "Mobile screen replacement",
+    "Mobile battery replacement",
+    "Mobile charging port repair",
+    "Mobile software repair",
+    "Water damage phone repair",
+    "iPhonix",
+    "Mobile repair Trivandrum",
+    "Doorstep mobile repair"
   ],
-  authors: [{ name: "Phoenix Cruise", url: "https://iphonix.in" }],
-  creator: "Phoenix Cruise",
-  publisher: "Phoenix Cruise",
+  authors: [{ name: "iPhonix Mobile Service Centre", url: "https://iphonix.in" }],
+  creator: "iPhonix Mobile Service Centre",
+  publisher: "iPhonix Mobile Service Centre",
   metadataBase: new URL("https://iphonix.in"),
   alternates: {
     canonical: "https://iphonix.in",
@@ -37,17 +42,20 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || "YOUR_GOOGLE_SEARCH_CONSOLE_VERIFICATION_CODE",
+  },
   openGraph: {
-    title: "Phoenix Cruise | Luxury Houseboat & Backwater Cruises in Alappuzha, Kerala",
-    description: "Experience the serene beauty of Kerala's palm-fringed backwaters, luxury houseboat stays, and authentic traditional dining in Alappuzha.",
+    title: "iPhonix | Mobile Phone Repair Service in Kerala & Trivandrum",
+    description: "Doorstep smartphone repair in Karamana & Trivandrum with certified technicians, genuine spare parts, quick turnaround, and support for iPhone and Android devices.",
     url: "https://iphonix.in",
-    siteName: "Phoenix Cruise",
+    siteName: "iPhonix Mobile Service Centre",
     images: [
       {
-        url: "https://i.ibb.co/v4FnnCRs/Whats-App-Image-2026-07-14-at-1-19-44-PM.jpg",
-        width: 1200,
+        url: "https://iphonix.in/logo.jpg",
+        width: 800,
         height: 800,
-        alt: "Phoenix Cruise Houseboat Alappuzha"
+        alt: "iPhonix Mobile Phone Repair Service Centre"
       }
     ],
     locale: "en_IN",
@@ -55,9 +63,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Phoenix Cruise | Luxury Houseboat & Backwater Cruises in Alappuzha, Kerala",
-    description: "Experience the serene beauty of Kerala's palm-fringed backwaters, luxury houseboat stays, and authentic traditional dining in Alappuzha.",
-    images: ["https://i.ibb.co/v4FnnCRs/Whats-App-Image-2026-07-14-at-1-19-44-PM.jpg"],
+    title: "iPhonix | Mobile Phone Repair Service in Kerala & Trivandrum",
+    description: "Doorstep smartphone repair in Trivandrum & Kerala with certified technicians, genuine spare parts, quick turnaround, and support for all major mobile brands.",
+    images: ["https://iphonix.in/logo.jpg"],
   },
 };
 
@@ -66,29 +74,30 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // LocalBusiness, MobilePhoneStore, Organization, and WebSite JSON-LD schemas
   const globalSchema = {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": ["LocalBusiness", "TouristAttraction"],
+        "@type": ["MobilePhoneStore", "LocalBusiness"],
         "@id": "https://iphonix.in/#localbusiness",
-        "name": "Phoenix Cruise",
-        "legalName": "Phoenix Cruise Kerala",
-        "image": "https://i.ibb.co/v4FnnCRs/Whats-App-Image-2026-07-14-at-1-19-44-PM.jpg",
+        "name": "iPhonix",
+        "legalName": "iPhonix Mobile Service Centre",
+        "image": "https://iphonix.in/logo.jpg",
         "telephone": "+917306243424",
-        "email": "phoenixcruisekerala@gmail.com",
+        "email": "iphonixmobileliveservicecentre@gmail.com",
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "Punnamada Lake Jetty",
-          "addressLocality": "Alappuzha",
+          "streetAddress": "Karamana",
+          "addressLocality": "Trivandrum",
           "addressRegion": "Kerala",
-          "postalCode": "688006",
+          "postalCode": "695002",
           "addressCountry": "IN"
         },
         "geo": {
           "@type": "GeoCoordinates",
-          "latitude": 9.4981,
-          "longitude": 76.3384
+          "latitude": 8.4735234,
+          "longitude": 76.9649563
         },
         "url": "https://iphonix.in",
         "priceRange": "$$",
@@ -96,19 +105,23 @@ export default function RootLayout({
         "openingHoursSpecification": [
           {
             "@type": "OpeningHoursSpecification",
-            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-            "opens": "08:00",
-            "closes": "20:00"
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+            "opens": "09:00",
+            "closes": "19:00"
           }
         ],
         "areaServed": [
           {
             "@type": "AdministrativeArea",
-            "name": "Alappuzha"
+            "name": "Karamana"
           },
           {
             "@type": "AdministrativeArea",
-            "name": "Alleppey"
+            "name": "Trivandrum"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Thiruvananthapuram"
           },
           {
             "@type": "AdministrativeArea",
@@ -119,9 +132,9 @@ export default function RootLayout({
       {
         "@type": "Organization",
         "@id": "https://iphonix.in/#organization",
-        "name": "Phoenix Cruise",
+        "name": "iPhonix Mobile Service Centre",
         "url": "https://iphonix.in",
-        "logo": "https://i.ibb.co/v4FnnCRs/Whats-App-Image-2026-07-14-at-1-19-44-PM.jpg",
+        "logo": "https://iphonix.in/logo.jpg",
         "contactPoint": {
           "@type": "ContactPoint",
           "telephone": "+917306243424",
@@ -138,7 +151,7 @@ export default function RootLayout({
         "@type": "WebSite",
         "@id": "https://iphonix.in/#website",
         "url": "https://iphonix.in",
-        "name": "Phoenix Cruise",
+        "name": "iPhonix Mobile Service Centre",
         "publisher": {
           "@id": "https://iphonix.in/#organization"
         }
@@ -149,7 +162,8 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/logo.jpg" type="image/jpeg" />
+        <link rel="apple-touch-icon" href="/logo.jpg" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(globalSchema) }}

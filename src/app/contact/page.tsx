@@ -6,16 +6,16 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Contact & Reservation Desk | Phoenix Cruise Alappuzha, Kerala",
-  description: "Contact Phoenix Cruise for luxury houseboat bookings in Alappuzha, Kerala. Reach out via call or WhatsApp for day cruises, overnight stays & group charters.",
+  title: "Contact Mobile Service Centre in Trivandrum, Kerala | iPhonix",
+  description: "Contact iPhonix, your trusted mobile service centre in Karamana, Trivandrum & Kerala. Reach out via phone or email for doorstep smartphone screen, battery, and motherboard repairs.",
   alternates: {
     canonical: "https://iphonix.in/contact",
   },
   openGraph: {
-    title: "Contact & Reservation Desk | Phoenix Cruise Alappuzha, Kerala",
-    description: "Contact Phoenix Cruise for luxury houseboat bookings in Alappuzha, Kerala.",
+    title: "Contact Mobile Service Centre in Trivandrum, Kerala | iPhonix",
+    description: "Contact iPhonix, your trusted mobile service centre in Karamana, Trivandrum & Kerala.",
     url: "https://iphonix.in/contact",
-    siteName: "Phoenix Cruise",
+    siteName: "iPhonix Mobile Service Centre",
   },
 };
 
@@ -25,22 +25,24 @@ export default function ContactPage() {
       <Navbar />
       <main className="flex-grow">
         
-        <section className="relative py-28 md:py-36 overflow-hidden bg-[#06201B] text-white flex items-center justify-center text-center">
-          <PremiumHeroBackground backgroundImage="https://i.ibb.co/v4FnnCRs/Whats-App-Image-2026-07-14-at-1-19-44-PM.jpg" />
+        {/* Premium Contact Hero Banner */}
+        <section className="relative py-28 md:py-36 overflow-hidden bg-navy text-white flex items-center justify-center text-center">
+          <PremiumHeroBackground backgroundImage="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?auto=format&fit=crop&q=80&w=1920" />
 
           <div className="max-w-4xl mx-auto px-6 relative z-10 space-y-4 md:space-y-6">
-            <nav className="flex justify-center items-center space-x-2 text-xs font-semibold uppercase tracking-widest text-amber-300">
+            {/* Breadcrumbs */}
+            <nav className="flex justify-center items-center space-x-2 text-xs font-semibold uppercase tracking-widest text-accent/80">
               <Link href="/" className="hover:text-white transition-colors">Home</Link>
               <span>/</span>
-              <span className="text-gray-300">Contact</span>
+              <span className="text-gray-400">Contact</span>
             </nav>
 
             <h1 className="font-space text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-tight">
-              Contact <span className="text-amber-400">Phoenix Cruise</span>
+              Contact <span className="gradient-text-accent">iPhonix</span>
             </h1>
             
             <p className="text-gray-300 text-sm md:text-base max-w-xl mx-auto leading-relaxed">
-              Connect with our Alappuzha reservation desk for instant houseboat bookings and itinerary customization.
+              Fast, reliable, and secure hardware support. Schedule a doorstep dispatch or call us directly.
             </p>
           </div>
         </section>

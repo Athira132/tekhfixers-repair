@@ -4,7 +4,7 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PremiumHeroBackground from "@/components/PremiumHeroBackground";
-import { cruisesData } from "@/data/cruisesData";
+import { servicesData } from "@/data/servicesData";
 import {
   Check,
   ChevronRight,
@@ -12,10 +12,9 @@ import {
   Star,
   Phone,
   MessageSquare,
-  Compass,
-  Clock,
-  Users,
+  Wrench,
   HelpCircle,
+  Home,
 } from "lucide-react";
 import type { Metadata } from "next";
 
@@ -23,66 +22,84 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
+// Generate static routes for all 11 services for fast prerendering
 export async function generateStaticParams() {
-  return Object.keys(cruisesData).map((slug) => ({ slug }));
+  return Object.keys(servicesData).map((slug) => ({ slug }));
 }
 
+// Dynamic SEO metadata generator
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const cruise = cruisesData[slug];
-  if (!cruise) return { title: "Package Not Found" };
+  const service = servicesData[slug];
+  if (!service) return { title: "Service Not Found" };
 
   return {
-    title: cruise.metaTitle,
-    description: cruise.metaDesc,
+    title: service.metaTitle,
+    description: service.metaDesc,
     alternates: {
       canonical: `https://iphonix.in/services/${slug}`,
     },
     openGraph: {
-      title: cruise.metaTitle,
-      description: cruise.metaDesc,
+      title: service.metaTitle,
+      description: service.metaDesc,
       url: `https://iphonix.in/services/${slug}`,
       images: [
         {
-          url: cruise.image,
+          url: service.image,
           width: 800,
           height: 600,
-          alt: `${cruise.title} - Phoenix Cruise Alappuzha`,
+          alt: `${service.title} - iPhonix Mobile Phone Repair Service`,
         },
       ],
     },
   };
 }
 
-export default async function CruiseDetailPage({ params }: PageProps) {
+export default async function ServiceDetailPage({ params }: PageProps) {
   const { slug } = await params;
-  const cruise = cruisesData[slug];
+  const service = servicesData[slug];
 
-  if (!cruise) {
+  if (!service) {
     notFound();
   }
 
+  // Create JSON-LD Schemas dynamically
   const schemas = {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "TouristAttraction",
-        "name": cruise.title,
-        "description": cruise.metaDesc,
+        "@type": "Service",
+        "name": service.title,
+        "serviceType": "Mobile Phone Repair Service",
         "provider": {
           "@type": "LocalBusiness",
-          "name": "Phoenix Cruise",
-          "image": "https://i.ibb.co/v4FnnCRs/Whats-App-Image-2026-07-14-at-1-19-44-PM.jpg",
+          "name": "iPhonix Mobile Service Centre",
+          "image": "https://iphonix.in/logo.jpg",
           "address": {
             "@type": "PostalAddress",
-            "streetAddress": "Punnamada Lake",
-            "addressLocality": "Alappuzha",
+            "streetAddress": "Karamana",
+            "addressLocality": "Trivandrum",
             "addressRegion": "Kerala",
-            "postalCode": "688006",
+            "postalCode": "695002",
             "addressCountry": "IN"
           },
           "telephone": "+917306243424"
-        }
+        },
+        "description": service.metaDesc,
+        "areaServed": [
+          {
+            "@type": "AdministrativeArea",
+            "name": "Karamana"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Trivandrum"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Kerala"
+          }
+        ]
       },
       {
         "@type": "BreadcrumbList",
@@ -96,17 +113,28 @@ export default async function CruiseDetailPage({ params }: PageProps) {
           {
             "@type": "ListItem",
             "position": 2,
-            "name": "Cruises",
-            "item": "https://iphonix.in/#cruises"
+            "name": "Services",
+            "item": "https://iphonix.in/#services"
           },
           {
             "@type": "ListItem",
             "position": 3,
-            "name": cruise.title,
+            "name": service.title,
             "item": `https://iphonix.in/services/${slug}`
           }
         ]
-      }
+      },
+      ...(service.faqs && service.faqs.length > 0 ? [{
+        "@type": "FAQPage",
+        "mainEntity": service.faqs.map(faq => ({
+          "@type": "Question",
+          "name": faq.q,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": faq.a
+          }
+        }))
+      }] : [])
     ]
   };
 
@@ -114,6 +142,7 @@ export default async function CruiseDetailPage({ params }: PageProps) {
     <>
       <Navbar />
       
+      {/* Dynamic Schema Integration */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }}
@@ -121,25 +150,26 @@ export default async function CruiseDetailPage({ params }: PageProps) {
 
       <main className="flex-grow bg-white">
         
-        {/* Banner Section */}
-        <section className="relative py-28 md:py-36 overflow-hidden bg-[#06201B] text-white flex items-center justify-center text-center">
-          <PremiumHeroBackground backgroundImage={cruise.bannerImage} />
+        {/* Premium Dynamic Hero Banner */}
+        <section className="relative py-28 md:py-36 overflow-hidden bg-navy text-white flex items-center justify-center text-center">
+          <PremiumHeroBackground backgroundImage={service.bannerImage} />
 
-          <div className="max-w-4xl mx-auto px-6 relative z-10 space-y-4 md:space-y-6">
-            <nav className="flex justify-center items-center space-x-2 text-xs font-semibold uppercase tracking-widest text-amber-300">
+          <div className="max-w-4xl mx-auto px-6 relative z-10 space-y-4 md:space-y-6 animate-fade-in">
+            {/* Breadcrumbs UI */}
+            <nav className="flex justify-center items-center space-x-2 text-xs font-semibold uppercase tracking-widest text-accent/80">
               <Link href="/" className="hover:text-white transition-colors">Home</Link>
               <span>/</span>
-              <span className="text-gray-300">Cruises</span>
+              <span className="text-gray-400">Services</span>
               <span>/</span>
-              <span className="text-amber-400">{cruise.title}</span>
+              <span className="text-accent">{service.title}</span>
             </nav>
 
             <h1 className="font-space text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-tight">
-              {cruise.title}
+              {service.title}
             </h1>
             
             <p className="text-gray-300 text-sm md:text-base max-w-xl mx-auto leading-relaxed">
-              {cruise.subtitle}
+              {service.shortDesc}
             </p>
           </div>
         </section>
@@ -149,124 +179,101 @@ export default async function CruiseDetailPage({ params }: PageProps) {
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
               
-              {/* Left Column: Details & Overview */}
+              {/* Left Column: Details, Process, Why Choose Us, FAQs */}
               <div className="lg:col-span-8 space-y-16">
                 
                 {/* Image & Overview */}
                 <div className="space-y-8">
-                  <div className="relative aspect-[16/10] rounded-3xl overflow-hidden shadow-2xl border border-gray-100 bg-[#06201B]">
+                  <div className="relative aspect-video rounded-3xl overflow-hidden shadow-lg border border-gray-100 bg-gray-50">
                     <ImageWithFallback
-                      src={cruise.image}
-                      alt={cruise.title}
+                      src={service.image}
+                      alt={service.title}
                       fill
                       sizes="(max-width: 1200px) 100vw, 66vw"
                       className="object-cover"
                     />
                   </div>
-
-                  {/* Key Package Details Bar */}
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 p-6 bg-[#FAFBF8] rounded-2xl border border-gray-200/60 text-[#06201B]">
-                    <div className="space-y-1">
-                      <span className="text-[10px] font-bold text-emerald-800 uppercase tracking-widest">Duration</span>
-                      <p className="font-space text-sm font-bold">{cruise.duration}</p>
-                    </div>
-                    <div className="space-y-1">
-                      <span className="text-[10px] font-bold text-emerald-800 uppercase tracking-widest">Capacity</span>
-                      <p className="font-space text-sm font-bold">{cruise.capacity}</p>
-                    </div>
-                    <div className="space-y-1">
-                      <span className="text-[10px] font-bold text-emerald-800 uppercase tracking-widest">Departure</span>
-                      <p className="font-space text-sm font-bold">{cruise.timing}</p>
-                    </div>
-                  </div>
-
-                  {/* Clean Feature Tags (NO ICONS inside tags) */}
-                  <div className="flex flex-wrap gap-2">
-                    {cruise.tags.map((tag, idx) => (
-                      <span
-                        key={idx}
-                        className="px-3.5 py-1.5 bg-emerald-50 text-emerald-900 border border-emerald-200/60 text-xs font-semibold rounded-full"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-
                   <div className="space-y-4">
-                    <h2 className="font-space text-2xl md:text-3xl font-extrabold text-[#06201B]">Experience Overview</h2>
-                    <p className="text-gray-600 text-sm md:text-base leading-relaxed">
-                      {cruise.overview}
+                    <h2 className="font-space text-2xl md:text-3xl font-extrabold text-navy">Service Overview</h2>
+                    <p className="text-gray-500 text-sm md:text-base leading-relaxed">
+                      {service.overview}
                     </p>
                   </div>
                 </div>
 
-                {/* Package Highlights */}
+                {/* Repair Process Steps */}
                 <div className="space-y-8 border-t border-gray-100 pt-16">
-                  <h2 className="font-space text-2xl md:text-3xl font-extrabold text-[#06201B]">Package Highlights</h2>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {cruise.highlights.map((point, index) => (
-                      <div key={index} className="flex items-start space-x-3 p-4 bg-emerald-50 rounded-2xl border border-emerald-100">
-                        <div className="w-6 h-6 rounded-full bg-emerald-200/60 text-emerald-900 flex items-center justify-center flex-shrink-0 mt-0.5">
-                          <Check className="w-4 h-4" />
+                  <div className="space-y-2">
+                    <span className="text-xs font-bold text-darkblue uppercase tracking-widest bg-darkblue/5 px-4 py-1.5 rounded-full">
+                      Workflow
+                    </span>
+                    <h2 className="font-space text-2xl md:text-3xl font-extrabold text-navy">How We Fix It</h2>
+                    <p className="text-gray-400 text-xs">Our micro-level step-by-step diagnostic and hardware repair process.</p>
+                  </div>
+                  
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    {service.process.map((step) => (
+                      <div key={step.step} className="p-6 bg-navy/5 rounded-2xl border border-gray-100 space-y-4 flex flex-col justify-between">
+                        <div className="flex items-start justify-between">
+                          <span className="font-space text-2xl font-black text-navy/20">{step.step}</span>
+                          <span className="p-2 bg-accent/20 text-navy rounded-xl"><Wrench className="w-5 h-5" /></span>
                         </div>
-                        <span className="text-gray-700 text-xs font-semibold leading-relaxed">{point}</span>
+                        <div className="space-y-2">
+                          <h4 className="font-space text-base font-bold text-navy">{step.title}</h4>
+                          <p className="text-gray-500 text-xs leading-relaxed">{step.desc}</p>
+                        </div>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                {/* Itinerary */}
-                {cruise.itinerary && cruise.itinerary.length > 0 && (
-                  <div className="space-y-8 border-t border-gray-100 pt-16">
-                    <div className="space-y-2">
-                      <span className="text-xs font-bold text-emerald-800 uppercase tracking-widest bg-emerald-100/60 px-4 py-1.5 rounded-full">
-                        Cruise Schedule
-                      </span>
-                      <h2 className="font-space text-2xl md:text-3xl font-extrabold text-[#06201B]">Sample Itinerary</h2>
-                    </div>
-                    
-                    <div className="space-y-4">
-                      {cruise.itinerary.map((item, index) => (
-                        <div key={index} className="p-6 bg-[#FAFBF8] rounded-2xl border border-gray-200/60 space-y-2">
-                          <div className="flex items-center space-x-3">
-                            <span className="text-xs font-bold text-amber-700 bg-amber-100 px-3 py-1 rounded-full font-space">{item.time}</span>
-                            <h4 className="font-space text-base font-bold text-[#06201B]">{item.title}</h4>
-                          </div>
-                          <p className="text-gray-600 text-xs leading-relaxed pl-1">{item.desc}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {/* FAQs */}
-                {cruise.faqs && cruise.faqs.length > 0 && (
-                  <div className="space-y-8 border-t border-gray-100 pt-16">
-                    <h2 className="font-space text-2xl md:text-3xl font-extrabold text-[#06201B]">Frequently Asked Questions</h2>
-                    <div className="space-y-4">
-                      {cruise.faqs.map((faq, index) => (
-                        <div key={index} className="p-6 bg-[#FAFBF8] rounded-2xl border border-gray-200/60 space-y-2">
-                          <div className="flex items-start space-x-3">
-                            <HelpCircle className="w-5 h-5 text-emerald-800 flex-shrink-0 mt-0.5" />
-                            <h4 className="font-space text-base font-bold text-[#06201B]">{faq.q}</h4>
-                          </div>
-                          <p className="text-gray-600 text-xs pl-8 leading-relaxed">{faq.a}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {/* Reviews */}
+                {/* Why Choose Us */}
                 <div className="space-y-8 border-t border-gray-100 pt-16">
-                  <h2 className="font-space text-2xl md:text-3xl font-extrabold text-[#06201B]">Guest Experiences</h2>
+                  <h2 className="font-space text-2xl md:text-3xl font-extrabold text-navy">Why Choose iPhonix for {service.title}</h2>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {service.whyChooseUs.map((point, index) => (
+                      <div key={index} className="flex items-start space-x-3 p-4 bg-emerald-500/5 rounded-2xl border border-emerald-500/10">
+                        <div className="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-600 flex items-center justify-center flex-shrink-0 mt-0.5">
+                          <Check className="w-4 h-4" />
+                        </div>
+                        <span className="text-gray-600 text-xs font-semibold leading-relaxed">{point}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* FAQs Accordion */}
+                <div className="space-y-8 border-t border-gray-100 pt-16">
+                  <div className="space-y-2">
+                    <span className="text-xs font-bold text-darkblue uppercase tracking-widest bg-darkblue/5 px-4 py-1.5 rounded-full">
+                      Help Desk
+                    </span>
+                    <h2 className="font-space text-2xl md:text-3xl font-extrabold text-navy">Frequently Asked Questions</h2>
+                  </div>
+                  
+                  <div className="space-y-4">
+                    {service.faqs.map((faq, index) => (
+                      <div key={index} className="p-6 bg-navy/5 rounded-2xl border border-gray-100 space-y-3">
+                        <div className="flex items-start space-x-3">
+                          <HelpCircle className="w-5 h-5 text-navy flex-shrink-0 mt-0.5" />
+                          <h4 className="font-space text-base font-bold text-navy leading-snug">{faq.q}</h4>
+                        </div>
+                        <p className="text-gray-500 text-xs pl-8 leading-relaxed">{faq.a}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Customer Reviews for this service */}
+                <div className="space-y-8 border-t border-gray-100 pt-16">
+                  <h2 className="font-space text-2xl md:text-3xl font-extrabold text-navy">Recent Customer Reviews</h2>
                   <div className="space-y-6">
-                    {cruise.reviews.map((rev, index) => (
-                      <div key={index} className="p-8 bg-[#FAFBF8] rounded-3xl border border-gray-200/60 space-y-4">
+                    {service.reviews.map((rev, index) => (
+                      <div key={index} className="p-8 bg-white rounded-3xl border border-gray-100 space-y-4 shadow-sm relative">
                         <div className="flex items-center justify-between">
                           <div>
-                            <h4 className="font-space text-base font-bold text-[#06201B]">{rev.author}</h4>
-                            <p className="text-[10px] font-bold text-emerald-800 uppercase tracking-wider">{rev.location} • {rev.date}</p>
+                            <h4 className="font-space text-base font-bold text-navy">{rev.author}</h4>
+                            <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">{rev.date}</p>
                           </div>
                           <div className="flex items-center space-x-1">
                             {[...Array(5)].map((_, i) => (
@@ -274,32 +281,32 @@ export default async function CruiseDetailPage({ params }: PageProps) {
                             ))}
                           </div>
                         </div>
-                        <p className="text-gray-600 text-xs italic leading-relaxed">&ldquo;{rev.text}&rdquo;</p>
+                        <p className="text-gray-500 text-xs italic leading-relaxed">&ldquo;{rev.text}&rdquo;</p>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                {/* Related Cruises */}
+                {/* Related Services */}
                 <div className="space-y-8 border-t border-gray-100 pt-16">
-                  <h2 className="font-space text-2xl md:text-3xl font-extrabold text-[#06201B]">Other Cruise Experiences</h2>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    {cruise.relatedSlugs.map((rSlug) => {
-                      const relPkg = cruisesData[rSlug];
-                      if (!relPkg) return null;
+                  <h2 className="font-space text-2xl md:text-3xl font-extrabold text-navy">Related Services</h2>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                    {service.relatedSlugs.map((rSlug) => {
+                      const relSvc = servicesData[rSlug];
+                      if (!relSvc) return null;
                       return (
                         <Link
                           key={rSlug}
                           href={`/services/${rSlug}`}
-                          className="group p-6 bg-[#FAFBF8] hover:bg-[#06201B] hover:text-white rounded-2xl border border-gray-200/60 hover:border-[#06201B] transition-all duration-300 flex flex-col justify-between h-48 shadow-sm"
+                          className="group p-6 bg-navy/5 hover:bg-navy hover:text-white rounded-2xl border border-gray-100 hover:border-navy transition-all duration-300 flex flex-col justify-between h-48 shadow-sm"
                         >
                           <div>
-                            <span className="text-[9px] font-bold text-emerald-800 uppercase tracking-widest group-hover:text-amber-400">Phoenix Fleet</span>
-                            <h4 className="font-space text-base font-bold mt-2 text-[#06201B] group-hover:text-white">{relPkg.title}</h4>
+                            <span className="text-[9px] font-bold text-darkblue uppercase tracking-widest group-hover:text-accent">iPhonix Lab</span>
+                            <h4 className="font-space text-base font-bold mt-2 leading-tight text-navy group-hover:text-white">{relSvc.title}</h4>
                           </div>
                           <div className="flex items-center justify-between pt-4">
-                            <span className="text-xs font-semibold text-gray-500 group-hover:text-amber-300">View Details</span>
-                            <ChevronRight className="w-4 h-4 text-gray-400 group-hover:text-amber-400 transition-transform group-hover:translate-x-1" />
+                            <span className="text-xs font-semibold text-gray-400 group-hover:text-accent">View Details</span>
+                            <ChevronRight className="w-4 h-4 text-gray-400 group-hover:text-accent transition-transform group-hover:translate-x-1" />
                           </div>
                         </Link>
                       );
@@ -309,55 +316,61 @@ export default async function CruiseDetailPage({ params }: PageProps) {
 
               </div>
 
-              {/* Right Column: Sticky Booking CTA Card */}
+              {/* Right Column: Sticky Booking CTA card */}
               <div className="lg:col-span-4 lg:sticky lg:top-28 space-y-6">
                 
-                <div className="p-8 bg-[#06201B] text-white rounded-3xl border border-emerald-800/40 shadow-2xl space-y-6">
+                {/* Fast Booking CTA Card */}
+                <div className="p-8 bg-[#072A57] text-white rounded-3xl border border-white/5 shadow-2xl relative overflow-hidden space-y-6">
+                  <div className="absolute -top-10 -right-10 w-24 h-24 bg-accent/20 rounded-full blur-xl pointer-events-none" />
+                  
                   <div className="space-y-2">
-                    <span className="text-[10px] font-bold text-amber-300 uppercase tracking-widest bg-emerald-950 px-3 py-1 rounded-full border border-emerald-500/30">
-                      Reserve Cruise
+                    <span className="text-[10px] font-bold text-accent uppercase tracking-widest bg-accent/10 px-3 py-1 rounded-full border border-accent/20">
+                      Live Scheduling
                     </span>
-                    <h3 className="font-space text-xl font-bold pt-2">Book Your Cruise Today</h3>
+                    <h3 className="font-space text-xl font-bold pt-2">Book Your Doorstep Repair</h3>
                     <p className="text-gray-300 text-xs leading-relaxed">
-                      Reserve your dates for {cruise.title} in Alappuzha. Instant booking confirmation &amp; custom dietary arrangements.
+                      Need your {service.title} resolved today? Book a certified dispatch repair engineer to your location in Trivandrum.
                     </p>
                   </div>
 
-                  <div className="space-y-3 pt-2">
+                  <div className="space-y-3 pt-4">
                     <Link
                       href="/book"
-                      className="w-full py-3.5 bg-amber-400 hover:bg-amber-500 text-[#06201B] text-center font-bold rounded-xl transition-all duration-300 shadow-lg block text-sm"
+                      className="w-full py-3.5 bg-accent hover:bg-accent-hover text-navy text-center font-bold rounded-xl transition-all duration-300 shadow-md shadow-accent/20 block hover:scale-102"
                     >
                       Book Online Now
                     </Link>
                     
                     <a
                       href="tel:7306243424"
-                      className="w-full py-3.5 bg-emerald-950/80 hover:bg-emerald-900/80 text-white border border-emerald-700/40 text-center font-bold rounded-xl transition-all duration-300 flex items-center justify-center space-x-2 text-sm"
+                      className="w-full py-3.5 bg-white/5 hover:bg-white/10 text-white border border-white/10 text-center font-bold rounded-xl transition-all duration-300 flex items-center justify-center space-x-2"
                     >
-                      <Phone className="w-4 h-4 text-amber-400" />
+                      <Phone className="w-4 h-4" />
                       <span>Call 7306243424</span>
                     </a>
                     
                     <a
-                      href="https://wa.me/917306243424?text=Hi%20Phoenix%20Cruise%2C%20I%20would%20like%20to%20inquire%20about%20booking%20the%20"
+                      href="https://wa.me/917306243424"
                       target="_blank"
                       rel="noreferrer"
-                      className="w-full py-3.5 bg-emerald-900/40 hover:bg-emerald-900/60 text-emerald-300 border border-emerald-500/30 text-center font-bold rounded-xl transition-all duration-300 flex items-center justify-center space-x-2 text-sm"
+                      className="w-full py-3.5 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/20 text-center font-bold rounded-xl transition-all duration-300 flex items-center justify-center space-x-2"
                     >
-                      <MessageSquare className="w-4 h-4 text-emerald-400" />
+                      <MessageSquare className="w-4 h-4" />
                       <span>WhatsApp Direct</span>
                     </a>
                   </div>
                 </div>
 
-                <div className="p-6 bg-[#FAFBF8] rounded-3xl border border-gray-200/60 space-y-3">
+                {/* Safety Promise Badge Card */}
+                <div className="p-6 bg-white rounded-3xl border border-gray-100 space-y-4 shadow-sm">
                   <div className="flex items-center space-x-3">
-                    <ShieldCheck className="w-6 h-6 text-emerald-800" />
-                    <h4 className="font-space text-sm font-bold text-[#06201B]">Phoenix Safety Guarantee</h4>
+                    <div className="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-600 flex items-center justify-center flex-shrink-0">
+                      <ShieldCheck className="w-5 h-5" />
+                    </div>
+                    <h4 className="font-space text-sm font-bold text-navy">Authenticity Promise</h4>
                   </div>
-                  <p className="text-gray-600 text-[11px] leading-relaxed">
-                    Certified life jackets, trained captains, full insurance coverage, and silent environmental navigation on all cruises.
+                  <p className="text-gray-500 text-[11px] leading-relaxed">
+                    We use exclusively OEM-grade replacement parts, fully programmed and serialized to match your smartphone&apos;s secure hardware configurations.
                   </p>
                 </div>
 

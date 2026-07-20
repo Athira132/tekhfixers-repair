@@ -6,16 +6,16 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Book a Houseboat Cruise | Phoenix Cruise Alappuzha, Kerala",
-  description: "Reserve your luxury houseboat cruise in Alappuzha with Phoenix Cruise. Day trips, overnight stays, executive suites & authentic Kerala seafood meals.",
+  title: "Book Doorstep Mobile Phone Repair Service in Trivandrum, Kerala | iPhonix",
+  description: "Schedule your doorstep smartphone repair in Karamana, Trivandrum & Kerala. Certified mobile technicians come directly to your home or office for screen, battery & board repair. Book today!",
   alternates: {
     canonical: "https://iphonix.in/book",
   },
   openGraph: {
-    title: "Book a Houseboat Cruise | Phoenix Cruise Alappuzha, Kerala",
-    description: "Reserve your luxury houseboat cruise in Alappuzha with Phoenix Cruise.",
+    title: "Book Doorstep Mobile Phone Repair Service in Trivandrum, Kerala | iPhonix",
+    description: "Book doorstep smartphone repair in Karamana, Trivandrum & Kerala with certified technicians.",
     url: "https://iphonix.in/book",
-    siteName: "Phoenix Cruise",
+    siteName: "iPhonix Mobile Service Centre",
   },
 };
 
@@ -25,22 +25,24 @@ export default function BookRepairPage() {
       <Navbar />
       <main className="flex-grow">
         
-        <section className="relative py-28 md:py-36 overflow-hidden bg-[#06201B] text-white flex items-center justify-center text-center">
-          <PremiumHeroBackground backgroundImage="https://i.ibb.co/XrBDdjpg/image.png" />
+        {/* Premium Book Hero Banner */}
+        <section className="relative py-28 md:py-36 overflow-hidden bg-navy text-white flex items-center justify-center text-center">
+          <PremiumHeroBackground backgroundImage="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=1920" />
 
           <div className="max-w-4xl mx-auto px-6 relative z-10 space-y-4 md:space-y-6">
-            <nav className="flex justify-center items-center space-x-2 text-xs font-semibold uppercase tracking-widest text-amber-300">
+            {/* Breadcrumbs */}
+            <nav className="flex justify-center items-center space-x-2 text-xs font-semibold uppercase tracking-widest text-accent/80">
               <Link href="/" className="hover:text-white transition-colors">Home</Link>
               <span>/</span>
-              <span className="text-gray-300">Book Cruise</span>
+              <span className="text-gray-400">Book Repair</span>
             </nav>
 
             <h1 className="font-space text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-tight">
-              Book a <span className="text-amber-400">Cruise</span>
+              Book a <span className="gradient-text-accent">Repair</span>
             </h1>
             
             <p className="text-gray-300 text-sm md:text-base max-w-xl mx-auto leading-relaxed">
-              Reserve your dates for a peaceful backwater voyage in Alappuzha, Kerala.
+              Generate a doorstep dispatch request to repair your smartphone on-site in Trivandrum.
             </p>
           </div>
         </section>

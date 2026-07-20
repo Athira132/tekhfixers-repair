@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next';
-import { cruisesData } from '@/data/cruisesData';
+import { servicesData } from '@/data/servicesData';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://iphonix.in';
@@ -12,13 +12,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: route === '' ? 1.0 : 0.8,
   }));
 
-  // Dynamic cruise pages
-  const cruisePages = Object.keys(cruisesData).map(slug => ({
+  // Dynamic service pages
+  const servicePages = Object.keys(servicesData).map(slug => ({
     url: `${baseUrl}/services/${slug}`,
     lastModified: new Date(),
     changeFrequency: 'monthly' as const,
     priority: 0.9,
   }));
 
-  return [...staticPages, ...cruisePages];
+  return [...staticPages, ...servicePages];
 }
