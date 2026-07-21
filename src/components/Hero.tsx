@@ -185,13 +185,13 @@ export default function Hero() {
             <div className="absolute inset-0 bg-accent/25 rounded-[2.5rem] blur-2xl opacity-60 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
             {/* Real Phone Image */}
-            <div className="relative w-full h-full overflow-hidden rounded-[2.5rem] flex items-center justify-center">
+            <div className="relative w-full h-full flex items-center justify-center">
               <ImageWithFallback
                 src="https://i.ibb.co/sdq8xPjK/image-removebg-preview-1.png"
-                alt="iPhonix Premium Repair Mockup"
+                alt="iPhonix Premium Smartphone Repair Showcase"
                 fill
-                sizes="(max-width: 768px) 100vw, 400px"
-                className="object-contain drop-shadow-[0_25px_25px_rgba(0,0,0,0.5)] transition-transform duration-500 ease-out group-hover:scale-105"
+                sizes="(max-width: 768px) 100vw, 450px"
+                className="object-contain drop-shadow-[0_25px_35px_rgba(0,0,0,0.55)] transition-transform duration-500 ease-out group-hover:scale-105"
                 priority
               />
             </div>
